@@ -1,6 +1,8 @@
 class CartsController < ApplicationController
   # GET /carts
   # GET /carts.xml
+skip_before_filter :authorize, :only=>[:create, :update, :delete]
+
   def index
     @carts = Cart.all
 

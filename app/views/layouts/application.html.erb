@@ -21,6 +21,12 @@
 			<a href="http://www..../faq">Questions</a><br />
 			<a href="http://www..../news">News</a><br />
 			<a href="http://www..../contact">Contact</a><br />
+			
+			<% if session[:user_id]%>
+			<br />
+			<% link_to 'Order' orders_path%><br />
+			<% link_to 'Product' products_path%><br />
+			<% link_to 'User' users_path%><br />
 		</div>
 		<div id="main">
 			<%= yield %><!-- <label id="code.depot.e.include" /> -->
