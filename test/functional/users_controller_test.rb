@@ -3,8 +3,8 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   setup do
     @input_attributes={
-      :name=>"Sam"
-      :password=>"private"
+      :name=>"Sam",
+      :password=>"private",
       :password_confirmation=>"private"
     }
     @user = users(:one)
@@ -26,7 +26,7 @@ class UsersControllerTest < ActionController::TestCase
       post :create, :user => @input_attributes
     end
 
-    assert_redirected_to user_path
+    assert_redirected_to users_path
   end
 
   test "should show user" do
@@ -41,7 +41,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should update user" do
     put :update, :id => @user.to_param, :user => @input_attributes
-    assert_redirected_to user_path
+    assert_redirected_to users_path
   end
 
   test "should destroy user" do

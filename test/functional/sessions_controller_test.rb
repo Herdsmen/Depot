@@ -24,6 +24,7 @@ class SessionsControllerTest < ActionController::TestCase
     assert_redirected_to store_url
   end
   
+=begin
   test "should get create" do
     get :create
     assert_response :success
@@ -33,5 +34,6 @@ class SessionsControllerTest < ActionController::TestCase
     get :destroy
     assert_response :success
   end
+=end
 
 end

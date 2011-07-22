@@ -17,6 +17,12 @@
 	</div>
 	<div id="columns">
 		<div id="side">
+			<%if @cart%>
+			<%=hidden_div_if(@cart.line_items.empty?,:id=>"cart") do %>
+			<%=render @cart %>
+			<%end%>
+			<%end%>
+
 			<a href="http://www....">Home</a><br />
 			<a href="http://www..../faq">Questions</a><br />
 			<a href="http://www..../news">News</a><br />
@@ -24,9 +30,12 @@
 			
 			<% if session[:user_id]%>
 			<br />
-			<% link_to 'Order' orders_path%><br />
-			<% link_to 'Product' products_path%><br />
-			<% link_to 'User' users_path%><br />
+			<%= link_to 'Order', orders_path%><br />
+			<%= link_to 'Product', products_path%><br />
+			<%= link_to 'User', users_path%><br />
+			<br />
+			<%= button_to 'Logout', logout_path, :method=>:delete%>
+			<%end%>
 		</div>
 		<div id="main">
 			<%= yield %><!-- <label id="code.depot.e.include" /> -->

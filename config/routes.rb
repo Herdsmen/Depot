@@ -12,6 +12,8 @@ end
   #get "sessions/destroy"
 
   resources :users
+  
+  resources :orders
 
   resources :line_items
 
@@ -19,7 +21,11 @@ end
 
   get "store/index"
 
-  resources :products
+  resources :products do
+	get :who_bought, :on => :member
+  end
+  
+  # resources :products
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

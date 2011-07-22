@@ -132,7 +132,7 @@
 }
 
 #main{
-	margin-left: 13em;
+	margin-left: 15em;
 	padding-top: 4ex;
 	padding-left: 2em;
 	background: white;
@@ -143,11 +143,11 @@
 	padding-top: 1em;
 	padding-left: 1em;
 	padding-bottom: 1em;
-	width: 12em;
+	width: 14em;
 	background: #141;
 }
 
-#side a{
+#side a, span{
 	color: #bfb;
 	font-size: small;
 }
@@ -168,4 +168,49 @@
 #store .total_line .total_cell{
 	font-weight: bold;
 	border-top: 1px solid #595;
+}
+
+/* Styles for the cart in the sidebar */
+#cart, #cart table{
+	font-size: smaller;
+	color: white;
+}
+
+#cart table{
+	border-top:1px dotted #595;
+	border-bottom: 1px dotted #595;
+	margin-bottom: 10px;
+}
+
+/* Styles for order form */
+.depot_form fieldset {
+	background: #efe;
+}
+
+.depot_form legend {
+	color: #dfd;
+	background: #141;
+	font-family: sans-serif;
+	padding: 0.2em 1em;
+}
+
+.depot_form label {
+	width: 5em;
+	float: left;
+	text-align: right;
+	padding-top: 0.2em;
+	margin-right: 0.1em;
+	display: block;
+}
+
+.depot_form select, .depot_form textarea, .depot_form input {
+	margin-left: 0.5em;
+}
+
+.depot_form .submit {
+	margin-left: 4em;
+}
+
+.depot_form div {
+	margin: 0.5em 0;
 }
