@@ -41,6 +41,7 @@ class ProductsController < ApplicationController
   # POST /products.xml
   def create
     @product = Product.new(params[:product])
+    @product.heat = 0
 
     respond_to do |format|
       if @product.save

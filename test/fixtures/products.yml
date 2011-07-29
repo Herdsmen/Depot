@@ -5,12 +5,14 @@ one:
   description: MyText
   image_url: MyString
   price: 9.99
+  heat: 0
 
 two:
   title: MyString
   description: MyText
   image_url: MyString
   price: 9.99
+  heat: 0
   
 #START:ruby
 ruby: 
@@ -21,4 +23,5 @@ ruby:
     delivered fast, you should add Ruby to your toolbox.
   price:       49.50
   image_url:   ruby.png 
+  heat: 0
 #END:ruby

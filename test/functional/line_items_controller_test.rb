@@ -18,7 +18,7 @@ class LineItemsControllerTest < ActionController::TestCase
 
   test "should create line_item" do
     assert_difference('LineItem.count') do
-      post :create, :product_id => products(:ruby).id#:line_item => @line_item.attributes
+      post :create, :product_id => products(:ruby).id#:line_item => @line_item.attributes      
     end
 
     assert_redirected_to store_path#line_item_path(assigns(:line_item))

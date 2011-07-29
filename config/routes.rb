@@ -6,10 +6,9 @@ controller :sessions do
   delete 'logout'=>:destroy
 end
   #get "sessions/new"
-
   #get "sessions/create"
-
   #get "sessions/destroy"
+match 'store/get_heat'
 scope '(:locale)' do
   resources :users
   resources :orders

@@ -3,14 +3,18 @@
 <% end %>
 
 <h1><%= t('.title_html')%></h1>
-
 <% @products.each do |product| %>
-	<div class="entry">
+	<div class="entry" >
 		<%= image_tag(product.image_url) %>
 		<h3><%= product.title %></h3>
 		<%= sanitize product.description %>
 		<div class="price_line">
 			<span class="price"><%= number_to_currency(product.price) %></span>
+			Heat:
+			<span class="heat" id="<%= product.id %>"><%= product.heat%></span>
+			<%= periodically_call_remote(:update => product.id, 
+										 :url => { :action => 'get_heat', :product_id => product.id }, 
+										 :frequency => 30) %>
 			<%= button_to t('.add').html_safe, line_items_path(:product_id => product),:remote=>true %>
 		</div>
 	</div>

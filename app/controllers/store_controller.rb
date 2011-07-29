@@ -8,4 +8,13 @@ skip_before_filter :authorize
     @cart = current_cart
     end
   end
+  
+  def get_heat
+    if params[:product_id]
+      product = Product.find(params[:product_id])
+      if product
+        render(:text => product.heat )
+      end
+    end
+  end
 end
