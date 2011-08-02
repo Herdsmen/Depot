@@ -1,4 +1,6 @@
 Depot::Application.routes.draw do
+  
+
   get 'admin'=>'admin#index'
 controller :sessions do
   get 'login'=> :new
@@ -11,6 +13,7 @@ end
 match 'store/get_heat'
 scope '(:locale)' do
   resources :users
+  resources :customers
   resources :orders
   resources :line_items
   resources :carts
@@ -79,5 +82,6 @@ end
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+ match ':controller(/:action(/:id(.:format)))'
+
 end
