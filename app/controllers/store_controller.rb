@@ -6,6 +6,7 @@ skip_before_filter :authorize
     else
     @products = Product.all
     @cart = current_cart
+    @is_user=is_user?
     end
   end
   
@@ -17,4 +18,11 @@ skip_before_filter :authorize
       end
     end
   end
+  
+  
+  private
+  def is_user?
+     check_role_type=='User'
+  end
+  
 end

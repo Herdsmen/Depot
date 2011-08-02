@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CustomersControllerTest < ActionController::TestCase
   setup do
-    
+    customer_login :customer
     
     @customer = users(:customer)
     hash_password = User.encrypt_password('secret',SALT)
@@ -12,9 +12,13 @@ class CustomersControllerTest < ActionController::TestCase
       :salt    => SALT
     }
   end
+  
+  teardown do
+    logout
+  end 
 
   test "should get index" do
-    login_as :customer
+    
     get :index
     assert_response :success
     assert_not_nil assigns(:products)
