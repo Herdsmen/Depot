@@ -6,6 +6,7 @@ class StoreController < ApplicationController
     else
     @products = Product.all
     @cart = current_cart
+    @topten = Product.get_top_five
     @is_user=is_user?
     end
   end

@@ -77,7 +77,7 @@
   font-family: sans-serif;
 }
 
-#store .entry img {
+#store .entry img, #recommend img {
   width: 80px;
   margin-right: 5px;
   margin-bottom: 5px;
@@ -96,7 +96,7 @@
  margin-bottom: 0.8em; 
 }
 
-#store .entry .price_line {
+#store .entry .price_line{
  clear: both;
  color: #4444AA;
  font-weight: bold;
@@ -107,7 +107,7 @@
   position: relative;
 }
 
-#store .entry  .price {
+#store .entry .price {
   color: #44a;
   font-weight: bold;
   margin-right: 2em;
@@ -222,8 +222,56 @@
 	padding-top:0.2em
 }
 
-.heat{
+#store .heat{
 	color: #4444AA;
 	font-weight: bold;
 	margin-right: 2em;
 }
+
+#store #recommend{
+	width: 360px;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+}
+#store #recommend .price {
+  color: #44a;
+  font-weight: bold;
+  margin-right: 2em;
+}
+
+
+#entries{
+	padding-right: 370px;
+}
+#recommend{ 
+	border:1px solid #fdd78d; 
+	background:#ffecc6; 
+	padding:5px;
+}
+			
+/*平常的状态*/
+dl{ clear:both; margin:5px 0;}
+dl dt{ display:none;}
+dl dd{}
+dl dd strong{ float:left; margin-right:5px;}
+dl dd div{ float:left; width:270px; list-style-type:none;}
+dl dd div h4{ clear:both; font-weight:normal}
+dl dd div h4 a{ float:left; color:#795601; font-size:12px; font-weight:normal; text-decoration:none;}
+dl dd div h4 a:hover{ color:#f00; text-decoration:underline;}
+dl dd div h4 span{ float:right; width:75px;}
+dl dd div p{ display:none;}
+dl dd div form{ display:none;}				
+/*鼠标划过的状态*/				
+dl.over{ clear:both; height:55px; background:#fdc559; padding:5px;}
+dl.over dt{ float:right; display:block;}
+dl.over dt img{ border:1px solid #ccc; padding:1px; background:#fff;}
+dl.over dd{ float:left;}
+dl.over dd strong{ font-size:28px; color:#fa3081; vertical-align:top;}
+dl.over dd div{ float:left; width:195px;}
+dl.over dd div h4{ clear:both; font-weight:normal}
+dl.over dd div h4 a{ color:#b34408;}
+dl.over dd div h4 a:hover{ color:#f00; text-decoration:underline;}
+dl.over dd div h4 span{ float:right;}
+dl.over dd div p{ clear:both; display:block; margin-top:5px;}
+dl.over dd div form{ clear:both; display:block; margin-top:5px;}
