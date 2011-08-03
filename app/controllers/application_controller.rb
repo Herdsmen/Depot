@@ -36,4 +36,17 @@ class ApplicationController < ActionController::Base
   def default_url_options
     { :locale => I18n.locale}
   end
+  
+    def check_role_type
+    if defined? session
+         if session[:type]=="Customer"
+           return 'Customer'
+         elsif session[:user_id]
+           return 'User'
+         else
+           return 'Vistor'
+         end         
+    end
+  end
+  
 end

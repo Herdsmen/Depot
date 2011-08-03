@@ -1,5 +1,6 @@
 # encoding: utf-8
 Product.delete_all
+User.delete_all
 Product.create(:title => 'Web Design for Developers',
   :description => 
     %{<p>
@@ -196,3 +197,6 @@ Product.create(:title => '100 Selected Stories',
   :image_url => '/images/100SS.jpg',
   :price => 27.40,
   :heat => 0)
+
+User.create(:name => '1',
+  :password => '1',:password_confirmation=>'1')

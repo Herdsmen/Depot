@@ -9,3 +9,9 @@ two:
   name: MyString
   hashed_password: MyString
   salt: MyString
+
+customer:
+  name: MyString
+  hashed_password: <%= User.encrypt_password('secret',SALT)%>
+  salt: <%= SALT %>
+  type: Customer

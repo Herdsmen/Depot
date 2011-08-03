@@ -7,6 +7,7 @@ skip_before_filter :authorize
     @products = Product.all
     @cart = current_cart
     @topten = Product.get_top_five
+    @is_user=is_user?
     end
   end
   
@@ -18,4 +19,11 @@ skip_before_filter :authorize
       end
     end
   end
+  
+  
+  private
+  def is_user?
+     check_role_type=='User'
+  end
+  
 end
