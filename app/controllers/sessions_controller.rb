@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-skip_before_filter :authorize
+
   def new
   end
 
@@ -41,6 +41,8 @@ skip_before_filter :authorize
   def clear_user_session
     session[:type]=nil
     session[:user_id]=nil
+    Cart.destroy(session[:cart_id]) unless session[:cart_id]==nil
+    session[:cart_id] = nil
   end
 
 end

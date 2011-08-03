@@ -1,7 +1,12 @@
 class OrdersController < ApplicationController
+  #skip_before_filter :authorize_user, :only=>[:new, :create]
+  before_filter :authorize_user, :only=>[:index,:show,:edit,:update,:destroy]
+  before_filter :authorize_customer, :only=>[:new, :create]
+  
   # GET /orders
   # GET /orders.xml
-skip_before_filter :authorize, :only=>[:new, :create]
+
+
   def index
     # @orders = Order.all
     @orders = Order.paginate :page => params[:page], :order => 'created_at desc',

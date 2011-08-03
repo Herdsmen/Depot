@@ -2,6 +2,7 @@ require 'test_helper'
 
 class OrdersControllerTest < ActionController::TestCase
   setup do
+    
     @order = orders(:one)
   end
 
@@ -15,12 +16,13 @@ class OrdersControllerTest < ActionController::TestCase
     cart = Cart.create
 	session[:cart_id] = cart.id
 	LineItem.create(:cart => cart, :product => products(:ruby))
-	
+	  customer_login :customer
     get :new
     assert_response :success
   end
 
   test "should create order" do
+    customer_login :customer
     assert_difference('Order.count') do
       post :create, :order => @order.attributes
     end
@@ -53,6 +55,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
   
   test "requires item in cart" do
+  customer_login :customer
 	get :new
 	assert_redirected_to store_path
 	assert_equal flash[:notice], 'Your cart is empty'

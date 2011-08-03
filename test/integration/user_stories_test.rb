@@ -2,6 +2,7 @@ require 'test_helper'
 
 class UserStoriesTest < ActionDispatch::IntegrationTest
   fixtures :products
+  fixtures :users
 
   # Replace this with your real tests.
     test "buying a product" do
@@ -9,6 +10,10 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     Order.delete_all
     ruby_book = products(:ruby)
 
+
+    post_via_redirect "/login",:name=> users(:customer).name,:password  => 'secret'
+    assert_equal 'Customer',session[:type]
+    
     get "/"
     assert_response :success
     assert_template "index"
@@ -20,6 +25,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal 1, cart.line_items.size
     assert_equal ruby_book, cart.line_items[0].product
     
+   
     get "/orders/new"
     assert_response :success
     assert_template "new"

@@ -25,9 +25,10 @@ class ActiveSupport::TestCase
   end
   
   def setup
-    if defined? session
-    login_as :one unless session[:type]
-    end
+    #if defined? session
+    #login_as :one unless session[:type]
+    #end
+    login_as :customer if defined? session
   end
   
 

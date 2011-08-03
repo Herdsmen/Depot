@@ -1,5 +1,8 @@
 class CustomersController < ApplicationController
-  skip_before_filter :authorize, :only=>[:new,:create]
+  #skip_before_filter :authorize_customer, :only=>[:new,:create]
+  before_filter :authorize_user, :only=>[:destroy]
+  before_filter :authorize_customer, :only=>[:index,:show,:edit,:update,:collect]
+  before_filter :authorize_vistor, :only=>[:new,:create]
   # GET /customers
   # GET /customers.xml
   def index

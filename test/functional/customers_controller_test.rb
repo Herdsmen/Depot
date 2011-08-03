@@ -5,10 +5,10 @@ class CustomersControllerTest < ActionController::TestCase
     customer_login :customer
     
     @customer = users(:customer)
-    hash_password = User.encrypt_password('secret',SALT)
+    #hash_password = User.encrypt_password('secret',SALT)
     @customer_update = {
       :name        => 'Lorem Ipsum',
-      :hashed_password  => hash_password,
+      :hashed_password  => User.encrypt_password('secret',SALT),
       :salt    => SALT
     }
   end
@@ -24,12 +24,27 @@ class CustomersControllerTest < ActionController::TestCase
     assert_not_nil assigns(:products)
   end
 
+  test "should fail to get new" do
+    get :new
+    assert_redirected_to store_url
+  end
+
   test "should get new" do
+    logout
     get :new
     assert_response :success
   end
+  
+  test "should fail to create customer" do
+    assert_no_difference('Customer.count') do
+      post :create, :customer => @customer_update
+    end
 
+    assert_redirected_to store_url
+  end
+  
   test "should create customer" do
+    logout
     assert_difference('Customer.count') do
       post :create, :customer => @customer_update
     end
@@ -53,10 +68,21 @@ class CustomersControllerTest < ActionController::TestCase
   end
 
   test "should destroy customer" do
+    logout
+    login_as :one
     assert_difference('Customer.count', -1) do
+      delete :destroy, :id => @customer.to_param
+    end
+
+    #assert_redirected_to customers_path
+  end
+  
+    test "should fail to destroy customer" do
+    assert_difference('Customer.count', 0) do
       delete :destroy, :id => @customer.to_param
     end
 
     assert_redirected_to customers_path
   end
+  
 end

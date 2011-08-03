@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :set_i18n_locale_from_params
-  before_filter :authorize
+  #before_filter :authorize
   protect_from_forgery
   
   private
@@ -18,6 +18,32 @@ class ApplicationController < ActionController::Base
   def authorize
       unless User.find_by_id(session[:user_id])
         redirect_to login_url, :notice=>"Please log in"
+      end
+    end
+    
+    def authorize_user
+      unless check_role_type=='User'
+        if check_role_type=='Customer'
+          redirect_to customers_path, :notice=>"You are not Admin "
+        else
+        redirect_to login_url, :notice=>"Please log in"
+        end
+      end
+    end
+    
+    def authorize_vistor
+      unless check_role_type=='Vistor'
+        redirect_to store_url, :notice=>"You have already logged in "
+      end
+    end
+    
+    def authorize_customer
+      unless check_role_type=='Customer'
+        if check_role_type=='User'
+          redirect_to users_path, :notice=>"You are not Customer "
+        else
+        redirect_to login_url, :notice=>"Please log in"
+        end
       end
     end
 
