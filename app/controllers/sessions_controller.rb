@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       type=type_for_actor(user.id)   
       session[:type]=type
       session[:user_id]=user.id
-      redirect_to_home_according_to_type
+      redirect_to_original_uri_or_role_home
     else
       redirect_to login_url, :alert=>"Invalid user/password combination"
     end
@@ -28,6 +28,16 @@ class SessionsController < ApplicationController
     else
       return "Customer"
     end
+  end
+  
+  def redirect_to_original_uri_or_role_home
+      uri=session[:original_uri]
+      session[:original_uri]=nil  
+      if uri==nil
+        redirect_to_home_according_to_type
+      else
+        redirect_to uri
+      end
   end
   
   def redirect_to_home_according_to_type

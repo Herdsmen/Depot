@@ -11,6 +11,7 @@ end
   #get "sessions/create"
   #get "sessions/destroy"
 match 'store/get_heat'
+match 'customers/collect'
 scope '(:locale)' do
   resources :users
   resources :customers

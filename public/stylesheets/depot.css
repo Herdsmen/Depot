@@ -251,27 +251,27 @@
 }
 			
 /*平常的状态*/
-dl{ clear:both; margin:5px 0;}
-dl dt{ display:none;}
-dl dd{}
-dl dd strong{ float:left; margin-right:5px;}
-dl dd div{ float:left; width:270px; list-style-type:none;}
-dl dd div h4{ clear:both; font-weight:normal}
-dl dd div h4 a{ float:left; color:#795601; font-size:12px; font-weight:normal; text-decoration:none;}
-dl dd div h4 a:hover{ color:#f00; text-decoration:underline;}
-dl dd div h4 span{ float:right; width:75px;}
-dl dd div p{ display:none;}
-dl dd div form{ display:none;}				
+#recommend dl{ clear:both; margin:5px 0;}
+#recommend dl dt{ display:none;}
+#recommend dl dd{}
+#recommend dl dd strong{ float:left; margin-right:5px;}
+#recommend dl dd div{ float:left; width:270px; list-style-type:none;}
+#recommend dl dd div h4{ clear:both; font-weight:normal}
+#recommend dl dd div h4 a{ float:left; color:#795601; font-size:12px; font-weight:normal; text-decoration:none;}
+#recommend dl dd div h4 a:hover{ color:#f00; text-decoration:underline;}
+#recommend dl dd div h4 span{ float:right; width:75px;}
+#recommend dl dd div p{ display:none;}
+#recommend dl dd div form{ display:none;}				
 /*鼠标划过的状态*/				
-dl.over{ clear:both; height:55px; background:#fdc559; padding:5px;}
-dl.over dt{ float:right; display:block;}
-dl.over dt img{ border:1px solid #ccc; padding:1px; background:#fff;}
-dl.over dd{ float:left;}
-dl.over dd strong{ font-size:28px; color:#fa3081; vertical-align:top;}
-dl.over dd div{ float:left; width:195px;}
-dl.over dd div h4{ clear:both; font-weight:normal}
-dl.over dd div h4 a{ color:#b34408;}
-dl.over dd div h4 a:hover{ color:#f00; text-decoration:underline;}
-dl.over dd div h4 span{ float:right;}
-dl.over dd div p{ clear:both; display:block; margin-top:5px;}
-dl.over dd div form{ clear:both; display:block; margin-top:5px;}
+#recommend dl.over{ clear:both; height:55px; background:#fdc559; padding:5px;}
+#recommend dl.over dt{ float:right; display:block;}
+#recommend dl.over dt img{ border:1px solid #ccc; padding:1px; background:#fff;}
+#recommend dl.over dd{ float:left;}
+#recommend dl.over dd strong{ font-size:28px; color:#fa3081; vertical-align:top;}
+#recommend dl.over dd div{ float:left; width:195px;}
+#recommend dl.over dd div h4{ clear:both; font-weight:normal}
+#recommend dl.over dd div h4 a{ color:#b34408;}
+#recommend dl.over dd div h4 a:hover{ color:#f00; text-decoration:underline;}
+#recommend dl.over dd div h4 span{ float:right;}
+#recommend dl.over dd div p{ clear:both; display:block; margin-top:5px;}
+#recommend dl.over dd div form{ clear:both; display:block; margin-top:5px;}
