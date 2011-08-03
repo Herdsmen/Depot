@@ -6,6 +6,7 @@ skip_before_filter :authorize
     else
     @products = Product.all
     @cart = current_cart
+    @topten = Product.get_top_five
     end
   end
   
