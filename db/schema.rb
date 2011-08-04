@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110801073411) do
+ActiveRecord::Schema.define(:version => 20110801075132) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at"
@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(:version => 20110801073411) do
   end
 
   add_index "categories_products", ["product_id", "category_id"], :name => "index_categories_products_on_product_id_and_category_id"
+
+  create_table "customers_products", :id => false, :force => true do |t|
+    t.integer "customer_id", :null => false
+    t.integer "product_id",  :null => false
+  end
 
   create_table "line_items", :force => true do |t|
     t.integer  "product_id"

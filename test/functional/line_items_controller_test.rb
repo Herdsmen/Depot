@@ -18,15 +18,14 @@ class LineItemsControllerTest < ActionController::TestCase
 
   test "should create line_item" do
     assert_difference('LineItem.count') do
-      post :create, :product_id => products(:ruby).id#:line_item => @line_item.attributes      
+      post :create, :product_id => products(:ruby).id
     end
-
-    assert_redirected_to store_path#line_item_path(assigns(:line_item))
+    assert_redirected_to store_path
   end
   
   test "should add heat" do
     assert_difference('Product.find(products(:ruby).id).heat') do
-      post :create, :product_id => products(:ruby).id#:line_item => @line_item.attributes      
+      post :create, :product_id => products(:ruby).id
     end
   end
 
