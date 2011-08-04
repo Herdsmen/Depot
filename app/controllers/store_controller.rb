@@ -8,7 +8,6 @@ class StoreController < ApplicationController
 			unless params[:category] then @products = Product.all
 			else @products = Product.getProductsByCategoryID params[:category] end
 			
-			@products = Product.all
 			@cart = current_cart
 			@topten = Product.get_top_five
 			@is_user=is_user?

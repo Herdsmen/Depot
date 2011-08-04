@@ -24,11 +24,15 @@ class LineItemsControllerTest < ActionController::TestCase
     assert_redirected_to store_path#line_item_path(assigns(:line_item))
   end
   
-  test "should add heat" do
-    assert_difference('Product.find(products(:ruby).id).heat') do
-      post :create, :product_id => products(:ruby).id#:line_item => @line_item.attributes      
-    end
-  end
+	test "should add heat" do
+		assert_difference('Product.find(products(:ruby).id).heat') do
+			product = Product.find(products(:ruby).id)
+			product.category_ids = [categories(:one).id]
+			product.save
+			
+			post :create, :product_id => products(:ruby).id#:line_item => @line_item.attributes    			
+		end
+	end
 
   test "should show line_item" do
     get :show, :id => @line_item.to_param
