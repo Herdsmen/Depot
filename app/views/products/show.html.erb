@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+	<p id="notice">
+		<%= notice %>
+	</p>
+<% end %>
 
 <p>
   <b>Title:</b>
@@ -7,17 +11,28 @@
 
 <p>
   <b>Description:</b>
-  <%= @product.description %>
+  <%= sanitize @product.description %>
 </p>
 
 <p>
   <b>Image url:</b>
-  <%= @product.image_url %>
+  <%= image_tag(@product.image_url, :class => "list_image") %>
 </p>
 
 <p>
-  <b>Price:</b>
-  <%= @product.price %>
+	<b>Price:</b>
+	<%= @product.price %>
+</p>
+<p>
+	<b>Categories:</b>
+	<!--
+	<% @product.getCategories.each do | category | %>
+		<span class="product_categories"><%= category.name %>&sbquo;</span>
+	<% end %>
+	-->
+	<span class="product_categories">
+		<%= categoriesToString @product %>
+	</span>
 </p>
 
 

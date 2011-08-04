@@ -11,23 +11,65 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :image_url %><br />
-    <%= f.text_field :image_url %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<div class="field">
+		<%= f.label :title %><br />
+		<%= f.text_field :title %>
+	</div>
+	<div class="field">
+		<%= f.label :description %><br />
+		<%= f.text_area :description %>
+	</div>
+	<div class="field">
+		<%= f.label :image_url %><br />
+		<%= f.text_field :image_url %>
+	</div>
+	<div class="field">
+		<%= f.label :price %><br />
+		<%= f.text_field :price %>
+	</div>
+
+	<!--
+	<p><%= f.class %></p>
+	<ul>
+	<% f.methods.sort.each do | method | %>
+		<li><%= method %></li>
+	<% end %>
+	</ul>
+	-->
+	<!--
+	<div class="field">
+		<%= f.label :categories, "Categories:" %>
+		<ul id="product_categories">
+		<% for category in Category.all %>
+			<% unless(category.name == "ROOT_NODE") then  %>
+				<li><%= category.product_ids.empty? %></li>
+				<li><label>
+				<%= check_box_tag "product[category_ids][]", category.id, @product.categories.include?(category) %>
+				<%= category.name %>
+				</label></li>
+			<% end %>
+		<%end%>
+		</ul>
+	</div>
+	-->
+	
+	<div class="field">
+		<%= f.label :categories, "Categories:" %>
+		<ul id="product_categories">
+		<% Category.all.each do | category | %>
+			<% unless(category.name == "ROOT_NODE") then  %>
+			<li>
+				<label>
+					<%= check_box_tag "product[category_ids][]", category.id, @product.categories.include?(category) %>
+					<%= category.name %>
+				</label>
+			</li>
+			<% end %>
+		<% end %>
+		</ul>
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
 <% end %>

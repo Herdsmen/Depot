@@ -1,15 +1,36 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionController::TestCase
-  setup do
-    @product = products(:one)
-    @update = {
-      :title        => 'Lorem Ipsum',
-      :description  => 'Wibbles sre fun!',
-      :image_url    => 'lorem.jpg',
-      :price        => 19.95
-    }
-  end
+	setup do
+		# puts "\n=========================="
+		# puts "= Setup product text database"
+		# puts "=========================="
+		# Category.all.each do | category |
+			# puts "#{ category }"
+			# category.attributes.each do | key, value |
+				# puts "\t#{ key } => #{ value }"
+			# end
+		# end
+		
+		# Product.all.each do | product |
+			# puts "#{ product }"
+			# product.attributes.each do | key, value |
+				# puts "\t#{ key } => #{ value }"
+			# end
+		# end
+		# puts "=========================="
+  
+		@product = products(:one)
+		@update = {
+		  :title        => 'Lorem Ipsum',
+		  :description  => 'Wibbles sre fun!',
+		  :image_url    => 'lorem.jpg',
+		  :price        => 19.95,
+		  :category_ids => [categories(:one).id]
+		}
+
+		  
+	end
 
   test "should get index" do
     get :index

@@ -37,21 +37,29 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  # POST /products
-  # POST /products.xml
-  def create
-    @product = Product.new(params[:product])
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to(@product, :notice => 'Product was successfully created.') }
-        format.xml  { render :xml => @product, :status => :created, :location => @product }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @product.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
+	# POST /products
+	# POST /products.xml
+	def create
+		@product = Product.new(params[:product])
+	
+		# @params = params[:product]
+		# @content = String.new
+		
+		# @params.to_hash.each do | key, value |
+			# @content += "#{ key } => #{ value } ; "
+		# end
+	
+		respond_to do |format|
+			if @product.save
+				format.html { redirect_to(@product, :notice => 'Product was successfully created.') }
+				# format.html { redirect_to(@product, :notice => "params class => #{ @params.class } content is #{ @content }") }
+				format.xml  { render :xml => @product, :status => :created, :location => @product }
+			else
+				format.html { render :action => "new" }
+				format.xml  { render :xml => @product.errors, :status => :unprocessable_entity }
+			end
+		end
+	end
 
   # PUT /products/1
   # PUT /products/1.xml

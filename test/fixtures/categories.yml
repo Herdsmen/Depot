@@ -1,0 +1,16 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+root:
+  name: ROOT_NODE
+  parent: -1
+  layer: 0
+
+one:
+  name: Category1
+  parent: 1
+  layer: 1
+
+two:
+  name: Category2
+  parent: 1
+  layer: 1

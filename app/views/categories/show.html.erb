@@ -1,0 +1,24 @@
+<% if notice %>
+	<p id="notice">
+		<%= notice %>
+	</p>
+<% end %>
+
+<table>
+	<tr>
+		<th>Name:</th>
+		<td><%= @category.name %></td>
+	</tr>
+	<tr>
+		<th>Parent:</th>
+		<td><%= @category.parent %></td>
+	</tr>
+	<tr>
+		<th>Layer:</th>
+		<td><%= @category.layer %></td>
+	</tr>
+</table>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

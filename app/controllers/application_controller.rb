@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :set_i18n_locale_from_params
-  before_filter :authorize
+  #before_filter :authorize
   protect_from_forgery
   
   private

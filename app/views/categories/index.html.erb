@@ -1,0 +1,44 @@
+<% if notice %>
+	<p id="notice">
+		<%= notice %>
+	</p>
+<% end %>
+<h1>Listing categories</h1>
+
+
+
+
+
+<% @return %>
+
+<div id="category">
+<%= treeDisplay(@return) %>
+</div>
+
+<% content_tag(:p, "Hello world!") %>
+<!--
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Parent</th>
+		<th>Layer</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	<% @categories.each do |category| %>
+	<tr>
+		<td><%= category.name %></td>
+		<td><%= category.parent %></td>
+		<td><%= category.layer %></td>
+		<td><%= link_to "Show", category %></td>
+		<td><%= link_to "Edit", edit_category_path(category) %></td>
+		<td><%= link_to "Destroy", category, :confirm => "Are you sure?", :method => :delete %></td>
+	</tr>
+	<% end %>
+</table>
+
+<br />
+-->
+<%= link_to 'New Category', new_category_path %>

@@ -64,6 +64,10 @@
   background:   #f8b0f8;
 }
 
+.product_categories {
+	color: black;
+}
+
 /* An entry in the store catalog */
 
 #store  .entry {
@@ -216,6 +220,27 @@
 }
 
 .locale {
-	float:right;
-	padding-top:0.2em
+	float: right;
+	padding-top: 0.2em;
+}
+
+/* Styles for categories */
+#category .delete_button {
+	background-color: #FF6666;
+	color: white;
+	text-decoration: none;
+	width: 16px;
+	font-weight: bold;
+}
+
+#category .delete_button:hover {
+	background-color: #CC0033;
+}
+
+.side_categories ul:first-child {
+	padding-left: 0px;
+}
+
+.side_categories li {
+	list-style-type: none;
 }
