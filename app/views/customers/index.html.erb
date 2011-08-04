@@ -1,0 +1,23 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Listing customers</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr>
+       <%=product.title%>
+  </tr>
+  <br/>
+<% end %>
+</table>
+
+<br />
+

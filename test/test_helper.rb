@@ -16,9 +16,21 @@ class ActiveSupport::TestCase
   
   def logout
     session.delete :user_id
+    session.delete :type
+  end
+  
+  def customer_login(customer)
+    session[:user_id]=users(customer).id
+    session[:type]='Customer'
   end
   
   def setup
-    login_as :one if defined? session
+    #if defined? session
+    #login_as :one unless session[:type]
+    #end
+    login_as :customer if defined? session
   end
+  
+
+  
 end

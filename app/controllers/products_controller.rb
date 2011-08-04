@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_filter :authorize_user
   # GET /products
   # GET /products.xml
   def index
@@ -41,7 +42,8 @@ class ProductsController < ApplicationController
 	# POST /products.xml
 	def create
 		@product = Product.new(params[:product])
-	
+		@product.heat = 0
+		
 		# @params = params[:product]
 		# @content = String.new
 		

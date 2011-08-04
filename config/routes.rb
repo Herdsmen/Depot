@@ -8,12 +8,13 @@ controller :sessions do
   delete 'logout'=>:destroy
 end
   #get "sessions/new"
-
   #get "sessions/create"
-
   #get "sessions/destroy"
+match 'store/get_heat'
+match 'customers/collect'
 scope '(:locale)' do
   resources :users
+  resources :customers
   resources :orders
   resources :line_items
   resources :carts
@@ -82,5 +83,6 @@ end
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+ match ':controller(/:action(/:id(.:format)))'
+
 end

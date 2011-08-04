@@ -2,12 +2,13 @@ class Product < ActiveRecord::Base
 	default_scope :order => 'title'
 	has_many :line_items
 	has_many :orders, :through => :line_items
+	has_and_belongs_to_many :customers
   
 	has_and_belongs_to_many :categories
 	validates :categories, :presence => true
   
 	before_destroy :ensure_not_referenced_by_any_line_item
-  
+
 	def ensure_not_referenced_by_any_line_item
 		if line_items.count.zero?
 			return true
@@ -39,6 +40,10 @@ class Product < ActiveRecord::Base
 			end
 			
 			Product.find product_ids
+		end
+		
+		def get_top_five
+			Product.all.sort_by{|p| p.heat}.reverse.first(5)
 		end
 	end
 	

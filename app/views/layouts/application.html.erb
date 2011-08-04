@@ -13,8 +13,17 @@
 <!-- END:head -->
 <body id="store">
 	<div id="banner">
-		<%= form_tag store_path, :class => "locale" do %>
-		  <%= select_tag "set_locale",
+		<%= form_tag store_path, :class => 'locale' do%>
+		<!--login:begin-->
+		<% if !session[:user_id]%>
+		<%=link_to 'login',login_url %>
+		<%= link_to 'Register',new_customer_path%>
+		<%else%>
+		<span><%=link_to User.find_by_id(session[:user_id]).name,customers_path%></span>
+		<%= link_to 'Logout', logout_path, :method=>:delete %>
+		<%end%>
+		<!--login:end-->
+		  <%= select_tag 'set_locale',
 		  options_for_select(LANGUAGES,I18n.locale.to_s),
 		  :onchange => "this.form.submit()"%>
 	   	  <%= submit_tag "submit"%>
@@ -44,14 +53,15 @@
 			<% end %>
 			
 			<% if session[:user_id]%>
-			<ul>
-				<li><%= link_to "Orders", orders_path%></li>
-				<li><%= link_to "Products", products_path%></li>
-				<li><%= link_to "Users", users_path%></li>
-				<li><%= link_to "Categories", categories_path %></li>
-			</ul>
-			<%= button_to "Logout", logout_path, :method=>:delete %>
-			<% end %>
+
+			<br />
+			<%= link_to 'Orders', orders_path%><br />
+			<%= link_to 'Products', products_path%><br />
+			<%= link_to 'Users', users_path%><br />
+			<br />
+			<!--%= button_to 'Logout', logout_path, :method=>:delete %-->
+			<%end%>
+
 		</div>
 		<div id="main">
 			<%= yield %>

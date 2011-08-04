@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20110801073411) do
     t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "heat"
   end
 
   create_table "users", :force => true do |t|
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20110801073411) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
   end
 
 end

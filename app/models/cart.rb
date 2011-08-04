@@ -9,6 +9,9 @@ class Cart < ActiveRecord::Base
       current_item = LineItem.new(:product_id => product_id)
       line_items << current_item
     end
+    product = Product.find(product_id)
+    product.heat += 1
+    product.save
     current_item
   end
   
