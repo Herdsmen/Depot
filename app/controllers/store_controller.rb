@@ -9,7 +9,7 @@ class StoreController < ApplicationController
 			else @products = Product.getProductsByCategoryID params[:category] end
 			
 			@cart = current_cart
-			@topten = Product.get_top_five
+			@topfive = Product.get_top_five
 			@is_user=is_user?
 		end
 	end
