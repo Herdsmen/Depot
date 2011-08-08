@@ -34,7 +34,27 @@
 		<%= categoriesToString @product %>
 	</span>
 </p>
-
+<div id="comments">
+	<% rank=1 %>
+	<% @comments.each do |comment| %>
+	<div class="comment">
+		Comment<%= rank %>:
+		<span class="commenttitle">Title:<%= comment.title %></span>
+		<p>Comment:<%= comment.comment %></p>
+	</div>
+	<% rank+=1 %>
+	<% end %>
+</div>
+<% form_for(@comment) do |f|%>
+	<%= f.hidden_field :product_id, :value => @product.id %>
+	<%= f.hidden_field :user_id, :value => session[:user_id] %>
+	<%= f.hidden_field :commentable_type, :value => 'product' %>
+	<%= f.label :title %><br />
+	<%= f.text_field :title %><br />
+	<%= f.label :comment %><br />
+	<%= f.text_area (:comment, :rows => 3) %><br />
+	<%= f.submit "Post Comment" %>
+<% end %>	
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

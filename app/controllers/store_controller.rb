@@ -9,7 +9,6 @@ class StoreController < ApplicationController
 			else @products = Product.getProductsByCategoryID(params[:category]) end
 			
 			@products = @products.paginate :page => params[:page], :per_page => 10
-			
 			@cart = current_cart
 			@topfive = Product.get_top_five
 			@is_user=is_user?

@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.7)
       activesupport (= 3.0.7)
     activesupport (3.0.7)
+    acts_as_commentable (3.0.1)
     arel (2.0.10)
     builder (2.1.2)
     erubis (2.6.6)
@@ -75,6 +76,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  acts_as_commentable
   meta_search
   rails (= 3.0.7)
   sqlite3

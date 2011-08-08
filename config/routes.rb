@@ -12,9 +12,11 @@ end
   #get "sessions/destroy"
 match 'store/get_heat'
 match 'customers/collect'
+match 'comments/create'
 scope '(:locale)' do
   resources :users
   resources :customers
+  resources :comments
   resources :orders
   resources :line_items
   resources :carts

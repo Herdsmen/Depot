@@ -46,7 +46,7 @@
 	width: 14em;
 }
 
-#side a, span{
+#side a, #side span{
 	color: #336633;
 	font-size: medium;
 	font-weight: bold;
