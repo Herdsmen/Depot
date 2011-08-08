@@ -1,6 +1,7 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
+
 <div id="storeindex">
 	<h1><%= t('.title_html')%></h1>
 	<div id="entries">
@@ -21,6 +22,7 @@
 				</div>
 			</div>
 		<% end %>
+		<p><%= will_paginate @products %></p>
 	</div>
 	<div id="recommend">
 		<% rank = 1 %>
