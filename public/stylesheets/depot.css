@@ -1,5 +1,4 @@
 /* Global styles */
-
 #store #notice {
         color: #000;
         border: 2px solid red;
@@ -9,15 +8,51 @@
         font: bold smaller sans-serif;
 }
 
+#banner {
+	background: #ccff99;
+	padding-top: 10px;
+	padding-bottom:  10px;
+	border-bottom: 2px solid;
+	font:small-caps 40px/40px "Times New Roman", serif;
+	color: #282;
+	text-align: center;
+}
 
-#store h1 {
-        font:  150% sans-serif;
-        color: #226;
-        border-bottom: 3px dotted #77d;
+#banner .locale {
+	float: right;
+	padding-top: 0.2em;
+}
+
+#banner .loginarea {
+	font-family: verdana, arial, helvetica, sans-serif;
+	float: right;
+	font-size: medium;
+	font-weight: bold;
+}
+
+#banner img{
+	float: left;
+}
+
+#columns{
+	background:  #66cc99;
+}
+
+#side{
+	float: left;
+	padding-top: 1em;
+	padding-left: 1em;
+	padding-bottom: 1em;
+	width: 14em;
+}
+
+#side a, span{
+	color: #336633;
+	font-size: medium;
+	font-weight: bold;
 }
 
 /* Styles for products/index */
-
 #product_list table {
         border-collapse: collapse;
 }
@@ -68,98 +103,12 @@
 	color: black;
 }
 
-/* An entry in the store catalog */
-
-#store  .entry {
-  overflow: auto;
-  margin-top: 1em;
-  border-bottom: 1px dotted #77d;
-}
-
-#store  .title {
-  font-size: 120%;
-  font-family: sans-serif;
-}
-
-#store .entry img, #recommend img {
-  width: 80px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  float: left;
-}
-
-
-#store .entry h3 {
- margin-top: 0;
- margin-bottom: 2px;
- color: #227;
-}
-
-#store .entry p {
- margin-top: 0.5em; 
- margin-bottom: 0.8em; 
-}
-
-#store .entry .price_line{
- clear: both;
- color: #4444AA;
- font-weight: bold;
- margin-bottom: 0.5em;
-}
-
-#store .entry .add_to_cart {
-  position: relative;
-}
-
-#store .entry .price {
-  color: #44a;
-  font-weight: bold;
-  margin-right: 2em;
-}
-
-/* Styles for main page */
-
-#banner {
-	background: #9c9;
-	padding-top: 10px;
-	padding-bottom:  10px;
-	border-bottom: 2px solid;
-	font:small-caps 40px/40px "Times New Roman", serif;
-	color: #282;
-	text-align: center;
-}
-
-#banner img{
-	float: left;
-}
-
-#columns{
-	background:  #141;
-}
 
 #main{
 	margin-left: 15em;
 	padding-top: 4ex;
 	padding-left: 2em;
 	background: white;
-}
-
-#side{
-	float: left;
-	padding-top: 1em;
-	padding-left: 1em;
-	padding-bottom: 1em;
-	width: 14em;
-	background: #141;
-}
-
-#side a, span{
-	color: #bfb;
-	font-size: small;
-}
-
-#store .entry form, #store .entry form div{
-	display: inline;
 }
 
 /* Styles for the cart in the main page */
@@ -221,11 +170,6 @@
 	margin: 0.5em 0;
 }
 
-.locale {
-	float: right;
-	padding-top: 0.2em;
-}
-
 /* Styles for categories */
 #category .delete_button {
 	background-color: #FF6666;
@@ -239,7 +183,6 @@
 	background-color: #CC0033;
 }
 
-
 .side_categories ul:first-child {
 	padding-left: 0px;
 }
@@ -247,52 +190,3 @@
 .side_categories li {
 	list-style-type: none;
 }
-
-#store .heat{
-	color: #4444AA;
-	font-weight: bold;
-	margin-right: 2em;
-}
-
-#store #recommend{
-	width: 360px;
-	position: fixed;
-	bottom: 0px;
-	right: 0px;
-}
-#store #recommend .price {
-  color: #44a;
-  font-weight: bold;
-  margin-right: 2em;
-}
-
-
-#entries{
-	padding-right: 370px;
-}
-#recommend{ 
-	border:1px solid #fdd78d; 
-	background:#ffecc6; 
-	padding:5px;
-}
-			
-/*平常的状态*/
-#recommend dl{ clear:both; margin:5px 0;}
-#recommend dl dt{ display:none;}
-#recommend dl dd strong{ float:left; margin-right:5px;}
-#recommend dl dd div{ float:left; width:270px; list-style-type:none;}
-#recommend dl dd div h4{ clear:both; font-weight:normal}
-#recommend dl dd div h4 span{ float:right; width:75px;}
-#recommend dl dd div p{ display:none;}
-#recommend dl dd div form{ display:none;}				
-/*鼠标划过的状态*/				
-#recommend dl.over{ clear:both; height:55px; background:#fdc559; padding:5px;}
-#recommend dl.over dt{ float:right; display:block;}
-#recommend dl.over dt img{ border:1px solid #ccc; padding:1px; background:#fff;}
-#recommend dl.over dd{ float:left;}
-#recommend dl.over dd strong{ font-size:28px; color:#fa3081; vertical-align:top;}
-#recommend dl.over dd div{ float:left; width:195px;}
-#recommend dl.over dd div h4{ clear:both; font-weight:normal}
-#recommend dl.over dd div h4 span{ float:right;}
-#recommend dl.over dd div p{ clear:both; display:block; margin-top:5px;}
-#recommend dl.over dd div form{ clear:both; display:block; margin-top:5px;}

@@ -4,8 +4,7 @@
 <head>
   <title>Pragprog Books Online Store</title>
 <!-- START_HIGHLIGHT -->
-  <%= stylesheet_link_tag "scaffold"%>
-  <%= stylesheet_link_tag "depot",:media => "all"%>
+  <%= stylesheet_link_tag :all%>
 <!-- END_HIGHLIGHT -->
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
@@ -13,25 +12,24 @@
 <!-- END:head -->
 <body id="store">
 	<div id="banner">
+		<%= image_tag("logo.png") %>
+		<%= @page_title || t(".title") %>
 		<%= form_tag store_path, :class => 'locale' do%>
-		<!--login:begin-->
-		<% if !session[:user_id]%>
-		<%=link_to 'login',login_url %>
-		<%= link_to 'Register',new_customer_path%>
-		<%else%>
-		<span><%=link_to User.find_by_id(session[:user_id]).name,customers_path%></span>
-		<%= link_to 'Logout', logout_path, :method=>:delete %>
-		<%end%>
-		<!--login:end-->
 		  <%= select_tag 'set_locale',
 		  options_for_select(LANGUAGES,I18n.locale.to_s),
 		  :onchange => "this.form.submit()"%>
 	   	  <%= submit_tag "submit"%>
 		  <%= javascript_tag "$$('.locale input').each(Element.hide)"%>
 	    <% end %>
-	   
-		<%= image_tag("logo.png") %>
-		<%= @page_title || t(".title") %>
+		<div class="loginarea">
+			<% if !session[:user_id]%>
+				<%=link_to 'Login', login_url %>
+				<%=link_to 'Register', new_customer_path %>
+			<%else%>
+				<span><%=link_to User.find_by_id(session[:user_id]).name,customers_path%></span>
+				<%= link_to 'Logout', logout_path, :method=>:delete %>
+			<%end%>
+		</div>
 	</div>
 	<div id="columns">
 		<div id="side">
@@ -41,10 +39,10 @@
 				<%end%>
 			<% end %>
 
-			<a href="http://www...."><%= t(".home")%></a><br />
-			<a href="http://www..../faq"><%= t(".questions")%></a><br />
-			<a href="http://www..../news"><%= t(".news")%></a><br />
-			<a href="http://www..../contact"><%= t(".contact")%></a><br />
+			<a href="/"><%= t(".home")%></a><br />
+			<a href="/"><%= t(".questions")%></a><br />
+			<a href="/"><%= t(".news")%></a><br />
+			<a href="/"><%= t(".contact")%></a><br />
 			
 			<% unless session[:user_id] %>
 			<div class="side_categories">
