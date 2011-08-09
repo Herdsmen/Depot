@@ -27,9 +27,7 @@ class ProductsControllerTest < ActionController::TestCase
 		  :image_url    => 'lorem.jpg',
 		  :price        => 19.95,
 		  :category_ids => [categories(:one).id]
-		}
-
-		  
+		}		  
 	end
 
   test "should get index" do
