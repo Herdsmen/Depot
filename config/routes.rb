@@ -20,12 +20,18 @@ scope '(:locale)' do
   resources :orders
   resources :line_items
   resources :carts
-  resources :products do
-    get :who_bought, :on => :member
-  end
+	resources :products do
+		get :who_bought, :on => :member
+
+		collection do
+			get 'search'
+		end
+	end
   root :to => 'store#index', :as => 'store'
   
   match 'aid' => 'aid#index', :as => 'aid'
+  
+	resources :store
 end
   
   
