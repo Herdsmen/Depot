@@ -32,7 +32,7 @@
     			<dd>
     				<strong><%= rank%></strong>
    		   			<div>
-   		   				<h3><%= product.title %></h3>
+   		   				<h3><%= link_to product.title, :controller => "products", :action => "show", :id => product.id %></h3>
 						<span class="price_line">							
 							<span class="price"><%= number_to_currency(product.price) %></span>
 							Heat:
