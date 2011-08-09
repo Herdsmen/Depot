@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  acts_as_commentable
 	default_scope :order => 'title'
 	has_many :line_items
 	has_many :orders, :through => :line_items

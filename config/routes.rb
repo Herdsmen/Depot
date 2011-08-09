@@ -14,9 +14,11 @@ match 'store/get_heat'
 match 'customers/collect'
 match 'customers/show_orders'
 match 'customers/remove_collection'
+match 'comments/create'
 scope '(:locale)' do
   resources :users
   resources :customers
+  resources :comments
   resources :orders
   resources :line_items
   resources :carts
@@ -24,6 +26,8 @@ scope '(:locale)' do
     get :who_bought, :on => :member
   end
   root :to => 'store#index', :as => 'store'
+  
+  match 'aid' => 'aid#index', :as => 'aid'
 end
   
   

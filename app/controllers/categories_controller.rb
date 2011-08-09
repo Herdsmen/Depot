@@ -4,8 +4,7 @@ class CategoriesController < ApplicationController
 	def index
 		@categories = Category.all
 
-		@return = Category.tree
-		# @return = treeDisplay Category.tree
+		@categoriesHashTree = Category.tree
 		
 		respond_to do |format|
 			format.html # index.html.erb
@@ -54,21 +53,12 @@ class CategoriesController < ApplicationController
 	def create
 		@category = Category.new(params[:category])
 		
-		# parentNode = params[:category][:parent]
-		
-		# content = String.new
-		# parentNode.each do | key, value| 
-			# content += "#{ key } => #{value} ; " 
-		# end 
-		
 		parentNode = Category.where({ :name => params[:category][:parent] }).first
 		@category.parent = parentNode.id
 		@category.layer = parentNode.layer + 1
 		
 		respond_to do |format|
 			if @category.save
-				# format.html { redirect_to(@category, :notice => "#{parentNode.class} => #{parentNode}") }
-				# format.html { redirect_to(@category, :notice => 'Category was successfully created.') }
 				format.html { redirect_to(categories_url, :notice => 'Category was successfully created.') }
 				format.xml  { render :xml => @category, :status => :created, :location => @category }
 			else
@@ -82,14 +72,10 @@ class CategoriesController < ApplicationController
 	# PUT /categories/1.xml
 	def update
 		@category = Category.find(params[:id])
-
-		# Category.resetParentName(@category.name, params[:category].to_hash["name"])
 		
 		respond_to do |format|
 			if @category.update_attributes(params[:category])
 				format.html { redirect_to(categories_url, :notice => 'Category was successfully updated.') }
-				# format.html { redirect_to(@category, :notice => 'Category was successfully updated.') }
-				# format.html { redirect_to(@category, :notice => params[:category].to_hash["name"]) }
 				format.xml  { head :ok }
 			else
 				format.html { render :action => "edit" }
@@ -103,9 +89,6 @@ class CategoriesController < ApplicationController
 	def destroy
 		@category = Category.find(params[:id])
 		Category.destroyNodeByID(@category.id)
-		
-		
-		# @category.destroy
 
 		respond_to do | format |
 			format.html { redirect_to(categories_url) }

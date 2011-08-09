@@ -1,7 +1,7 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 window.onload=function(){
-	var dl=document.getElementsByTagName("dl");
+	var dl=$$("#recommend dl");
 	if(dl.length<1) return false;
 	for(var i=0;i<dl.length;i++){
 		//初始化，让第一个类为over

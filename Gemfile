@@ -24,6 +24,9 @@ gem 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
 gem 'will_paginate', '>= 3.0.pre'
+gem "meta_search"
+gem 'acts_as_commentable'
+# gem "meta_search", :git => "git://github.com/ernie/meta_search.git" # Track git repo
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

@@ -11,7 +11,7 @@ Category.create(:name => 'Study', :layer => 1,
 	:parent => Category.where(:name => 'ROOT_NODE').first.id)
 Category.create(:name => 'Living', :layer => 1, 
 	:parent => Category.where(:name => 'ROOT_NODE').first.id)
-Category.create(:name => 'Fiction', :layer => 1,
+Category.create(:name => 'Literature', :layer => 1,
 	:parent => Category.where(:name => 'ROOT_NODE').first.id)
 
 # layer = 2
@@ -27,12 +27,12 @@ Category.create(:name => 'Health', :layer => 2,
 Category.create(:name => 'Travel', :layer => 2,  
 	:parent => Category.where(:name => 'Living').first.id)
 	
-Category.create(:name => 'Literature', :layer => 2, 
-	:parent => Category.where(:name => 'Fiction').first.id)
+Category.create(:name => 'Fiction', :layer => 2, 
+	:parent => Category.where(:name => 'Literature').first.id)
 Category.create(:name => 'Mystery', :layer => 2,  
-	:parent => Category.where(:name => 'Fiction').first.id)
+	:parent => Category.where(:name => 'Literature').first.id)
 Category.create(:name => 'Classics', :layer => 2,  
-	:parent => Category.where(:name => 'Fiction').first.id)
+	:parent => Category.where(:name => 'Literature').first.id)
 	
 # layer = 3
 Category.create(:name => 'Drinks', :layer => 3, 

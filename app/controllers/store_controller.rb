@@ -6,10 +6,11 @@ class StoreController < ApplicationController
 			redirect_to store_path(:locale => params[:set_locale])
 		else
 			unless params[:category] then @products = Product.all
-			else @products = Product.getProductsByCategoryID params[:category] end
+			else @products = Product.getProductsByCategoryID(params[:category]) end
 			
+			@products = @products.paginate :page => params[:page], :per_page => 10
 			@cart = current_cart
-			@topten = Product.get_top_five
+			@topfive = Product.get_top_five
 			@is_user=is_user?
 		end
 	end
