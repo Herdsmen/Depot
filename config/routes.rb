@@ -12,6 +12,8 @@ end
   #get "sessions/destroy"
 match 'store/get_heat'
 match 'customers/collect'
+match 'customers/show_orders'
+match 'customers/remove_collection'
 match 'comments/create'
 match 'comments/destroy'
 scope '(:locale)' do

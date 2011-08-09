@@ -1,8 +1,8 @@
 class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
-  before_filter :authorize_user
-  skip_before_filter :authorize_user, :only=>:create
+  before_filter :authorize_user ,:except=>:create
+
   
   def index
     @line_items = LineItem.all

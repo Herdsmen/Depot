@@ -15,6 +15,23 @@
 		<%= image_tag("logo.png") %>
 		<%= @page_title || t(".title") %>
 		<%= form_tag store_path, :class => 'locale' do%>
+<<<<<<< HEAD
+		
+		<!--login:begin-->
+		<% if !session[:user_id]%>
+		<%=link_to 'login',login_url %>
+		<%= link_to 'Register',new_customer_path%>
+		<%elsif session[:type]=='Customer'%>
+		<span><%=link_to User.find_by_id(session[:user_id]).name,customers_path%></span>
+		<%= link_to 'Logout', logout_path, :method=>:delete %>
+		<% else %>
+		<span><%=link_to User.find_by_id(session[:user_id]).name,admin_url%></span>
+		<%= link_to 'Logout', logout_path, :method=>:delete %>
+		<%end%>
+		<!--login:end-->
+		
+=======
+>>>>>>> 824bb7210e3086a627c80a947a8b653e180f3899
 		  <%= select_tag 'set_locale',
 		  options_for_select(LANGUAGES,I18n.locale.to_s),
 		  :onchange => "this.form.submit()"%>
@@ -43,6 +60,7 @@
 			<a href="/"><%= t(".questions")%></a><br />
 			<a href="/"><%= t(".news")%></a><br />
 			<a href="/"><%= t(".contact")%></a><br />
+
 			
 			<% unless session[:user_id] %>
 			<div class="side_categories">
@@ -50,14 +68,19 @@
 			</div>
 			<% end %>
 			
-			<% if session[:user_id]%>
-
+			<% if session[:user_id]&&session[:type]=='User'%>
 			<br />
 			<%= link_to 'Orders', orders_path%><br />
 			<%= link_to 'Products', products_path%><br />
 			<%= link_to 'Users', users_path%><br />
 			<br />
-			<!--%= button_to 'Logout', logout_path, :method=>:delete %-->
+			<%end%>
+			
+			<% if session[:user_id]&&session[:type]=='Customer'%>
+			<br />
+			<%= link_to 'Orders', :controller=> 'customers',:action=> 'show_orders'%><br />
+			<%= link_to 'Collection', customers_path%><br />
+			<br />
 			<%end%>
 
 		</div>
