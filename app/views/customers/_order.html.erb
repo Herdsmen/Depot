@@ -1,0 +1,34 @@
+
+
+        <fieldset>
+        	<legend>order_id:<%=order.id%></legend>
+        	<table >
+        		<tr>
+  	  			<th>order name:</th>
+  	  			<td><%=order.name%></td>
+  	  		   </tr>
+  	  		   <tr>
+  	  			<th>order address:</th>
+  	  			<td><%=order.address%></td>
+  	  		   </tr>
+  	  		   <tr>
+  	  			<th>order email:</th>
+  	  			<td><%=order.email%></td>
+  	  		   </tr>
+  	  		   <tr>
+  	  			<th>order pay_type:</th>
+  	  			<td><%=order.pay_type%></td>
+  	  		   </tr>
+            </table>
+            
+            <table >
+            	<%order.line_items.each do |line_item|%>
+        		<tr>
+		        <td><%= line_item.quantity %>&times;</td>
+		        <td><%= line_item.product.title %></td>
+		        <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+		        </tr>
+		        <%end%>
+            </table>
+        </fieldset>
+        

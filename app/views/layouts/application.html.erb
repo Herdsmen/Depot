@@ -14,15 +14,20 @@
 <body id="store">
 	<div id="banner">
 		<%= form_tag store_path, :class => 'locale' do%>
+		
 		<!--login:begin-->
 		<% if !session[:user_id]%>
 		<%=link_to 'login',login_url %>
 		<%= link_to 'Register',new_customer_path%>
-		<%else%>
+		<%elsif session[:type]=='Customer'%>
 		<span><%=link_to User.find_by_id(session[:user_id]).name,customers_path%></span>
+		<%= link_to 'Logout', logout_path, :method=>:delete %>
+		<% else %>
+		<span><%=link_to User.find_by_id(session[:user_id]).name,admin_url%></span>
 		<%= link_to 'Logout', logout_path, :method=>:delete %>
 		<%end%>
 		<!--login:end-->
+		
 		  <%= select_tag 'set_locale',
 		  options_for_select(LANGUAGES,I18n.locale.to_s),
 		  :onchange => "this.form.submit()"%>
@@ -41,7 +46,7 @@
 				<%end%>
 			<% end %>
 
-			<a href="http://www...."><%= t(".home")%></a><br />
+			<%= link_to 'Home',store_path%><br />
 			<a href="http://www..../faq"><%= t(".questions")%></a><br />
 			<a href="http://www..../news"><%= t(".news")%></a><br />
 			<a href="http://www..../contact"><%= t(".contact")%></a><br />
@@ -52,14 +57,19 @@
 			</div>
 			<% end %>
 			
-			<% if session[:user_id]%>
-
+			<% if session[:user_id]&&session[:type]=='User'%>
 			<br />
 			<%= link_to 'Orders', orders_path%><br />
 			<%= link_to 'Products', products_path%><br />
 			<%= link_to 'Users', users_path%><br />
 			<br />
-			<!--%= button_to 'Logout', logout_path, :method=>:delete %-->
+			<%end%>
+			
+			<% if session[:user_id]&&session[:type]=='Customer'%>
+			<br />
+			<%= link_to 'Orders', :controller=> 'customers',:action=> 'show_orders'%><br />
+			<%= link_to 'Collection', customers_path%><br />
+			<br />
 			<%end%>
 
 		</div>
