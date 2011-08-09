@@ -15,7 +15,9 @@ match 'customers/collect'
 match 'customers/show_orders'
 match 'customers/remove_collection'
 match 'comments/create'
+match 'customers/show_comments'
 match 'comments/destroy'
+
 scope '(:locale)' do
   resources :users
   resources :customers

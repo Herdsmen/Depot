@@ -22,10 +22,10 @@ class CustomersController < ApplicationController
     @customer=Customer.find(session[:user_id])
   end
 
-  # GET /customers/1
+  # GET /customers/show
   # GET /customers/1.xml
   def show
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(session[:user_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,9 +44,9 @@ class CustomersController < ApplicationController
     end
   end
 
-  # GET /customers/1/edit
+  # GET /customers/edit
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(session[:user_id])
   end
 
   # POST /customers
@@ -113,6 +113,10 @@ class CustomersController < ApplicationController
     else
       redirect_to(store_url, :notice=>"faile to remove collection")
     end
+  end
+  
+  def show_comments
+    
   end
   
 

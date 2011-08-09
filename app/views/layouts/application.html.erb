@@ -15,8 +15,14 @@
 		<%= image_tag("logo.png") %>
 		<%= @page_title || t(".title") %>
 		<%= form_tag store_path, :class => 'locale' do%>
-<<<<<<< HEAD
-		
+
+		  <%= select_tag 'set_locale',
+		  options_for_select(LANGUAGES,I18n.locale.to_s),
+		  :onchange => "this.form.submit()"%>
+	   	  <%= submit_tag "submit"%>
+		  <%= javascript_tag "$$('.locale input').each(Element.hide)"%>
+	    <% end %>
+		<div class="loginarea">
 		<!--login:begin-->
 		<% if !session[:user_id]%>
 		<%=link_to 'login',login_url %>
@@ -29,23 +35,6 @@
 		<%= link_to 'Logout', logout_path, :method=>:delete %>
 		<%end%>
 		<!--login:end-->
-		
-=======
->>>>>>> 824bb7210e3086a627c80a947a8b653e180f3899
-		  <%= select_tag 'set_locale',
-		  options_for_select(LANGUAGES,I18n.locale.to_s),
-		  :onchange => "this.form.submit()"%>
-	   	  <%= submit_tag "submit"%>
-		  <%= javascript_tag "$$('.locale input').each(Element.hide)"%>
-	    <% end %>
-		<div class="loginarea">
-			<% if !session[:user_id]%>
-				<%=link_to 'Login', login_url %>
-				<%=link_to 'Register', new_customer_path %>
-			<%else%>
-				<span><%=link_to User.find_by_id(session[:user_id]).name,customers_path%></span>
-				<%= link_to 'Logout', logout_path, :method=>:delete %>
-			<%end%>
 		</div>
 	</div>
 	<div id="columns">
@@ -80,6 +69,8 @@
 			<br />
 			<%= link_to 'Orders', :controller=> 'customers',:action=> 'show_orders'%><br />
 			<%= link_to 'Collection', customers_path%><br />
+			<%= link_to 'Comments', :controller=> 'customers',:action=> 'show_comments'%><br />
+			<%= link_to 'Account', :controller=> 'customers',:action=> 'show'%><br />
 			<br />
 			<%end%>
 

@@ -58,5 +58,10 @@
 	<%= f.submit "Post Comment" %>
 <% end %>	
 
+<% if session[:type]=='User'%>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+<%else%>
+<%= link_to 'Back', store_path %>
+<%end%>
+
