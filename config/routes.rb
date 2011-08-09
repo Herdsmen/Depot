@@ -13,6 +13,7 @@ end
 match 'store/get_heat'
 match 'customers/collect'
 match 'comments/create'
+match 'comments/destroy'
 scope '(:locale)' do
   resources :users
   resources :customers
