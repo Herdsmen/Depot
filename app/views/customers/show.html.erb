@@ -1,5 +1,14 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+	<p id="notice">
+		<%= notice %>
+	</p>
+<% end %>
+
+<p>
+  <b>Name:</b>
+  <%= @customer.name %>
+</p>
 
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Edit', edit_customer_path %> |
 <%= link_to 'Back', customers_path %>
