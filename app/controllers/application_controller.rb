@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :set_i18n_locale_from_params
+
   #before_filter :authorize
   protect_from_forgery
   
@@ -9,17 +10,21 @@ class ApplicationController < ActionController::Base
       Cart.find(session[:cart_id])
     rescue ActiveRecord::RecordNotFound
       cart = Cart.create
+      if session[:type]=='Customer'
+      cart.customer=Customer.find(session[:user_id]) 
+      cart.save
+      end
       session[:cart_id] = cart.id
       cart
     end
     
   protected
     
-  def authorize
-      unless User.find_by_id(session[:user_id])
-        redirect_to login_url, :notice=>"Please log in"
-      end
-    end
+	def authorize
+		unless User.find_by_id(session[:user_id])
+			redirect_to login_url, :notice=>"Please log in"
+		end
+		end
     
     def authorize_user
       unless check_role_type=='User'

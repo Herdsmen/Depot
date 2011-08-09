@@ -9,6 +9,8 @@ class Product < ActiveRecord::Base
 	validates :categories, :presence => true
   
 	before_destroy :ensure_not_referenced_by_any_line_item
+	before_destroy :ensure_not_referenced_by_any_customer
+	
 
 	def ensure_not_referenced_by_any_line_item
 		if line_items.count.zero?
@@ -17,6 +19,15 @@ class Product < ActiveRecord::Base
 			errors[:base] << "Line Items present"
 			return false
 		end
+	end
+	
+	def ensure_not_referenced_by_any_customer
+	  if customers.count.zero?
+      return true
+    else
+      errors[:base] << "collected by customers"
+      return false
+    end
 	end
   
 	validates :title, :description, :image_url, :presence => true

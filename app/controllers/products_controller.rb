@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_filter :authorize_user, :except => [:search]
+  before_filter :authorize_user, :except => [:search, :show]
+
   # GET /products
   # GET /products.xml
   def index
@@ -17,6 +18,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @comment = Comment.new
     @comments = @product.comments.recent.limit(10).all
+    @users = Comment.get_users(@comments) if @comments
+    @comment_length = @product.comments.length
 
     respond_to do |format|
       format.html # show.html.erb

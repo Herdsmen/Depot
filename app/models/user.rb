@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   after_destroy :ensure_an_admin_remains
   
   def ensure_an_admin_remains
-    if User.count.zero?
+    if User.where(:type=>nil).count.zero?
       raise "Can`t delete last user"
     end
   end

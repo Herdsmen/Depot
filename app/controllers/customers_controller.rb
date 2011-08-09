@@ -1,11 +1,12 @@
 class CustomersController < ApplicationController
   #skip_before_filter :authorize_customer, :only=>[:new,:create]
   before_filter :authorize_user, :only=>[:destroy]
-  before_filter :authorize_customer, :only=>[:index,:show,:edit,:update,:collect]
+  before_filter :authorize_customer, :only=>[:index,:show,:edit,:update,:collect,:order]
   before_filter :authorize_vistor, :only=>[:new,:create]
   # GET /customers
   # GET /customers.xml
   def index
+    @cart = current_cart  #为了在收藏页面添加商品进购物车时，购物车能显示
     customer=Customer.find_by_id(session[:user_id])
     @products = customer.products
 
@@ -14,11 +15,17 @@ class CustomersController < ApplicationController
       format.xml  { render :xml => @customers }
     end
   end
+  
+  
+  def show_orders
+    @cart = current_cart
+    @customer=Customer.find(session[:user_id])
+  end
 
-  # GET /customers/1
+  # GET /customers/show
   # GET /customers/1.xml
   def show
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(session[:user_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,9 +44,9 @@ class CustomersController < ApplicationController
     end
   end
 
-  # GET /customers/1/edit
+  # GET /customers/edit
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(session[:user_id])
   end
 
   # POST /customers
@@ -92,11 +99,27 @@ class CustomersController < ApplicationController
     @customer=Customer.find(session[:user_id])
     @customer.add_products_to_collection(params[:product_id])
     if @customer.save
-    redirect_to customers_url
+    redirect_to customers_path
     else
-      redirect_to(store_url, :notice=>"Fail to collect")
+      redirect_to(store_url, :notice=>"The product has been collected.")
     end
   end
+  
+  def remove_collection
+    @customer=Customer.find(session[:user_id])
+    @customer.remove_products_from_collection(params[:product_id])
+    if @customer.save
+    redirect_to customers_url
+    else
+      redirect_to(store_url, :notice=>"faile to remove collection")
+    end
+  end
+  
+  def show_comments
+    
+  end
+  
+
   
   
 end

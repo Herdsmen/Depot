@@ -1,5 +1,6 @@
 class Cart < ActiveRecord::Base
   has_many :line_items, :dependent => :destroy
+  belongs_to :customer
   
   def add_product(product_id)
     current_item = line_items.where(:product_id => product_id).first
@@ -22,4 +23,17 @@ class Cart < ActiveRecord::Base
   def total_items
     line_items.sum(:quantity)
   end
+  
+  def add_to_line_items(item)
+    line_item=line_items.find_by_product_id(item.product_id)
+    if line_item
+      line_item.quantity+=item.quantity
+      line_item.save
+    else
+      line_items<<item
+    end
+  end
+  
+  
+  
 end

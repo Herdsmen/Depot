@@ -15,7 +15,7 @@
 </p>
 
 <p>
-  <b>Image url:</b>
+  <b>Image:</b>
   <%= image_tag(@product.image_url, :class => "list_image") %>
 </p>
 
@@ -35,20 +35,22 @@
 	</span>
 </p>
 <div id="comments">
-	<% rank=1 %>
+	<b>Comments:</b>
+	<span>Total:<%= @comment_length %></span>
 	<% @comments.each do |comment| %>
 	<div class="comment">
-		Comment<%= rank %>:
-		<span class="commenttitle">Title:<%= comment.title %></span>
+		<span class="titleline">Title:<%= comment.title %>  By:<%= @users[comment.user_id]%></span>		
 		<p>Comment:<%= comment.comment %></p>
 	</div>
-	<% rank+=1 %>
+	<% if (comment.user_id == session[:user_id]) %>
+		<%= button_to 'delete',{:controller=> 'comments',:action=> 'destroy',:id => comment.id, :product_id => @product.id} %>
+	<% end %>
+	<hr />
 	<% end %>
 </div>
 <% form_for(@comment) do |f|%>
 	<%= f.hidden_field :product_id, :value => @product.id %>
 	<%= f.hidden_field :user_id, :value => session[:user_id] %>
-	<%= f.hidden_field :commentable_type, :value => 'product' %>
 	<%= f.label :title %><br />
 	<%= f.text_field :title %><br />
 	<%= f.label :comment %><br />
@@ -56,5 +58,10 @@
 	<%= f.submit "Post Comment" %>
 <% end %>	
 
+<% if session[:type]=='User'%>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+<%else%>
+<%= link_to 'Back', store_path %>
+<%end%>
+

@@ -2,18 +2,15 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1>Listing customers</h1>
+<h1>Listing Collection</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+
 
 <% @products.each do |product| %>
   <tr>
        <%=product.title%>
+       <%= button_to 'add to cart', line_items_path(:product_id => product),:remote=>true%>
+       <%= button_to 'remove', :controller=>'customers',:action=>'remove_collection',:product_id => product%>
   </tr>
   <br/>
 <% end %>
