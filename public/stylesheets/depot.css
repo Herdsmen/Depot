@@ -36,6 +36,7 @@
 
 #columns{
 	background:  #66cc99;
+	overflow: hidden;
 }
 
 #side{
@@ -109,6 +110,8 @@
 	padding-top: 4ex;
 	padding-left: 2em;
 	background: white;
+	
+	margin-top: 20px;
 }
 
 /* Styles for the cart in the main page */
@@ -189,4 +192,19 @@
 
 .side_categories li {
 	list-style-type: none;
+}
+
+#search {
+	padding-top: 20px;
+	width: 566px;
+	margin: auto;
+}
+
+#search input[type="search"] {
+	height: 40px;
+	width: 500px;
+}
+
+#search input[type="submit"] {
+	height: 40px;
 }

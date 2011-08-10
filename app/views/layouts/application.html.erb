@@ -38,6 +38,12 @@
 		</div>
 	</div>
 	<div id="columns">
+		<div id="search">
+			<%= form_for :search, :url => search_products_path, :html => { :method => :get } do |f| %>
+				<%= f.search_field :title_contains %>
+				<%= f.submit "Search" %>
+			<% end %>
+		</div>
 		<div id="side">
 			<% if @cart %>
 				<%=hidden_div_if(@cart.line_items.empty?,:id=>"cart") do %>
@@ -51,11 +57,11 @@
 			<a href="/"><%= t(".contact")%></a><br />
 
 			
-			<% unless session[:user_id] %>
+
 			<div class="side_categories">
 				<%= sideCategoriesDisplay Category.tree %>
 			</div>
-			<% end %>
+
 			
 			<% if session[:user_id]&&session[:type]=='User'%>
 			<br />

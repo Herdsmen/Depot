@@ -1,13 +1,11 @@
 class ProductsController < ApplicationController
-
-  before_filter :authorize_user,:except=>:show
-
+  before_filter :authorize_user, :except => [:search, :show]
 
   # GET /products
   # GET /products.xml
   def index
     @products = Product.all
-
+	
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @products }
@@ -104,5 +102,15 @@ class ProductsController < ApplicationController
 			format.atom
 			format.xml { render :xml => @product }
 		end
+	end
+	
+	def search
+		@keys = params.to_hash
+		
+		@search = Product.search params[:search]
+		@products = @search.all
+		
+		@cart = current_cart
+		@is_user = (check_role_type=='User')
 	end
 end
