@@ -23,6 +23,8 @@ class StoreController < ApplicationController
 		end
 	end
   
+
+  
 	private
 	def is_user?
 		check_role_type=='User'

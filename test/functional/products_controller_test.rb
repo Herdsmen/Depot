@@ -31,17 +31,20 @@ class ProductsControllerTest < ActionController::TestCase
 	end
 
   test "should get index" do
+    user_login :one  
     get :index
     assert_response :success
     assert_not_nil assigns(:products)
   end
 
   test "should get new" do
+    user_login :one
     get :new
     assert_response :success
   end
 
   test "should create product" do
+    user_login :one
     assert_difference('Product.count') do
       post :create, :product => @update #product.attributes
     end
@@ -55,16 +58,19 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
+    user_login :one
     get :edit, :id => @product.to_param
     assert_response :success
   end
 
   test "should update product" do
+    user_login :one
     put :update, :id => @product.to_param, :product => @update #@product.attributes
     assert_redirected_to product_path(assigns(:product))
   end
 
   test "should destroy product" do
+    user_login :one
     assert_difference('Product.count', -1) do
       delete :destroy, :id => @product.to_param
     end
