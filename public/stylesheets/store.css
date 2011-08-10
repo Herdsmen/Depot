@@ -55,6 +55,10 @@
  margin-bottom: 0.5em;
 }
 
+#storeindex .price_line .quantity{
+ width: 2em;
+}
+
 #storeindex .price, #storeindex .heat {
   color: #4444AA;
   font-weight: bold;

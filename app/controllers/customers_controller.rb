@@ -116,10 +116,8 @@ class CustomersController < ApplicationController
   end
   
   def show_comments
-    
+    @customer = Customer.find(session[:user_id])
+    @comments = Comment.find_comments_by_user(@customer)
   end
-  
 
-  
-  
 end

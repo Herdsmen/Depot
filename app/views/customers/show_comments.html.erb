@@ -1,0 +1,12 @@
+<div id="comments">
+	<b>Comments:</b>
+	<span>Total:<%= @comments.length %></span>
+	<% @comments.each do |comment| %>
+	<div class="comment">
+		<span class="titleline">Title:<%= comment.title %>  By:<%= @customer.name %></span>		
+		<p>Comment:<%= comment.comment %></p>
+	</div>
+	<%= button_to 'delete',{:controller=> 'comments',:action=> 'destroy',:id => comment.id, :product_id => comment.commentable_id} %>
+	<hr />
+	<% end %>
+</div>
