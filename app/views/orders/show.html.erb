@@ -1,4 +1,6 @@
+<% if notice %>
 <p id="notice"><%= notice %></p>
+<% end %>
 
 <p>
   <b>Name:</b>
@@ -20,6 +22,19 @@
   <%= @order.pay_type %>
 </p>
 
+<fieldset>
+	<legend>Total Price:<%=@order.total_price%></legend>
+<table >
+            	<%@order.line_items.each do |line_item|%>
+        		<tr>
+		        <td><%= line_item.quantity %>&times;</td>
+		        <td><%= line_item.product.title %></td>
+		        <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+		        </tr>
+		        <%end%>
+</table>
+</fieldset>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
+
+<td><%= button_to 'Ship', :controller=>'admin',:action=>'ship',:id=>@order.id %></td>
 <%= link_to 'Back', orders_path %>

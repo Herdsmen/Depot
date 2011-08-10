@@ -1,4 +1,36 @@
-<h1>Welcome</h1>
-It`s <%= Time.now%>
-We have <%= pluralize(@total_orders,"order")%>.
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Listing unshipped orders</h1>
+We have <%= pluralize(@total_unshipped_orders,"unshipped_order")%>.
+
+<table>
+  <tr>
+    <th>Id</th>
+    <td></td>
+    <th>Create Time</th>
+    <td></td>
+    <th>Total Price</th>
+  </tr>
+
+<% @unshipped_orders.each do |order| %>
+  <tr>
+    <td><%= order.id %></td>
+    <td></td>
+    <td><%= order.created_at.to_s(:db) %></td>
+    <td></td>
+    <td><%= order.total_price %></td>
+    <td></td>
+    <td><%= link_to 'Show', order %></td>
+    <td><%= button_to 'Ship', :action=>'ship',:id=>order.id %></td>
+    
+  </tr>
+<% end %>
+</table>
+
+
+
+
+
 

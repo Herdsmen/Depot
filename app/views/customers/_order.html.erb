@@ -2,6 +2,7 @@
 
         <fieldset>
         	<legend>order_id:<%=order.id%></legend>
+        	<h5>Order Status:<%=order.show_status%></h5> 
         	<table >
         		<tr>
   	  			<th>order name:</th>
@@ -30,5 +31,6 @@
 		        </tr>
 		        <%end%>
             </table>
+            <h3>Total Price <%=order.total_price%></h3>
         </fieldset>
         

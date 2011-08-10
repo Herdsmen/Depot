@@ -18,7 +18,6 @@ class Notifier < ActionMailer::Base
   #   en.notifier.order_shipped.subject
   #
   def order_shipped(order)
-    @greeting = "Hi"
     @order = order
     mail :to => order.email
     mail :subject => 'Pragmatic Store Order shipped'
