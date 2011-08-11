@@ -9,7 +9,6 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
-
 ActiveRecord::Schema.define(:version => 20110810091752) do
 
   create_table "carts", :force => true do |t|
@@ -71,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20110810091752) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "customer_id"
+    t.boolean  "status",      :default => false
   end
 
   create_table "products", :force => true do |t|

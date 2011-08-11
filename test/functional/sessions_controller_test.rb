@@ -9,7 +9,7 @@ class SessionsControllerTest < ActionController::TestCase
   test "User should login" do
     dave=users(:one)
     post :create, :name=>dave.name, :password=>'secret'
-    assert_redirected_to admin_url
+    assert_redirected_to orders_path
     assert_equal dave.id, session[:user_id]
     assert_equal 'User', session[:type]
   end

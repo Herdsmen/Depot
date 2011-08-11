@@ -43,7 +43,7 @@ class SessionsController < ApplicationController
   
   def redirect_to_home_according_to_type
     if session[:type]=="User"
-      redirect_to admin_url
+      redirect_to orders_path
     else
       redirect_to customers_path
     end
