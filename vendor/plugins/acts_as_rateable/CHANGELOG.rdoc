@@ -1,0 +1,11 @@
+== 2.0 released 2009-7-22
+
+* Refactored database structure for better performance: the average rating and ratings count are now pre-computed and updated when new ratings are recorded
+* The API now requires consistently the user object instead of the user_id
+* Added testing framework and unit tests
+* Made available as ruby gem
+
+== 1.0 released 2008
+
+* The original acts_as_rateable plugin, first release by Ferenc Fekete
+

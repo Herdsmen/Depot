@@ -3,7 +3,18 @@
 		<%= notice %>
 	</p>
 <% end %>
+<p>
+  <b>Rating:</b>
+  <%= @product.average_rating %>
+</p>
+<% form_tag (:controller => "products", :product_id => @product.id, :action => "rating" ) do %>
+  Rating
+  <% (1..5).each do |value| %>
+    <%= radio_button_tag :rating, value, true %> <%= value %>
+  <% end %>
 
+  <%= submit_tag 'Rate' %>
+<% end %>
 <p>
   <b>Title:</b>
   <%= @product.title %>
@@ -50,7 +61,6 @@
 </div>
 <% form_for(@comment) do |f|%>
 	<%= f.hidden_field :product_id, :value => @product.id %>
-	<%= f.hidden_field :user_id, :value => session[:user_id] %>
 	<%= f.label :title %><br />
 	<%= f.text_field :title %><br />
 	<%= f.label :comment %><br />

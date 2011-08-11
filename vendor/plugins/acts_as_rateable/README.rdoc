@@ -1,0 +1,77 @@
+= Acts As Rateble
+
+Acts_as_rateable is a rails plugin providing a rating interface for ActiveRecord models. 
+It is released under the MIT license. 
+The original plugin is used on cotcot.hu for article rating, sponsored quizzes, etc.
+
+= Features
+
+* Rating scores are recorded by user
+* Users can update previous ratings
+* Uses a polymorphic association to your model, so no changes to your existing models in the database are required
+* Stores computed score and number of ratings for efficient data access
+* Possibility to change range of the ratings (1..5 is default)
+
+= Installation
+
+== Install as gem (recommended)
+
+Install as a gem:
+
+    $ sudo gem install mreinsch-acts_as_rateable
+
+Then add the gem dependency in your config:
+
+    # config/environment.rb
+    config.gem "mreinsch-acts_as_rateable", :source => "http://gems.github.com", :lib => "acts_as_rateable"
+
+== Install as plugin
+
+To install as a plugin, use:
+
+    $ ./script/plugin install git://github.com/mreinsch/acts_as_rateable.git
+
+= Example Usage
+
+Install the plugin into your vendor/plugins directory, insert 'acts_as_rateable' into your model, then restart your application.
+
+    class Post < ActiveRecord::Base
+      acts_as_rateable
+    end
+
+Now your model is extended by the plugin, you can rate it (1-#) or calculate the average rating.
+
+    @post.rate_it(4, current_user)
+
+    @post.average_rating          #=> 4.0
+    @post.average_rating_round    #=> 4
+    @post.average_rating_percent  #=> 80
+    @post.rated_by?(current_user) #=> true
+    @post.rating_by(current_user) #=> 4
+    @post.ratings_couunt          #=> 1
+
+    Post.find_top_rated           #=> top rated records
+
+Optional you can specify the highest score using the :max_rating paramter as follows. The default for :max_rating is 5.
+
+    class Comment < ActiveRecord::Base
+      acts_as_rateable :max_rating => 10
+    end
+
+See acts_as_rateable.rb for further details!
+
+= Updating
+
+== Updating from Ferenc Fekete's acts_as_rateable v1.0
+
+1. Remove the old plugin, and install this version.
+1. Check your code and make sure you pass the user object instead of the user ID for the rate_it, rated_by? and rating_by methods.
+1. Generate an update migration using: ./script/generate acts_as_rateable_update1
+1. Run your test cases
+
+
+= Copyright
+
+Copyright (c) 2007 Ferenc Fekete, http://xpnindustries.com , released under the MIT license
+
+Copyright (c) 2009 mobalean LLC, http://www.mobalean.com

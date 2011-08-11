@@ -19,6 +19,7 @@ match 'customers/remove_collection'
 match 'comments/create'
 match 'customers/show_comments'
 match 'comments/destroy'
+match 'products/rating'
 
 scope '(:locale)' do
   resources :users
@@ -29,7 +30,6 @@ scope '(:locale)' do
   resources :carts
 	resources :products do
 		get :who_bought, :on => :member
-
 		collection do
 			get 'search'
 		end
