@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.xml
   def index
-    @products = Product.all
+    @products = Product.all.paginate :page => params[:page], :per_page => 10
 	
     respond_to do |format|
       format.html # index.html.erb
@@ -21,6 +21,8 @@ class ProductsController < ApplicationController
     @users = Comment.get_users(@comments) if @comments
     @comment_length = @product.comments.length
 
+	@cart = current_cart
+	
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
@@ -108,7 +110,7 @@ class ProductsController < ApplicationController
 		@keys = params.to_hash
 		
 		@search = Product.search params[:search]
-		@products = @search.all
+		@products = @search.all.paginate :page => params[:page], :per_page => 5
 		
 		@cart = current_cart
 		@is_user = (check_role_type=='User')

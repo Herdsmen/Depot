@@ -1,8 +1,3 @@
-
-     
-      
-
-<div class="depot_form">
 <%= form_for @customer do |f|%>
   	<%if @customer.errors.any? %>
   		<div id="error_explanation">
@@ -14,44 +9,48 @@
   			</ul>
   		</div>
   	<%end%>
-  	  
-  	<fieldset>
-  	<legend>Enter customer Detail</legend>
-  	  	<table>
-  	  		<tr>
-  	  			<th><%= f.label :name,'Name'%></th>
-  	  			<td><%= f.text_field :name, :size => 40 %></td>
-  	  		</tr>
-  	  		<tr>
-  	  			<th><%= f.label :password,'Password'%></th>
-  	  			<td><%= f.password_field :password, :size => 40%></td>
-  	  		</tr>
-  	  		<tr>
-  	  			<th><%= f.label :password_confirmation,'Confirm'%></th>
-  	  			<td><%= f.password_field :password_confirmation, :size => 40%></td>
-  	  		</tr>
-  	  	</table>
-  	  	<!--
-  	  	<div>
-  	  		<%= f.label :name%>
-  	  		<%= f.text_field :name, :size => 40 %>
-  	  	</div>
-  	  	
-  	  	<div>
-  	  		<%= f.label :password,'Password'%>
-  	  		<%= f.password_field :password, :size => 40%>
-  	  	</div>
-  	  	
-  	  	<div>
-  	  		<%= f.label :password_confirmation,'Confirm'%>
-  	  		<%= f.password_field :password_confirmation, :size => 40%>
-  	  	</div>
-  	  	-->
-  	  	<div>
-  	  		<%= f.submit%>
-  	  	</div>
-  	  	
-  	</fieldset>
-<%end%>
+<div class="title">
+	<span class="title_icon">
+		<%= image_tag("bullet1.gif") %>
+	</span>
+	Register
+</div>
+        
+<div class="feat_prod_box_details">
+	<p class="details">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+	</p>
+            
+	<div class="contact_form">
+		<div class="form_subtitle">create new account</div>
+		<form name="register" action="#">          
+			<div class="form_row">
+				<label class="contact" for="customer_name">
+					<strong>Username:</strong>
+				</label>
+				<%= f.text_field :name, :size => 40, :class => "contact_input" %>
+			</div>  
+
+			<div class="form_row">
+				<label class="contact" for="customer_password">
+					<strong>Password:</strong>
+				</label>
+				<%= f.password_field :password, :size => 40, :class => "contact_input"%>
+			</div> 
+			
+			<div class="form_row">
+				<label class="contact" for="customer_password_confirmation">
+					<strong>Confirm:</strong>
+				</label>
+				<%= f.password_field :password_confirmation, :size => 40, :class => "contact_input" %>
+			</div> 
+
+			<div class="form_row">
+				<input type="submit" class="register" value="register" />
+			</div>   
+		</form>     
+	</div>  
+</div>	
   
-  
+<div class="clear"></div>
+<% end %>

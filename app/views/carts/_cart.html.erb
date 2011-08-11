@@ -1,4 +1,3 @@
-<div class="cart_title"><%= t('.title')%></div>
 <table>
 	<%= render(cart.line_items) %>
 
@@ -8,5 +7,5 @@
 	</tr>
 </table>
 
-<%= button_to t('.checkout'), new_order_url, :method=>:get %>
-<%= button_to t('.empty'), cart, :method => :delete, :confim => "Are you sure?" %>
+<%= button_to t('.checkout'), new_order_url, :method=>:get, :class => "image_submit" %>
+<%= button_to t('.empty'), cart, :method => :delete, :class => "image_submit", :confim => "Are you sure?" %>

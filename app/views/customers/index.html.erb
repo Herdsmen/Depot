@@ -1,20 +1,42 @@
 <% if notice %>
-<p id="notice"><%= notice %></p>
+	<p id="notice">
+		<%= notice %>
+	</p>
 <% end %>
 
-<h1>Listing Collection</h1>
+<div class="title">
+	<span class="title_icon">
+		<%= image_tag("bullet1.gif") %>
+	</span>
+	Listing Collection
+</div>
 
-
-
+<div>
 <% @products.each do |product| %>
-  <tr>
-       <%=product.title%>
-       <%= button_to 'add to cart', line_items_path(:product_id => product),:remote=>true%>
-       <%= button_to 'remove', :controller=>'customers',:action=>'remove_collection',:product_id => product%>
-  </tr>
-  <br/>
+	<div class="feat_prod_box">
+		<div class="prod_img">
+			<%= link_to image_tag(product.image_url, :width => 98), product, :id => product.id %>
+			<br />
+			<%= addButtonTo product, :addToCartButton %>
+			<%= addButtonTo product, :removeCollectButton %>
+		</div>
+		
+		<div class="prod_det_box">
+			<div class="box_top"></div>
+			<div class="box_center">
+			<div class="prod_title">
+				<%= link_to product.title, product, :id => product.id %>
+			</div>
+			<p class="details">
+				<%= truncate(strip_tags(product.description), :length => 300) %>
+			</p>
+				<%= link_to "- more details -", product, :class => "more" %>
+			<div class="clear"></div>
+			</div>
+			
+			<div class="box_bottom"></div>
+		</div>    
+		<div class="clear"></div>
+	</div>	
 <% end %>
-</table>
-
-<br />
-
+</div>

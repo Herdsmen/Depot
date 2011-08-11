@@ -1,6 +1,46 @@
-<h1>Editing customer</h1>
+<!--<h1>Editing customer</h1>-->
 
-<%= render 'form' %>
+<%= form_for @customer do |f|%>
+  	<%if @customer.errors.any? %>
+  		<div id="error_explanation">
+  			<h2><%= pluralize(@customer.errors.count,"error")%> prohibited this customer from being saved:</h2>
+  			<ul>
+  			  <% @customer.errors.full_messages.each do |msg|%>
+  				<li><%= msg%></li>
+  			  <% end %>
+  			</ul>
+  		</div>
+  	<%end%>
+<div class="title">
+	<span class="title_icon">
+		<%= image_tag("bullet1.gif") %>
+	</span>
+	Reset Username
+</div>
+        
+<div class="feat_prod_box_details">
+	<p class="details"></p>
+            
+	<div class="contact_form">
+		<div class="form_subtitle">reset username</div>
+		<form name="register" action="#">          
+			<div class="form_row">
+				<label class="contact" for="customer_name">
+					<strong>Username:</strong>
+				</label>
+				<%= f.text_field :name, :size => 40, :class => "contact_input" %>
+			</div>
 
-<%= link_to 'Show', :controller=> 'customers',:action=> 'show' %> |
-<%= link_to 'Back', customers_path %>
+			<div class="form_row">
+				<input type="submit" class="register" value="reset" />
+			</div>   
+		</form>     
+	</div>  
+</div>	
+  
+<div class="clear"></div>
+<% end %>
+
+<% link_to 'Show', :controller=> 'customers',:action=> 'show' %>
+<%= link_to "Back", 
+			{ :controller => "customers", :action => "show", :id => @customer.id } %>

@@ -1,4 +1,9 @@
-<h1>Editing category</h1>
+<div class="title">
+	<span class="title_icon">
+		<%= image_tag("bullet1.gif") %>
+	</span>
+	Editing category
+</div>
 
 <%= form_for(@category) do |f| %>
 	<% if @category.errors.any? %>
@@ -17,10 +22,10 @@
 		<tr>
 			<th><%= f.label :name, "Name:" %></th>
 			<td><%= f.text_field :name %></td>
-			<td><%= f.submit %></td>
+			<td><%= f.submit "Reset", { :class => "image_submit" } %></td>
 		</tr>
 	</table>
 <% end %>
 
-<% link_to "Show", @category %> |
+<% link_to "Show", @category %>
 <%= link_to "Back", categories_path %>

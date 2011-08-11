@@ -1,53 +1,169 @@
+<%= javascript_include_tag "java.js" %>
+
+<div class="crumb_nav">
+	<%= link_to "home", store_path %> 
+	 &gt;&gt; 
+	<%= @product.title %>
+</div>
+<div class="title">
+	<span class="title_icon">
+		<%= image_tag("bullet1.gif") %>
+	</span>
+	<%= @product.title %>
+</div>
+<div class="feat_prod_box_details">
+	<div class="prod_img">
+		<%= link_to image_tag(@product.image_url, :width => 98), @product %>
+		<br />
+		<br />
+		<%= link_to image_tag("zoom.gif", :border => 0), image_path(@product.image_url), :rel => "lightbox" %>
+	</div>
+                
+	<div class="prod_det_box">
+		<div class="box_top"></div>
+		<div class="box_center">
+			<div class="prod_title">Details</div>
+			<p class="details">
+				<%= truncate(strip_tags(@product.description), :length => 300) %>
+			</p>
+			
+			<div class="price">
+				<strong>Price:</strong>
+				<span class="red">100 $</span>
+			</div>
+			
+			<div class="price">
+				<strong>Categories:</strong>
+				<span class="red"><%= categoriesToString @product %></span>
+			</div>				
+				
+			<div class="more">
+				<%= addButtonTo @product, :addToCartButton %>
+				<%= addButtonTo @product, :collectButton %>
+			</div>
+
+			<div class="clear"></div>
+		</div>
+		
+		<div class="box_bottom"></div>
+	</div>    
+    <div class="clear"></div>
+</div>	
+            
+              
+<div id="demo" class="demolayout">
+	<ul id="demo-nav" class="demolayout">
+		<li><a class="" href="#tab3">Rating</a></li>
+		<li><a class="active" href="#tab1">More details</a></li>
+		<li><a class="" href="#tab2">Related books</a></li>
+    </ul>
+    
+    <div class="tabs-container">
+		<div style="display: block;" class="tab" id="tab3">
+			<p class="more_details">
+				######################
+			</p>                           
+		</div>
+		<div style="display: block;" class="tab" id="tab1">
+			<p class="more_details">
+				<%= strip_tags(@product.description) %>
+			</p>
+
+            <p class="more_details"></p>                           
+		</div>	
+                    
+		<div style="display: none;" class="tab" id="tab2">
+			<div class="new_prod_box">
+				<a href="details.html">product name</a>
+				<div class="new_prod_bg">
+					<a href="details.html">
+						<img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" />
+					</a>
+				</div>           
+			</div>
+                    
+                    <div class="new_prod_box">
+                        <a href="details.html">product name</a>
+                        <div class="new_prod_bg">
+                        <a href="details.html"><img src="images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
+                        </div>           
+                    </div>                    
+                    
+                    <div class="new_prod_box">
+                        <a href="details.html">product name</a>
+                        <div class="new_prod_bg">
+                        <a href="details.html"><img src="images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
+                        </div>           
+                    </div>    
+
+                    <div class="new_prod_box">
+                        <a href="details.html">product name</a>
+                        <div class="new_prod_bg">
+                        <a href="details.html"><img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
+                        </div>           
+                    </div>
+                    
+                    <div class="new_prod_box">
+                        <a href="details.html">product name</a>
+                        <div class="new_prod_bg">
+                        <a href="details.html"><img src="images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
+                        </div>           
+                    </div>                    
+                    
+                    <div class="new_prod_box">
+                        <a href="details.html">product name</a>
+                        <div class="new_prod_bg">
+                        <a href="details.html"><img src="images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
+                        </div>           
+                    </div>  
+			<div class="clear"></div>
+		</div>		
+	</div>
+</div>
+            
+
+            
+        <div class="clear"></div>
+		
+<script type="text/javascript">
+
+var tabber1 = new Yetii({
+id: 'demo'
+});
+
+</script>
+
 <% if notice %>
 	<p id="notice">
 		<%= notice %>
 	</p>
 <% end %>
 
-<p>
-  <b>Title:</b>
-  <%= @product.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= sanitize @product.description %>
-</p>
-
-<p>
-  <b>Image:</b>
-  <%= image_tag(@product.image_url, :class => "list_image") %>
-</p>
-
-<p>
-	<b>Price:</b>
-	<%= @product.price %>
-</p>
-<p>
-	<b>Categories:</b>
-	<!--
-	<% @product.getCategories.each do | category | %>
-		<span class="product_categories"><%= category.name %>&sbquo;</span>
-	<% end %>
-	-->
-	<span class="product_categories">
-		<%= categoriesToString @product %>
-	</span>
-</p>
 <div id="comments">
-	<b>Comments:</b>
-	<span>Total:<%= @comment_length %></span>
+	<div class="title">Comments(<%= @comment_length %>):</div>
+	<div class="clear"></div>
+	<ul class="comments">
 	<% @comments.each do |comment| %>
-	<div class="comment">
-		<span class="titleline">Title:<%= comment.title %>  By:<%= @users[comment.user_id]%></span>		
-		<p>Comment:<%= comment.comment %></p>
-	</div>
-	<% if (comment.user_id == session[:user_id]) %>
-		<%= button_to 'delete',{:controller=> 'comments',:action=> 'destroy',:id => comment.id, :product_id => @product.id} %>
+			<li class="comment_record">
+				<dl>
+					<dt class="">
+						<span class="comment_title"><%= comment.title %></span>
+						<span class="comment_author"> By <%= @users[comment.user_id]%></span>
+					</dt>
+					<dd class="comment_content"><%= comment.comment %></dd>
+					<% if (comment.user_id == session[:user_id]) %>
+						<dd><%= button_to "delete", 
+								{:controller => "comments",:action=> "destroy",:id => comment.id, :product_id => @product.id },
+								{ :class => "comment_delete_button image_submit" } %>
+						</dd>
+					<% end %>
+					<div class="clear"></div>
+				</dl>
+			</li>
 	<% end %>
-	<hr />
-	<% end %>
+	</ul>
 </div>
+
 <% form_for(@comment) do |f|%>
 	<%= f.hidden_field :product_id, :value => @product.id %>
 	<%= f.hidden_field :user_id, :value => session[:user_id] %>
@@ -55,13 +171,14 @@
 	<%= f.text_field :title %><br />
 	<%= f.label :comment %><br />
 	<%= f.text_area (:comment, :rows => 3) %><br />
-	<%= f.submit "Post Comment" %>
+	
+	<%= f.submit "Submit", :class => "image_submit" %>
 <% end %>	
 
-<% if session[:type]=='User'%>
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
-<%else%>
-<%= link_to 'Back', store_path %>
-<%end%>
+<% if session[:type] == "User" %>
+	<% link_to "Edit", edit_product_path(@product) %> |
+	<% link_to "Back", products_path %>
+<% else %>
+	<% link_to "Back", store_path %>
+<% end %>
 

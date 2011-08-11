@@ -2,6 +2,89 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
+<%= javascript_include_tag "jquery-1.6.2.min.js" %>
+<%= javascript_include_tag "coin-slider.min.js" %>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#coin-slider').coinslider({
+			width: 240, 
+			height: 240, 
+			links: false,
+			navigation: true
+		});
+	});
+</script>
+
+<div class="title">
+	<span class="title_icon">
+		<%= image_tag("bullet2.gif") %>
+	</span>
+	New books
+</div> 
+
+<div class="clear"></div>
+
+<div id='coin-slider'>
+	<% for i in (1..5) %>
+	<a href="#">
+		<%= image_tag "new#{ i }.jpg", :height => 240 %>
+	</a>
+	<% end %>
+</div>
+
+<div class="clear"></div>
+
+<div class="title">
+	<span class="title_icon">
+		<%= image_tag("bullet1.gif") %>
+	</span>
+	Your Pragmatic Catalog
+</div>
+<div class="feat_prod_box_details">
+	<p class="details">
+		If you want to get more details include books, orders, collections and your cart, please log in with you account.Otherwise, you have to register a new one.
+	</p>  
+		<% @products.each do |product| %>
+			<div class="feat_prod_box">
+				<div class="prod_img">
+					<%= link_to image_tag(product.image_url, :width => 98), product, :id => product.id %>
+					<br />
+					<%= addButtonTo product, :addToCartButton %>
+					<%= addButtonTo product, :collectButton %>
+				</div>
+				
+				<div class="prod_det_box">
+					<div class="box_top"></div>
+					<div class="box_center">
+					<div class="prod_title">
+						<%= link_to product.title, product, :id => product.id %>
+					</div>
+					<p class="details">
+						<%= truncate(strip_tags(product.description), :length => 300) %>
+					</p>
+						<%= link_to "- more details -", product, :class => "more" %>
+					<div class="clear"></div>
+					</div>
+					
+					<div class="box_bottom"></div>
+				</div>    
+				<div class="clear"></div>
+			</div>	
+		<% end %>
+		
+		<p><%= will_paginate @products %></p>
+</div>
+
+<div class="clear"></div>
+
+<div class="title">
+	<span class="title_icon">
+		<%= image_tag("bullet2.gif") %>
+	</span>
+	New books
+</div> 
+<!--
 <div id="storeindex">
 	<h1><%= t('.title_html')%></h1>
 	<div id="entries">
@@ -48,3 +131,4 @@
 		<% end %>
 	</div>
 </div>
+-->

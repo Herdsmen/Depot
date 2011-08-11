@@ -1,36 +1,44 @@
-<div id="storeindex">
-	<h1>Search Result</h1>
-	
-	Sort By:
-	<%= sort_link @search, :title %> | 
-	<%= sort_link @search, :price %>
-	
+<div class="title">
+	<span class="title_icon">
+		<%= image_tag("bullet1.gif") %>
+	</span>
+	Search Result
+</div>
+<div class="feat_prod_box_details">
+	<p class="details search_sort_link">
+		<span class="search_sort_link_title">Sort By:</span>
+		<%= sort_link @search, :title %> | 
+		<%= sort_link @search, :price %>	
+	</p>  
+
 	<div id="entries">
 		<% @products.each do |product| %>
-			<div class="entry" >
-				<%= image_tag(product.image_url) %>
-				<h3><%= link_to product.title, :controller => "products", :action => "show", :id => product.id %></h3>
-				<p><%= truncate(strip_tags(product.description), :length => 300) %></p>
-				<div class="price_line">
-					<span class="price">
-						<%= number_to_currency(product.price) %>
-					</span>
-					Heat:
-					<span class="heat" id="<%= product.id %>">
-						<%= product.heat%>
-					</span>
-					<%= periodically_call_remote(:update => { :success => product.id }, 
-												 :url => { :action => "get_heat", :product_id => product.id }, 
-												 :frequency => 30) %>
-												 
-					<%= button_to "Add to Cart", line_items_path(:product_id => product),
-							:remote => true, :disabled => @is_user %>
-					<%= button_to "collect", 
-						{:controller=> "customers", :action=> "collect", :product_id => product.id},
-						:disabled => @is_user %>
-				</div>				
-			</div>
+			<div class="feat_prod_box">
+				<div class="prod_img">
+					<%= link_to image_tag(product.image_url, :width => 98), product, :id => product.id %>
+					<br />
+					<%= addButtonTo product, :addToCartButton %>
+					<%= addButtonTo product, :collectButton %>
+				</div>
+				
+				<div class="prod_det_box">
+					<div class="box_top"></div>
+					<div class="box_center">
+					<div class="prod_title">
+						<%= link_to product.title, product, :id => product.id %>
+					</div>
+					<p class="details">
+						<%= truncate(strip_tags(product.description), :length => 300) %>
+					</p>
+						<%= link_to "- more details -", product, :class => "more" %>
+					<div class="clear"></div>
+					</div>
+					
+					<div class="box_bottom"></div>
+				</div>    
+				<div class="clear"></div>
+			</div>	
 		<% end %>
-		
+		<p><%= will_paginate @products %></p>
 	</div>
 </div>

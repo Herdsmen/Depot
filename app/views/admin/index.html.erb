@@ -1,4 +1,26 @@
-<h1>Welcome</h1>
-It`s <%= Time.now%>
-We have <%= pluralize(@total_orders,"order")%>.
+<div class="title">
+	<span class="title_icon">
+		<img src="images/bullet1.gif" alt="" title="" />
+	</span>
+	Welcome
+</div>
+<div class="feat_prod_box_details">
+	<p class="details">
+		It's <%= Time.now%> We have <%= pluralize(@total_orders,"order")%>.
+	</p>
+</div>
+<div class="clear"></div>
 
+<div class="title">
+	<span class="title_icon">
+		<img src="images/bullet1.gif" alt="" title="" />
+	</span>
+	Admin
+</div>
+<ul class="list">
+	<li><%= link_to "Orders", orders_path %></li>
+	<li><%= link_to "Products", products_path %></li>
+	<li><%= link_to "Users", users_path %></li>
+	<li><%= link_to "Categories", categories_path %></li>
+</ul>
+<div class="clear"></div>

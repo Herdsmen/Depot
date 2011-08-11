@@ -16,7 +16,7 @@ module CategoriesHelper
 				liTags = addLiTagTo content, liTags
 			end
 			
-			content_tag(:ul, liTags)
+			content_tag(:ul, liTags, :class => "list")
 		end 
 	end
 	

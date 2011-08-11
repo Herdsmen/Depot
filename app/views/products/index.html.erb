@@ -1,12 +1,17 @@
-<div id="product_list">
-  <h1>Listing products</h1>
-		
+<div class="title">
+	<span class="title_icon">
+		<%= image_tag("bullet1.gif") %>
+	</span>
+	Listing products
+</div>
+
+<div class="feat_prod_box_details">
   <table>
   <% @products.each do |product| %>
-    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+    <tr class="<%= cycle("list_line_odd", "list_line_even") %>">
 
       <td>
-        <%= image_tag(product.image_url, :class => 'list_image') %>
+        <%= image_tag(product.image_url, :width => 98) %>
       </td>
 
       <td class="list_description">
@@ -18,15 +23,16 @@
       </td>
 
       <td class="list_actions">
-        <%= link_to 'Show', product %><br/>
-        <%= link_to 'Edit', edit_product_path(product) %><br/>
-        <%= link_to 'Destroy', product, 
-                    :confirm => 'Are you sure?',
+        <%= link_to "Show", product %><br/>
+        <%= link_to "Edit", edit_product_path(product) %><br/>
+        <%= link_to "Destroy", product, 
+                    :confirm => "Are you sure?",
                     :method => :delete %>
       </td>
     </tr>
   <% end %>
   </table>
+  <p><%= will_paginate @products %></p>
 </div>
 
 <br />

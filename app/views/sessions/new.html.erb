@@ -1,23 +1,36 @@
-<div class="depot_form">
-	<%= form_tag do %>
-	<fieldset>
-		<legend>Please Log In</legend>
-		
-		<div>
-			<label for="name">Name:</label>
-			<%= text_field_tag :name, params[:name]%>
-		</div>
-		
-		<div>
-			<label for="password">Password:</label>
-			<%= password_field_tag :password, params[:password]%>
-		</div>
-		
-		<div>
-			<%= submit_tag "Login"%>
-			<%= link_to 'Register',new_customer_path%>
-		</div>
-		
-	</fieldset>
-	<%end%>
+<div class="title">
+	<span class="title_icon">
+		<img src="images/bullet1.gif" alt="" title="" />
+	</span>
+	My Account
 </div>
+        
+<div class="feat_prod_box_details">
+	<p class="details">
+		If you want to get more details include books, orders, collections and your cart, please log in with you account.Otherwise, you have to register a new one.
+	</p>        
+	<div class="contact_form">
+		<div class="form_subtitle">login into your account</div>
+		<%= form_tag do %>   
+			<div class="form_row">
+				<label class="contact" for = "name">
+					<strong>Username:</strong>
+				</label>
+				<%= text_field_tag :name, params[:name], :class => "contact_input" %>
+			</div>  
+
+			<div class="form_row">
+				<label class="contact" for = "password">
+					<strong>Password:</strong>
+				</label>
+				<%= password_field_tag :password, params[:password], :class => "contact_input" %>
+			</div>                     
+		
+			<div class="form_row">
+				<input type="submit" class="register" value="login" />
+			</div>   	   
+		<% end %>
+	</div>  
+</div>	
+            
+<div class="clear"></div>
