@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_filter :authorize_user, :except => [:search, :show, :rating]
+  before_filter :authorize_customer, :only => [:rating]
 
   # GET /products
   # GET /products.xml

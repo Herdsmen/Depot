@@ -79,7 +79,7 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   test "should create rating" do
-    user_login :one
+    customer_login :customer
     product = Product.find(products(:ruby).id)
     assert_difference('UserRating.count') do
       post :rating, :product_id => products(:ruby).id, :rating => 1

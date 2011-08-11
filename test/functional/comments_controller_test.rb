@@ -10,7 +10,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
   
   test "should create comment" do
-    user_login :one
+    customer_login :customer
     assert_difference('Comment.count') do
       post :create, :comment => @update
     end

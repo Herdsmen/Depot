@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :authorize_customer
   def create
     @product = Product.find(params[:comment][:product_id])
     @comment = @product.comments.create(:title => params[:comment][:title], 
