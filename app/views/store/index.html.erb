@@ -19,11 +19,10 @@
 												 :url => { :action => 'get_heat', :product_id => product.id }, 
 												 :frequency => 30) %>
 												 
-					<script type="text/javascript">var changeNum<%= product.id %> = new classChangeNum('<%= 'quantity'+product.id.to_s %>');</script>
 					<%= form_tag(:controller=> 'line_items', :action=> 'create', :product_id => product.id, :remote =>true, :multipart => true,  :method => :post) do -%>
-						<input type="button" value="-" onmousedown="changeNum<%= product.id %>.DOWN()" onmouseup="changeNum<%= product.id %>.mouseUpHandle()">
-						<%= number_field_tag 'quantity'+product.id.to_s, 1, :class => "quantity", :onchange => "if(!integer.test(this.value)){alert('Quantity can only be a integer！');this.value='1';}"%>
-						<input type="button" value="+" onmousedown="changeNum<%= product.id %>.UP()" onmouseup="changeNum<%= product.id %>.mouseUpHandle()">
+						<!--<input type="button" value="-" onmousedown="changeNum<%= product.id %>.DOWN()" onmouseup="changeNum<%= product.id %>.mouseUpHandle()">-->
+						<%= number_field_tag :quantity, 1, :class => 'quantity', :in => "1...99", :onchange => "if(!integer.test(this.value)){alert('Quantity can only be a integer！');this.value='1';}"%>
+						<!--<<input type="button" value="+" onmousedown="changeNum<%= product.id %>.UP()" onmouseup="changeNum<%= product.id %>.mouseUpHandle()">-->
   						<%= submit_tag t('.add'), :disabled => @is_user %>
 					<% end -%>
 					
