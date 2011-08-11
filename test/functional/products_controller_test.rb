@@ -77,13 +77,13 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_redirected_to products_path
   end
-=begin
+
   test "should create rating" do
     user_login :one
     product = Product.find(products(:ruby).id)
-    assert_difference('product.average_rating') do
+    assert_difference('UserRating.count') do
       post :rating, :product_id => products(:ruby).id, :rating => 1
     end
   end
-=end
+
 end
