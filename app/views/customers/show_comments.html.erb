@@ -1,4 +1,28 @@
 <div id="comments">
+	<div class="title">Comments(<%= @comments.length %>):</div>
+	<div class="clear"></div>
+	<ul class="comments">
+	<% @comments.each do |comment| %>
+			<li class="comment_record">
+				<dl>
+					<dt class="">
+						<span class="comment_title"><%= comment.title %></span>
+						<span class="comment_author"> By <%= @customer.name %></span>
+					</dt>
+					<dd class="comment_content"><%= comment.comment %></dd>
+					<dd>
+					<%= button_to "delete", 
+						{ :controller=> "comments", :action=> "destroy", :id => comment.id, :product_id => comment.commentable_id },
+						{ :class => "comment_delete_button image_submit" }	%>
+					</dd>
+					<div class="clear"></div>
+				</dl>
+			</li>
+	<% end %>
+	</ul>
+</div>
+<!--
+<div id="comments">
 	<b>Comments:</b>
 	<span>Total:<%= @comments.length %></span>
 	<% @comments.each do |comment| %>
@@ -6,7 +30,8 @@
 		<span class="titleline">Title:<%= comment.title %>  By:<%= @customer.name %></span>		
 		<p>Comment:<%= comment.comment %></p>
 	</div>
-	<%= button_to 'delete',{:controller=> 'comments',:action=> 'destroy',:id => comment.id, :product_id => comment.commentable_id} %>
+	
 	<hr />
 	<% end %>
 </div>
+-->

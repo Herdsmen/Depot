@@ -1,7 +1,3 @@
-
-     
-      
-
 <div class="depot_form">
 <%= form_for @user do |f|%>
   	<%if @user.errors.any? %>
@@ -13,45 +9,44 @@
   			  <% end %>
   			</ul>
   		</div>
-  	<%end%>
-  	  
-  	<fieldset>
-  	<legend>Enter User Detail</legend>
-  	  	<table>
-  	  		<tr>
-  	  			<th><%= f.label :name,'Name'%></th>
-  	  			<td><%= f.text_field :name, :size => 40 %></td>
-  	  		</tr>
-  	  		<tr>
-  	  			<th><%= f.label :password,'Password'%></th>
-  	  			<td><%= f.password_field :password, :size => 40%></td>
-  	  		</tr>
-  	  		<tr>
-  	  			<th><%= f.label :password_confirmation,'Confirm'%></th>
-  	  			<td><%= f.password_field :password_confirmation, :size => 40%></td>
-  	  		</tr>
-  	  	</table>
-  	  	<!--
-  	  	<div>
-  	  		<%= f.label :name%>
-  	  		<%= f.text_field :name, :size => 40 %>
-  	  	</div>
-  	  	
-  	  	<div>
-  	  		<%= f.label :password,'Password'%>
-  	  		<%= f.password_field :password, :size => 40%>
-  	  	</div>
-  	  	
-  	  	<div>
-  	  		<%= f.label :password_confirmation,'Confirm'%>
-  	  		<%= f.password_field :password_confirmation, :size => 40%>
-  	  	</div>
-  	  	-->
-  	  	<div>
-  	  		<%= f.submit%>
-  	  	</div>
-  	  	
-  	</fieldset>
+  	<% end %>
+
+	<div class="feat_prod_box_details">
+		<p class="details">
+		</p>        
+		<div class="contact_form">
+			<div class="form_subtitle">Enter Admin Detail</div>
+			<%= form_tag do %>   
+				<div class="form_row">
+					<%= f.label :name, "Name:", :class => "contact" %>
+					<%= f.text_field :name, :size => 40, :class => "contact_input" %>
+					<!--
+					<label class="contact" for = "name">
+						<strong>Username:</strong>
+					</label>
+					<%= text_field_tag :name, params[:name], :class => "contact_input" %>
+					-->
+				</div>  
+				
+				<div class="form_row">
+					<%= f.label :password, "Password:", :class => "contact" %>
+					<%= f.password_field :password, :size => 40, :class => "contact_input" %>
+				</div>                     
+				
+				<div class="form_row">
+					<%= f.label :password_confirmation, "Confirm:", :class => "contact" %>
+					<%= f.password_field :password_confirmation, :size => 40, :class => "contact_input" %>
+				</div> 
+			
+				<div class="form_row">
+					<input type="submit" class="register" value="Create" />
+				</div>   	   
+			<% end %>
+		</div>  
+	</div>	
+				
+	<div class="clear"></div>
+     
 <%end%>
-  
+</div>
   

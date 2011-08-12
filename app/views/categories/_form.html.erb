@@ -11,23 +11,27 @@
     </div>
 	<% end %>
 	
-	<table>
-		<tr>
-			<th><%= f.label :name, "Name:" %></th>
-			<td><%= f.text_field :name %></td>
-		</tr>
-		<tr>
-			<th><%= f.label :parent, "Parent:" %></th>
-			<td>
+	<div class="contact_form">
+		<div class="form_subtitle">Create New Category</div>
+		<form name="register" action="#">          
+			<div class="form_row">
+				<%= f.label :name, "Name:", :class => "contact" %>
+				<%= f.text_field :name %>
+			</div>  
+
+			<div class="form_row">
+				<%= f.label :parent, "Parent:", :class => "contact" %>
 				<%= 
 					f.select :parent, Category::getNames,
 						:prompt => "Select parent node" 
 				%>
-			</td>
-		</tr>
-	</table>
-	
-	<div class="actions">
-		<%= f.submit %>
-	</div>
+			</div> 
+			
+
+
+			<div class="form_row">
+				<%= f.submit :class => "register", :value => "New" %>
+			</div>   
+		</form>     
+	</div>  
 <% end %>

@@ -19,7 +19,7 @@ class CustomersController < ApplicationController
   
   def show_orders
     @cart = current_cart
-    @customer=Customer.find(session[:user_id])
+    @customer = Customer.find(session[:user_id])
   end
 
   # GET /customers/show
@@ -74,7 +74,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.update_attributes(params[:customer])
-        format.html { redirect_to customers_path }
+        format.html { redirect_to :controller => "customers", :action => "show", :id => @customer.id  }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -99,9 +99,9 @@ class CustomersController < ApplicationController
     @customer=Customer.find(session[:user_id])
     @customer.add_products_to_collection(params[:product_id])
     if @customer.save
-    redirect_to customers_path
+		redirect_to customers_path
     else
-      redirect_to(store_url, :notice=>"The product has been collected.")
+		redirect_to(store_url, :notice=>"The product has been collected.")
     end
   end
   

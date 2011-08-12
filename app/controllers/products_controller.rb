@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.xml
   def index
-    @products = Product.all
+    @products = Product.all.paginate :page => params[:page], :per_page => 10
 	
     respond_to do |format|
       format.html # index.html.erb
@@ -22,6 +22,8 @@ class ProductsController < ApplicationController
     @users = Comment.get_users(@comments) if @comments
     @comment_length = @product.comments.length
 
+	@cart = current_cart
+	
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
@@ -109,7 +111,7 @@ class ProductsController < ApplicationController
 		@keys = params.to_hash
 		
 		@search = Product.search params[:search]
-		@products = @search.all
+		@products = @search.all.paginate :page => params[:page], :per_page => 5
 		
 		@cart = current_cart
 		@is_user = (check_role_type=='User')
@@ -119,10 +121,10 @@ class ProductsController < ApplicationController
 	  @product = Product.find(params[:product_id])
 	  user = User.find_by_id(session[:user_id])
 	  @product.rate_it( params[:rating],user)
-	  @comment = Comment.new
-    @comments = @product.comments.recent.limit(10).all
-    @users = Comment.get_users(@comments) if @comments
-    @comment_length = @product.comments.length
+	 # @comment = Comment.new
+    # @comments = @product.comments.recent.limit(10).all
+    # @users = Comment.get_users(@comments) if @comments
+    # @comment_length = @product.comments.length
 
     respond_to do |format|
       format.html { redirect_to( :controller => "products", :action => "show", :id => params[:product_id], :notice => 'Product was successfully rated.')}

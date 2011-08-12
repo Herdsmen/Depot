@@ -64,7 +64,7 @@ class CustomersControllerTest < ActionController::TestCase
 
   test "should update customer" do
     put :update, :id => @customer.to_param, :customer => @customer_update
-    assert_redirected_to customers_path
+    assert_redirected_to :controller => "customers", :action => "show", :id => @customer.id
   end
 
   test "should destroy customer" do

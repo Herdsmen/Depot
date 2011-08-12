@@ -2,34 +2,42 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1>Listing orders</h1>
+<div class="contact_form list_orders">
+	<div class="form_subtitle">Listing orders</div>
+	
+	<table>
+	  <tr>
+		<th>Id</th>
+		<td></td>
+		<th>Create Time</th>
+		<td></td>
+		<th>Status</th>
+	  </tr>
 
-<table>
-  <tr>
-    <th>Id</th>
-    <td></td>
-    <th>Create Time</th>
-    <td></td>
-    <th>Status</th>
-  </tr>
+	<% @orders.each do |order| %>
+	  <tr>
+		<td><%= order.id %></td>
+		<td></td>
+		<td><%= order.created_at.to_s(:db) %></td>
+		<td></td>
+		<td><%= order.show_status %></td>
+		<td></td>
+		<td><%= link_to "Show", order %></td>
+		<td><%= link_to "Destroy", order, :confirm => "Are you sure?", :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+	
+	<p><%= will_paginate @orders %></p>
+</div>  
 
-<% @orders.each do |order| %>
-  <tr>
-    <td><%= order.id %></td>
-    <td></td>
-    <td><%= order.created_at.to_s(:db) %></td>
-    <td></td>
-    <td><%= order.show_status %></td>
-    <td></td>
-    <td><%= link_to 'Show', order %></td>
-    <td><%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<%= link_to 'show_unshipped_orders',admin_url%>
-
+<div class="clear"></div>
 <br />
 
+<%= button_to "Unshipped List", 
+		admin_url,
+		{ :method => :get, :class => "image_submit" } %>
 
-<p><%= will_paginate @orders %></p>
+
+
+

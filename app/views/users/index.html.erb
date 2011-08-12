@@ -1,7 +1,15 @@
-<h1>Listing users</h1>
 <% if notice %>
-<p id="notice"><%=notice %></p>
+	<p id="notice"><%=notice %></p>
 <% end %>
+
+<div class="title">
+	<span class="title_icon">
+		<%= image_tag "bullet1.gif" %>
+	</span>
+	Admin List
+</div>
+
+<div class="contact_form list_orders">
 <table>
   <tr>
     <th>Name</th>
@@ -19,7 +27,9 @@
   </tr>
 <% end %>
 </table>
+</div>
 
+<div class="clear"></div>
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%= button_to 'New Admin', new_user_path, { :method => :get, :class => "image_submit right"} %>

@@ -1,5 +1,48 @@
+<div class="contact_form">
+	<div class="form_subtitle">ID: <%= order.id %></div>
+	<table class="orders_show_table">
+		<tr class="form_row">
+			<th class="contact">Status:</th>
+			<td><%= order.show_status %></td>
+		</tr>
+		<tr class="form_row">
+			<th class="contact">Name:</th>
+			<td><%= order.name %></td>
+		</tr>
+		<tr class="form_row">
+			<th class="contact">Address:</th>
+			<td><%= order.address %></td>
+		</tr>
+		<tr class="form_row">
+			<th class="contact">Email:</th>
+			<td><%= order.email %></td>
+		</tr>
+		<tr class="form_row">
+			<th class="contact">Pay type:</th>
+			<td><%= order.pay_type %></td>
+		</tr>
+	</table>
 
-
+	<br />
+	<fieldset>	
+		<table >
+			<% order.line_items.each do | line_item | %>
+				<tr>
+					<td><%= line_item.quantity %> &times;</td>
+					<td><%= line_item.product.title %></td>
+					<td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+				<tr>
+			<%end%>
+			<tr>
+				<td>Total Price:</td>
+				<td></td>
+				<td><%= number_to_currency order.total_price %></td>
+			</tr>
+		</table>
+	</fieldset>
+</div>
+<div class="clear"></div>
+<!--
         <fieldset>
         	<legend>order_id:<%=order.id%></legend>
         	<h5>Order Status:<%=order.show_status%></h5> 
@@ -33,4 +76,4 @@
             </table>
             <h3>Total Price <%=order.total_price%></h3>
         </fieldset>
-        
+        -->

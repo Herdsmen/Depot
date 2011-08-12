@@ -37,7 +37,9 @@ scope '(:locale)' do
   root :to => 'store#index', :as => 'store'
   
   match 'aid' => 'aid#index', :as => 'aid'
-  
+  match 'aid/about' => 'aid#about', :as => 'about_us'
+  match 'aid/contact' => 'aid#contact', :as => 'contact_us'
+  match 'store/books' => 'store#books', :as => 'books'
 	resources :store
 end
   

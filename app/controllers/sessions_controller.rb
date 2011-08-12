@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
       session[:type]=type
       session[:user_id]=user.id
       link_current_cart_to_customer if type=='Customer'
-      redirect_to_original_uri_or_role_home
+      
+	  redirect_to_original_uri_or_role_home
     else
       redirect_to login_url, :alert=>"Invalid user/password combination"
     end
@@ -32,9 +33,9 @@ class SessionsController < ApplicationController
   end
   
   def redirect_to_original_uri_or_role_home
-      uri=session[:original_uri]
-      session[:original_uri]=nil  
-      if uri==nil
+      uri = session[:original_uri]
+      session[:original_uri] = nil  
+      if uri == nil
         redirect_to_home_according_to_type
       else
         redirect_to uri
@@ -43,9 +44,9 @@ class SessionsController < ApplicationController
   
   def redirect_to_home_according_to_type
     if session[:type]=="User"
-      redirect_to orders_path
+		redirect_to admin_url
     else
-      redirect_to customers_path
+		redirect_to :controller => "customers", :action => "show", :id => session[:user_id]
     end
   end
   

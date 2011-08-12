@@ -2,39 +2,51 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<p>
-  <b>Name:</b>
-  <%= @order.name %>
-</p>
+<div class="contact_form">
+	<div class="form_subtitle">ID: <%= @order.id %></div>
+	<table class="orders_show_table">
+		<tr class="form_row">
+			<th class="contact">Name:</th>
+			<td><%= @order.name %></td>
+		</tr>
+		<tr class="form_row">
+			<th class="contact">Address:</th>
+			<td><%= @order.address %></td>
+		</tr>
+		<tr class="form_row">
+			<th class="contact">Email:</th>
+			<td><%= @order.email %></td>
+		</tr>
+		<tr class="form_row">
+			<th class="contact">Pay type:</th>
+			<td><%= @order.pay_type %></td>
+		</tr>
+	</table>
 
-<p>
-  <b>Address:</b>
-  <%= @order.address %>
-</p>
+	<br />
+	<fieldset>	
+		<table >
+			<% @order.line_items.each do | line_item | %>
+				<tr>
+					<td><%= line_item.quantity %> &times;</td>
+					<td><%= line_item.product.title %></td>
+					<td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+				<tr>
+			<%end%>
+			<tr>
+				<td>Total Price:</td>
+				<td></td>
+				<td><%= number_to_currency @order.total_price %></td>
+			</tr>
+		</table>
+	</fieldset>
+</div>
+<div class="clear"></div>
 
-<p>
-  <b>Email:</b>
-  <%= @order.email %>
-</p>
+<br />
+<%= button_to "Ship", 
+		{ :controller => "admin", :action => "ship", :id => @order.id },
+		{ :class => "image_submit"} %>
 
-<p>
-  <b>Pay type:</b>
-  <%= @order.pay_type %>
-</p>
-
-<fieldset>
-	<legend>Total Price:<%=@order.total_price%></legend>
-<table >
-            	<%@order.line_items.each do |line_item|%>
-        		<tr>
-		        <td><%= line_item.quantity %>&times;</td>
-		        <td><%= line_item.product.title %></td>
-		        <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
-		        </tr>
-		        <%end%>
-</table>
-</fieldset>
-
-
-<td><%= button_to 'Ship', :controller=>'admin',:action=>'ship',:id=>@order.id %></td>
+<br />
 <%= link_to 'Back', orders_path %>

@@ -1,0 +1,30 @@
+<div class="crumb_nav">
+	<%= link_to "home", store_index_path %>
+	&gt;&gt; books
+</div>
+<div class="title">
+	<span class="title_icon">
+		<%= image_tag "bullet1.gif" %>
+	</span>
+	Category books
+</div>
+
+<div class="new_products">
+	<% @products.each do | product | %>
+		<div class="new_prod_box">
+			<%= link_to truncate(product.title, :length => 20), product, :title => product.title %>
+			<div class="new_prod_bg">
+				<%= link_to image_tag(product.image_url, :class => "thumb", :alt => product.title, :title => product.title), product %>
+			</div>   
+				
+			<div>
+				<%= link_to image_tag("zoom.gif", :border => 0), image_path(product.image_url), :rel => "lightbox" %>
+			</div>
+		</div>
+	<% end %>
+	
+	<p><%= will_paginate @products %></p>
+</div> 
+
+
+<div class="clear"></div>

@@ -9,7 +9,7 @@ class SessionsControllerTest < ActionController::TestCase
   test "User should login" do
     dave=users(:one)
     post :create, :name=>dave.name, :password=>'secret'
-    assert_redirected_to orders_path
+    assert_redirected_to admin_url
     assert_equal dave.id, session[:user_id]
     assert_equal 'User', session[:type]
   end
@@ -17,8 +17,10 @@ class SessionsControllerTest < ActionController::TestCase
   test "Customer should login" do
     customer=users(:customer)
     post :create, :name=>customer.name, :password=>'secret'
-    assert_redirected_to customers_path
-    assert_equal customer.id, session[:user_id]
+    
+	assert_redirected_to :controller => "customers", :action => "show", :id => session[:user_id] 
+    
+	assert_equal customer.id, session[:user_id]
     assert_equal 'Customer', session[:type]
     assert_equal session[:user_id],Cart.find_by_id(session[:cart_id]).customer_id
   end
