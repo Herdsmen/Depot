@@ -44,7 +44,7 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     @cart = current_cart
-    @line_item = @cart.add_product(params[:product_id])
+    @line_item = @cart.add_product(params[:product_id], params[:quantity])
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to (store_url) }

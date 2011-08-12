@@ -2,16 +2,16 @@ class Cart < ActiveRecord::Base
   has_many :line_items, :dependent => :destroy
   belongs_to :customer
   
-  def add_product(product_id)
+  def add_product(product_id, quantity)
     current_item = line_items.where(:product_id => product_id).first
     if current_item
-      current_item.quantity +=1
+      current_item.quantity += quantity.to_f
     else
-      current_item = LineItem.new(:product_id => product_id)
+      current_item = LineItem.new(:product_id => product_id, :quantity => quantity.to_f)
       line_items << current_item
     end
     product = Product.find(product_id)
-    product.heat += 1
+    product.heat += quantity.to_f
     product.save
     current_item
   end

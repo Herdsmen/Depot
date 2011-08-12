@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_filter :authorize_user, :except => [:search, :show]
+  before_filter :authorize_user, :except => [:search, :show, :rating]
+  before_filter :authorize_customer, :only => [:rating]
 
   # GET /products
   # GET /products.xml
@@ -114,5 +115,19 @@ class ProductsController < ApplicationController
 		
 		@cart = current_cart
 		@is_user = (check_role_type=='User')
+	end
+	
+	def rating
+	  @product = Product.find(params[:product_id])
+	  user = User.find_by_id(session[:user_id])
+	  @product.rate_it( params[:rating],user)
+	  @comment = Comment.new
+    @comments = @product.comments.recent.limit(10).all
+    @users = Comment.get_users(@comments) if @comments
+    @comment_length = @product.comments.length
+
+    respond_to do |format|
+      format.html { redirect_to( :controller => "products", :action => "show", :id => params[:product_id], :notice => 'Product was successfully rated.')}
+    end
 	end
 end

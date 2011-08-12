@@ -6,6 +6,7 @@ class CartsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
+    user_login :one
     get :index
     assert_response :success
     assert_not_nil assigns(:carts)
@@ -25,11 +26,13 @@ class CartsControllerTest < ActionController::TestCase
   end
 
   test "should show cart" do
+    user_login :one
     get :show, :id => @cart.to_param
     assert_response :success
   end
 
   test "should get edit" do
+    user_login :one
     get :edit, :id => @cart.to_param
     assert_response :success
   end

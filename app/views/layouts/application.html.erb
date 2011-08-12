@@ -106,6 +106,7 @@
 						<%= image_tag("cart.gif") %>
 					</span>My cart
 				</div>
+				<div class="clear"></div>
 				<div class="home_cart_content">
 				<% if @cart %>
 					<%= hidden_div_if(@cart.line_items.empty?, :id => "cart") do %>
@@ -171,7 +172,19 @@
 								<div class="prod_img">
 									<%= link_to image_tag(product.image_url, :width => 98), product, :id => product.id %>
 									<br />
-									<%= addButtonTo product, :addToCartButton %>
+									<div class="price">
+										<strong>Price:</strong>
+										<span class="red"><%= number_to_currency product.price %></span>
+										<br />
+										<strong>Heat:</strong>
+										<span class="red">
+											<%= product.heat%>
+											<%= periodically_call_remote(:update => { :success => product.id }, 
+																	:url => { :action => "get_heat", :product_id => product.id }, 
+																	:frequency => 30) %>
+										</span>
+									</div>
+									<% addButtonTo product, :addToCartButton %>
 									<%= addButtonTo product, :collectButton %>
 								</div>
 								
@@ -239,6 +252,7 @@
                 
 			
                 <ul class="list">
+				<!--
                 <li><a href="http://www.csscss.org">accesories</a></li>
                 <li><a href="http://www.csscss.org">books gifts</a></li>
                 <li><a href="http://www.csscss.org">specials</a></li>
@@ -247,7 +261,8 @@
                 <li><a href="http://www.csscss.org">books gifts</a></li>
                 <li><a href="http://www.csscss.org">specials</a></li>
                 <li><a href="http://www.csscss.org">hollidays gifts</a></li>
-                <li><a href="http://www.csscss.org">accesories</a></li>                              
+                <li><a href="http://www.csscss.org">accesories</a></li>  
+				-->
                 </ul>      
              </div>         
              

@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   acts_as_commentable
+  acts_as_rateable :average => true
 	
 	has_many :line_items
 	has_many :orders, :through => :line_items

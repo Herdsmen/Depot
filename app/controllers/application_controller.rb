@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
     def authorize_customer
       unless check_role_type=='Customer'
         if check_role_type=='User'
-          redirect_to users_path, :notice=>"You are not Customer "
+          redirect_to orders_path, :notice=>"You are not Customer "
         else
           session[:original_uri]=request.request_uri
         redirect_to login_url, :notice=>"Please log in"

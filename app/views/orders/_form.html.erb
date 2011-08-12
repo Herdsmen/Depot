@@ -1,15 +1,52 @@
 <%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
+	<% if @order.errors.any? %>
     <div id="error_explanation">
-      <%= t('errors.template.header', :count => @order.errors.size, :model => t('activerecord.models.order').html_safe).html_safe%>:
-      <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+		<%= t("errors.template.header", :count => @order.errors.size, :model => t("activerecord.models.order").html_safe).html_safe%>:
+		<ul>
+		<% @order.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
 
+	<div class="feat_prod_box_details">
+		<p class="details">
+		 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+		</p>
+		
+		<div class="contact_form">
+			<div class="form_subtitle">Input Your Information</div>
+				<form name="register" action="#">  
+				<table>		
+					<tr>
+						<th><%= f.label :name, t('.name'), :class => "contact" %></th>
+						<td><%= f.text_field :name, :size => 40, :class => "contact_input" %></td>
+					</tr>
+					<tr>
+						<th><%= f.label :address, t('.address').html_safe, :class => "contact" %></th>
+						<td><%= f.text_area :address, :rows=>3, :cols => 29, :class => "contact_input" %></td>
+					</tr>
+					<tr>
+						<th><%= f.label :email, t('.email'), :class => "contact" %></th>
+						<td><%= f.text_field :email, :size=>40, :class => "contact_input" %></td>
+					</tr>
+					<tr>
+						<th><%= f.label :pay_type, t('.pay_type'), :class => "contact" %></th>
+						<td><%= f.select :pay_type,
+									Order::PAYMENT_TYPES,
+									:prompt => t('.pay_prompt').html_safe %></td>
+					</tr>
+				
+				</table>
+				
+				<div class="form_row">
+					<input type="submit" class="register" value="Submit" />
+				</div>   
+			  </form>     
+		</div>  
+	</div>	
+	<!--
   <div class="field">
     <%= f.label :name, t('.name') %>
     <%= f.text_field :name, :size=>40 %>
@@ -31,4 +68,5 @@
   <div class="actions">
     <%= f.submit t('.submit') %>
   </div>
+  -->
 <% end %>

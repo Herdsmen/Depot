@@ -74,7 +74,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.update_attributes(params[:customer])
-        format.html { redirect_to customers_path }
+        format.html { redirect_to :controller => "customers", :action => "show", :id => @customer.id  }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -116,7 +116,8 @@ class CustomersController < ApplicationController
   end
   
   def show_comments
-    
+    @customer = Customer.find(session[:user_id])
+    @comments = Comment.find_comments_by_user(@customer)
   end
-  
+
 end

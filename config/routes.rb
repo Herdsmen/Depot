@@ -12,11 +12,14 @@ end
   #get "sessions/destroy"
 match 'store/get_heat'
 match 'customers/collect'
+match 'customers/show'
+match 'customers/edit'
 match 'customers/show_orders'
 match 'customers/remove_collection'
 match 'comments/create'
 match 'customers/show_comments'
 match 'comments/destroy'
+match 'products/rating'
 
 scope '(:locale)' do
   resources :users
@@ -27,7 +30,6 @@ scope '(:locale)' do
   resources :carts
 	resources :products do
 		get :who_bought, :on => :member
-
 		collection do
 			get 'search'
 		end

@@ -1,15 +1,51 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+
 <div class="title">
 	<span class="title_icon">
 		<img src="images/bullet1.gif" alt="" title="" />
 	</span>
-	Welcome
+	Listing Unshipped Orders
 </div>
+
 <div class="feat_prod_box_details">
 	<p class="details">
-		It's <%= Time.now%> We have <%= pluralize(@total_orders,"order")%>.
+		We have <%= pluralize(@total_unshipped_orders, "unshipped order")%>.
 	</p>
 </div>
 <div class="clear"></div>
+<% unless @total_unshipped_orders == 0 %>
+<div class="contact_form">
+	<div class="form_subtitle">Unshipped Orders</div>
+	
+	<table>
+		<tr>
+			<th>Id</th>
+			<td></td>
+			<th>Create Time</th>
+			<td></td>
+			<th>Total Price</th>
+		</tr>
+
+		<% @unshipped_orders.each do |order| %>
+		<tr>
+			<td><%= order.id %></td>
+			<td></td>
+			<td><%= order.created_at.to_s(:db) %></td>
+			<td></td>
+			<td><%= number_to_currency order.total_price %></td>
+			<td></td>
+			<td>
+				<%= button_to "Show", order, :method => :get %>
+			</td>
+			<td><%= button_to "Ship", :action=>"ship", :id => order.id %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>  
+<% end %>
 
 <div class="title">
 	<span class="title_icon">

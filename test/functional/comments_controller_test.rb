@@ -5,12 +5,12 @@ class CommentsControllerTest < ActionController::TestCase
     @update = {
       :title        => 'Test title',
       :comment      => 'Test comment!',
-      :product_id   => products(:ruby).id,
-      :user_id      => users(:one).id
+      :product_id   => products(:ruby).id
     }
   end
   
   test "should create comment" do
+    customer_login :customer
     assert_difference('Comment.count') do
       post :create, :comment => @update
     end

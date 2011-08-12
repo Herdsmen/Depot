@@ -15,7 +15,7 @@
 		<tr>
 			<th>Name:</th>
 			<td><%= @customer.name %></td>
-			<td><%= link_to "Reset", edit_customer_path %></td>
+			<td><%= link_to "Reset", { :controller => "customers", :action => "edit", :id => @customer.id } %></td>
 		</tr>
 	</table>
 </div>	

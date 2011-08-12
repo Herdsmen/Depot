@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110808064920) do
+ActiveRecord::Schema.define(:version => 20110810091752) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20110808064920) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "customer_id"
+    t.boolean  "status",      :default => false
   end
 
   create_table "products", :force => true do |t|
@@ -82,6 +83,27 @@ ActiveRecord::Schema.define(:version => 20110808064920) do
     t.datetime "updated_at"
     t.integer  "heat"
   end
+
+  create_table "ratings", :force => true do |t|
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.float    "average_rating"
+    t.integer  "ratings_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ratings", ["rateable_id", "rateable_type"], :name => "index_ratings_on_rateable_id_and_rateable_type"
+
+  create_table "user_ratings", :force => true do |t|
+    t.integer  "rating_id"
+    t.integer  "user_id"
+    t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_ratings", ["user_id", "rating_id"], :name => "index_user_ratings_on_user_id_and_rating_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

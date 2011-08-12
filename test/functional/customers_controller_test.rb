@@ -2,10 +2,8 @@ require 'test_helper'
 
 class CustomersControllerTest < ActionController::TestCase
   setup do
-    customer_login :customer
-    
+    customer_login :customer    
     @customer = users(:customer)
-    #hash_password = User.encrypt_password('secret',SALT)
     @customer_update = {
       :name        => 'Lorem Ipsum',
       :hashed_password  => User.encrypt_password('secret',SALT),
@@ -13,9 +11,6 @@ class CustomersControllerTest < ActionController::TestCase
     }
   end
   
-  teardown do
-    logout
-  end 
 
   test "should get index" do
     
@@ -53,23 +48,28 @@ class CustomersControllerTest < ActionController::TestCase
   end
 
   test "should show customer" do
-    get :show, :id => @customer.to_param
+    get :show
+    assert_response :success
+  end
+  
+  test "should show_orders" do
+    get :show_orders
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => @customer.to_param
+    get :edit
     assert_response :success
   end
 
   test "should update customer" do
     put :update, :id => @customer.to_param, :customer => @customer_update
-    assert_redirected_to customers_path
+    assert_redirected_to :controller => "customers", :action => "show", :id => @customer.id
   end
 
   test "should destroy customer" do
     logout
-    login_as :one
+    user_login :one
     assert_difference('Customer.count', -1) do
       delete :destroy, :id => @customer.to_param
     end
@@ -77,12 +77,27 @@ class CustomersControllerTest < ActionController::TestCase
     #assert_redirected_to customers_path
   end
   
-    test "should fail to destroy customer" do
+  test "should fail to destroy customer" do
     assert_difference('Customer.count', 0) do
       delete :destroy, :id => @customer.to_param
     end
 
     assert_redirected_to customers_path
   end
+  
+  test "should collect product" do
+    post :collect, :product_id => products(:one).id
+    customer=Customer.find(session[:user_id])
+    assert_equal 1,customer.products.count    
+  end
+  
+  test "should remove_collection product" do
+    post :collect, :product_id => products(:one).id
+    customer=Customer.find(session[:user_id])
+    assert_equal 1,customer.products.count
+    post :remove_collection, :product_id => products(:one).id
+    assert_equal 0,customer.products.count        
+  end
+  
   
 end

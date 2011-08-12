@@ -632,3 +632,29 @@ p.search_sort_link {
 .rank_box {
 	text-align: left;
 }
+
+/*-----------------------orders----------------------------*/
+.orders_show_table .contact {
+	text-align: right;
+}
+
+.orders_show_table td {
+	color: black;
+}
+
+.list_orders {
+	width: 400px;
+}
+
+/*-----------------------product ------------------------*/
+.products_show {
+	text-align: right;
+}
+
+.product_number_field_tag {
+	width: 40px;
+}
+
+.product_rating_form {
+	text-align: center;
+}

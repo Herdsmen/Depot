@@ -37,4 +37,5 @@
 
 <br />
 
-<%= link_to 'New product', new_product_path %>
+<%= button_to 'New product', new_product_path,
+	{ :class => "image_submit", :method => :get } %>

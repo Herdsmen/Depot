@@ -29,16 +29,37 @@
 			
 			<div class="price">
 				<strong>Price:</strong>
-				<span class="red">100 $</span>
+				<span class="red"><%= number_to_currency @product.price %></span>
 			</div>
 			
 			<div class="price">
 				<strong>Categories:</strong>
 				<span class="red"><%= categoriesToString @product %></span>
+			</div>	
+
+			<div class="price">
+				<strong>Heat:</strong>
+				<span class="red">
+					<%= @product.heat %>
+				</span>
+			</div>	
+
+			<div class="price">
+				<strong>Rating:</strong>
+				<span class="red">
+					<%= @product.average_rating %>
+				</span>
 			</div>				
 				
-			<div class="more">
-				<%= addButtonTo @product, :addToCartButton %>
+			<div class="more products_show">
+				<%= form_tag({:controller=> "line_items", :action=> "create", :product_id => @product.id},
+								 {:remote => true, :multipart => true,  :method => :post }) do %>
+
+					<%= number_field_tag :quantity, 1, :class => "quantity", :in => 1...99, :class => "product_number_field_tag", :onchange => "if(!integer.test(this.value)){alert('Quantity can only be a integer£¡');this.value='1';}"%>
+
+  					<%= submit_tag "Add to Cart", :disabled => @is_user ,:class => "image_submit" %>
+				<% end %>
+				<% addButtonTo @product, :addToCartButton %>
 				<%= addButtonTo @product, :collectButton %>
 			</div>
 
@@ -61,7 +82,14 @@
     <div class="tabs-container">
 		<div style="display: block;" class="tab" id="tab3">
 			<p class="more_details">
-				######################
+				<% form_tag ({:controller => "products", :product_id => @product.id, :action => "rating"},
+							 {:class => "product_rating_form"}) do %>
+					<% (1..5).each do |value| %>
+						<%= radio_button_tag :rating, value, true %> <%= value %>
+					<% end %>
+
+					<%= submit_tag "Rate", :class => "image_submit" %>
+				<% end %>
 			</p>                           
 		</div>
 		<div style="display: block;" class="tab" id="tab1">
@@ -133,12 +161,6 @@ id: 'demo'
 
 </script>
 
-<% if notice %>
-	<p id="notice">
-		<%= notice %>
-	</p>
-<% end %>
-
 <div id="comments">
 	<div class="title">Comments(<%= @comment_length %>):</div>
 	<div class="clear"></div>
@@ -166,7 +188,6 @@ id: 'demo'
 
 <% form_for(@comment) do |f|%>
 	<%= f.hidden_field :product_id, :value => @product.id %>
-	<%= f.hidden_field :user_id, :value => session[:user_id] %>
 	<%= f.label :title %><br />
 	<%= f.text_field :title %><br />
 	<%= f.label :comment %><br />
@@ -176,7 +197,7 @@ id: 'demo'
 <% end %>	
 
 <% if session[:type] == "User" %>
-	<% link_to "Edit", edit_product_path(@product) %> |
+	<% link_to "Edit", edit_product_path(@product) %> 
 	<% link_to "Back", products_path %>
 <% else %>
 	<% link_to "Back", store_path %>

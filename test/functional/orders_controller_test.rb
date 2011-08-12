@@ -7,6 +7,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
+    user_login :one
     get :index
     assert_response :success
     assert_not_nil assigns(:orders)
@@ -32,21 +33,25 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should show order" do
+    user_login :one
     get :show, :id => @order.to_param
     assert_response :success
   end
 
   test "should get edit" do
+    user_login :one
     get :edit, :id => @order.to_param
     assert_response :success
   end
 
   test "should update order" do
+    user_login :one
     put :update, :id => @order.to_param, :order => @order.attributes
     assert_redirected_to order_path(assigns(:order))
   end
 
   test "should destroy order" do
+    user_login :one
     assert_difference('Order.count', -1) do
       delete :destroy, :id => @order.to_param
     end

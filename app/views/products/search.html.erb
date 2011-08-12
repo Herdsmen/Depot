@@ -12,12 +12,22 @@
 	</p>  
 
 	<div id="entries">
+		<script type="text/javascript">var integer = /^[0-9]*[1-9][0-9]*$/;</script>
 		<% @products.each do |product| %>
+
 			<div class="feat_prod_box">
 				<div class="prod_img">
 					<%= link_to image_tag(product.image_url, :width => 98), product, :id => product.id %>
 					<br />
-					<%= addButtonTo product, :addToCartButton %>
+					
+					<div class="price">
+						<strong>Price:</strong>
+						<span class="red"><%= number_to_currency product.price %></span>
+						<br />
+						<strong>Heat:</strong>
+						<span class="red"><%= product.heat%></span>
+					</div>
+					<% addButtonTo product, :addToCartButton %>
 					<%= addButtonTo product, :collectButton %>
 				</div>
 				
@@ -38,6 +48,7 @@
 				</div>    
 				<div class="clear"></div>
 			</div>	
+
 		<% end %>
 		<p><%= will_paginate @products %></p>
 	</div>

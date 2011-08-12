@@ -10,26 +10,29 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-  def login_as(user)
+  def user_login(user)
     session[:user_id]=users(user).id
+    session[:type]='User'
   end
   
-  def logout
-    session.delete :user_id
-    session.delete :type
-  end
+
   
   def customer_login(customer)
     session[:user_id]=users(customer).id
     session[:type]='Customer'
   end
   
-  def setup
+    def logout
+    session.delete :user_id
+    session.delete :type
+  end
+  
+  #def setup
     #if defined? session
     #login_as :one unless session[:type]
     #end
-    login_as :customer if defined? session
-  end
+    #login_as :customer if defined? session
+  #end
   
 
   
