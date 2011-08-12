@@ -82,37 +82,11 @@
 					<div class="box_bottom"></div>
 				</div>    
 				<div class="clear"></div>
-			</div>	
-			<!--
-			<div class="entry" >
-				<%= link_to image_tag(product.image_url),:controller => "products", :action => "show", :id => product.id %>
-				<h3><%= link_to product.title, :controller => "products", :action => "show", :id => product.id %></h3>
-				<p><%= truncate(strip_tags(product.description), :length => 300) %></p>
-				<div class="price_line">
-					<span class="price"><%= number_to_currency(product.price) %></span>
-					Heat:
-					<span class="heat" id="<%= product.id %>"><%= product.heat%></span>
-					<%= periodically_call_remote(:update => { :success => product.id }, 
-												 :url => { :action => "get_heat", :product_id => product.id }, 
-												 :frequency => 30) %>
-												 
-					<%= form_tag({:controller=> "line_items", :action=> "create", :product_id => product.id},
-								 {:remote => true, :multipart => true,  :method => :post }) do %>
-
-						<%= number_field_tag :quantity, 1, :class => "quantity", :in => 1...99, :onchange => "if(!integer.test(this.value)){alert('Quantity can only be a integer！');this.value='1';}"%>
-
-  						<%= submit_tag t(".add"), :disabled => @is_user %>
-					<% end %>
-					
-					<%= button_to "collect", {:controller=> "customers", :action=> "collect",:product_id => product.id}, :disabled => @is_user %>
-				</div>				
 			</div>
-			-->
 		<% end %>
 		
 		<p><%= will_paginate @products %></p>
 </div>
-
 <div class="clear"></div>
 
 
