@@ -45,7 +45,7 @@
 					<%= link_to "about us", about_us_path %>
 				</li>
 				<li>
-					<a href="#">contact us</a> 
+					<%= link_to "contact us", contact_us_path %>
 				</li>
 				<li><%= link_to "help", aid_path %></a></li>
 				<% if !session[:user_id]%>
@@ -146,7 +146,8 @@
 				
 				<% rank = 1 %>
 				<% Product.get_top_five.each do |product| %>
-				<!--	<a href="#" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html-<%= "#{rank}" %>', width: 470 } )"
+				<!--
+					<a href="#" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html-<%= "#{rank}" %>', width: 470 } )"
 						class="highslide"   onmouseover="return this.onclick()" >-->
 					<a href="#" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html-<%= "#{rank}" %>', width: 470 } )" class="highslide" >
 						<div class="new_prod_box rank_box">
