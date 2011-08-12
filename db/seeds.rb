@@ -55,7 +55,7 @@ Product.create(:title => 'Web Design for Developers',
   :image_url =>   '/images/wd4d.jpg',    
   :price => 42.95,
   :category_ids => [Category.where(:name => 'Computers').first.id],
-  :heat => 0)
+  :heat => 2546)
 
 # . . .
 Product.create(:title => 'Programming Ruby 1.9',
@@ -68,7 +68,7 @@ Product.create(:title => 'Programming Ruby 1.9',
   :image_url => '/images/ruby.jpg',
   :price => 49.50,
   :category_ids => [Category.where(:name => 'Computers').first.id],
-  :heat => 0)
+  :heat => 2012)
 
 # . . .
 
@@ -85,7 +85,7 @@ Product.create(:title => 'Rails Test Prescriptions',
   :image_url => '/images/rtp.jpg',
   :price => 43.75,
   :category_ids => [Category.where(:name => 'Computers').first.id],
-   :heat => 0)
+   :heat => 1342)
 # . . .
 
 # Product.create(:title => '',
@@ -112,7 +112,7 @@ Product.create(:title => 'Art Age',
   :image_url => '/images/art_ages.jpg',
   :price => 144.98,
   :category_ids => [Category.where(:name => 'Arts').first.id],
-    :heat => 0)
+    :heat => 4523)
 # . . .
 
 Product.create(:title => 'Stress-Proof Your Life (52 Brilliant Ideas): Smart Ways to Relax and Re-energize',
@@ -129,7 +129,7 @@ Product.create(:title => 'Stress-Proof Your Life (52 Brilliant Ideas): Smart Way
   :image_url => '/images/Stress_Proof.jpg',
   :price => 13.68,
   :category_ids => [Category.where(:name => 'Health').first.id],
-    :heat => 0)
+    :heat => 1236)
 # . . .
 Product.create(:title => 'Lonely Planet Scotland',
   :description => 
@@ -140,7 +140,7 @@ Product.create(:title => 'Lonely Planet Scotland',
   :image_url => '/images/scotland.jpg',
   :price => 19.80,
   :category_ids => [Category.where(:name => 'Travel').first.id],
-    :heat => 0)
+    :heat => 235)
 # . . .
 Product.create(:title => "Miette: Recipes from San Francisco's Most Charming Pastry Shop",
   :description => 
@@ -154,7 +154,7 @@ Product.create(:title => "Miette: Recipes from San Francisco's Most Charming Pas
   :image_url => '/images/recipes.jpg',
   :price => 16.21,
   :category_ids => [Category.where(:name => 'Cooking').first.id],
-    :heat => 0)
+    :heat => 5324)
 # . . .
 Product.create(:title => 'Land of Plenty: A Treasury of Authentic Sichuan Cooking',
   :description => 
@@ -165,7 +165,7 @@ Product.create(:title => 'Land of Plenty: A Treasury of Authentic Sichuan Cookin
   :image_url => '/images/sichuan_cooking.jpg',
   :price => 19.80,
   :category_ids => [Category.where(:name => 'Cooking').first.id],
-    :heat => 0)
+    :heat => 574)
 # . . .
 Product.create(:title => 'The Big Book of Juices',
   :description => 
@@ -177,7 +177,7 @@ Product.create(:title => 'The Big Book of Juices',
   :image_url => '/images/juices.jpg',
   :price => 13.57,
   :category_ids => [Category.where(:name => 'Drinks').first.id],
-    :heat => 0)
+    :heat => 4672)
 # . . .
 Product.create(:title => 'The Nimrod',
   :description => 
@@ -188,7 +188,7 @@ Product.create(:title => 'The Nimrod',
   :image_url => '/images/nimrod.jpg',
   :price => 14.99,
   :category_ids => [Category.where(:name => 'Mystery').first.id],
-    :heat => 0)
+    :heat => 3526)
 # . . .
 Product.create(:title => 'Middlemarch',
   :description => 
@@ -199,7 +199,7 @@ Product.create(:title => 'Middlemarch',
   :image_url => '/images/middlemarch.jpg',
   :price => 19.99,
   :category_ids => [Category.where(:name => 'Classics').first.id],
-    :heat => 0)
+    :heat => 1234)
 # . . .
 Product.create(:title => 'Little Women',
   :description => 
@@ -211,7 +211,7 @@ Product.create(:title => 'Little Women',
   :image_url => '/images/little_women.jpg',
   :price => 13.99,
   :category_ids => [Category.where(:name => 'Classics').first.id],
-    :heat => 0)
+    :heat => 3572)
 # . . .
 
 Product.create(:title => "You've gone too far this time, Sir!",
@@ -226,7 +226,7 @@ Product.create(:title => "You've gone too far this time, Sir!",
   :image_url => '/images/gone_too_far.jpg',
   :price => 11.99,
   :category_ids => [Category.where(:name => 'Travel').first.id],
-  :heat => 0)
+  :heat => 935)
 
 
 Product.create(:title => 'Debug it',
@@ -250,7 +250,7 @@ Product.create(:title => 'Debug it',
       </p>},
   :image_url => '/images/debug.jpg',
   :price => 45.76,
-  :heat => 0,
+  :heat => 1362,
   :category_ids => [Category.where(:name => 'Computers').first.id])
   
 Product.create(:title => 'Lonely Planet Australia',
@@ -269,7 +269,7 @@ Product.create(:title => 'Lonely Planet Australia',
       </p>},
   :image_url => '/images/LPA.jpg',
   :price => 36.78,
-  :heat => 0,
+  :heat => 625,
   :category_ids => [Category.where(:name => 'Travel').first.id])
   
 Product.create(:title => 'Australia',
@@ -286,7 +286,7 @@ Product.create(:title => 'Australia',
       </p>},
   :image_url => '/images/Australia.jpg',
   :price => 37.78,
-  :heat => 0,
+  :heat => 4213,
   :category_ids => [Category.where(:name => 'Travel').first.id])
   
 Product.create(:title => 'Pride and Prejudice',
@@ -302,7 +302,7 @@ Product.create(:title => 'Pride and Prejudice',
       </p>},
   :image_url => '/images/PAP.jpg',
   :price => 16.58,
-  :heat => 0,
+  :heat => 2625,
   :category_ids => [Category.where(:name => 'Study').first.id])
   
 Product.create(:title => 'The Complete Sherlock Holmes: All 4 Novels and 56 Short Stories',
@@ -324,7 +324,7 @@ Product.create(:title => 'The Complete Sherlock Holmes: All 4 Novels and 56 Shor
       </p>},
   :image_url => '/images/Sherlock.jpg',
   :price => 37.70,
-  :heat => 0,
+  :heat => 563,
   :category_ids => [Category.where(:name => 'Fiction').first.id])
   
 Product.create(:title => 'Plays of Oscar Wilde',
@@ -341,7 +341,7 @@ Product.create(:title => 'Plays of Oscar Wilde',
       </p>},
   :image_url => '/images/PoOW.jpg',
   :price => 27.86,
-  :heat => 0,
+  :heat => 3845,
   :category_ids => [Category.where(:name => 'Arts').first.id])
   
 Product.create(:title => 'A Tail of Two Cities',
@@ -359,7 +359,7 @@ Product.create(:title => 'A Tail of Two Cities',
       </p>},
   :image_url => '/images/AToTC.jpg',
   :price => 26.58,
-  :heat => 0,
+  :heat => 2574,
   :category_ids => [Category.where(:name => 'Literature').first.id])
   
 Product.create(:title => 'David Copperfield',
@@ -374,7 +374,7 @@ Product.create(:title => 'David Copperfield',
       </p>},
   :image_url => '/images/DC.jpg',
   :price => 25.58,
-  :heat => 0,
+  :heat => 1734,
   :category_ids => [Category.where(:name => 'Classics').first.id])
   
 Product.create(:title => '100 Selected Stories',
@@ -390,8 +390,8 @@ Product.create(:title => '100 Selected Stories',
       </p>},
   :image_url => '/images/100SS.jpg',
   :price => 27.40,
-  :heat => 0,
+  :heat => 4722,
   :category_ids => [Category.where(:name => 'Classics').first.id])
 
-User.create(:name => '1',
-  :password => '1',:password_confirmation=>'1')
+User.create(:name => 'admin',
+  :password => 'admin',:password_confirmation=>'admin')
