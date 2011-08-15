@@ -69,6 +69,10 @@
 		<%= form_for :search, :url => search_products_path, :html => { :method => :get, :class => "search_form" } do |f| %>
 			<%= f.label :title_contains, "Title: " %>
 			<%= f.search_field :title_contains %>
+			<%= f.label :price_gte, "Price from" %>
+			<%= f.text_field :price_gte, :size => 8, :class => "price_search" %>
+			<%= f.label :price_lte, "to" %>
+			<%= f.text_field :price_lte, :size => 8, :class => "price_search" %>
 			<%= f.submit "Search" %>
 		<% end %>
             
@@ -91,14 +95,14 @@
             <a href="http://www.csscss.org"><img src="images/de.gif" alt="" title="" border="0" /></a>
 			-->
             </div>
-           
+           <!--
 			<div class="currency">
                 <span class="red">Currency: </span>
                 <a href="#">GBP</a>
                 <a href="#">EUR</a>
                 <a href="#" class="selected">USD</a>
             </div>
-                
+                -->
                 
 			<div class="cart">
 				<div class="title">

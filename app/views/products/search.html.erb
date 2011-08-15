@@ -2,15 +2,19 @@
 	<span class="title_icon">
 		<%= image_tag("bullet1.gif") %>
 	</span>
-	Search Result
+	Search Result(<%= @size %>)
 </div>
 <div class="feat_prod_box_details">
 	<p class="details search_sort_link">
 		<span class="search_sort_link_title">Sort By:</span>
 		<%= sort_link @search, :title %> | 
-		<%= sort_link @search, :price %>	
+		<%= sort_link @search, :price %>
 	</p>  
 
+	<% if @size == 0 %>
+		<%= render "blank" %>
+	<% end %>
+	
 	<div id="entries">
 		<script type="text/javascript">var integer = /^[0-9]*[1-9][0-9]*$/;</script>
 		<% @products.each do |product| %>

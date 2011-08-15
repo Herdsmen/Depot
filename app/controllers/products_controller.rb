@@ -111,6 +111,7 @@ class ProductsController < ApplicationController
 		@keys = params.to_hash
 		
 		@search = Product.search params[:search]
+		@size = @search.size
 		@products = @search.all.paginate :page => params[:page], :per_page => 5
 		
 		@cart = current_cart

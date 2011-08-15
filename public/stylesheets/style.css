@@ -658,3 +658,8 @@ p.search_sort_link {
 .product_rating_form {
 	text-align: center;
 }
+
+/*--------------------Price search---------------------*/
+.price_search {
+	width: 25px;
+}
