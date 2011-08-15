@@ -658,3 +658,35 @@ p.search_sort_link {
 .product_rating_form {
 	text-align: center;
 }
+
+/*--------------------Price search---------------------*/
+.price_search {
+	width: 25px;
+}
+
+/*-----------------------auto_complete ------------------------*/
+div.auto_complete {
+    z-index:999;
+	top:15px;
+  width: 30px;
+  background: #fff;
+}
+div.auto_complete ul {
+  border:2px solid #888;
+  margin:0;
+  padding:0;
+  width:100%;
+  list-style-type:none;
+}
+div.auto_complete ul li {
+  margin:0;
+  padding:3px;
+}
+div.auto_complete ul li.selected { 
+  background-color: #ffb; 
+}
+div.auto_complete ul strong.highlight { 
+  color: #800; 
+  margin:0;
+  padding:0;
+}

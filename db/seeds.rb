@@ -29,15 +29,16 @@ Category.create(:name => 'Travel', :layer => 2,
 	
 Category.create(:name => 'Fiction', :layer => 2, 
 	:parent => Category.where(:name => 'Literature').first.id)
-Category.create(:name => 'Mystery', :layer => 2,  
-	:parent => Category.where(:name => 'Literature').first.id)
-Category.create(:name => 'Classics', :layer => 2,  
-	:parent => Category.where(:name => 'Literature').first.id)
+
 	
 # layer = 3
 Category.create(:name => 'Drinks', :layer => 3, 
 	:parent => Category.where(:name => 'Cooking').first.id)
-
+Category.create(:name => 'Mystery', :layer => 3,  
+	:parent => Category.where(:name => 'Fiction').first.id)
+Category.create(:name => 'Classics', :layer => 3,  
+	:parent => Category.where(:name => 'Fiction').first.id)
+	
 
 Product.delete_all
 User.delete_all

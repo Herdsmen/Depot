@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
-  before_filter :authorize_user, :except => [:search, :show, :rating]
+  before_filter :authorize_user, :except => [:search, :show, :rating, :auto_complete_for_title]
   before_filter :authorize_customer, :only => [:rating]
+  skip_before_filter :verify_authenticity_token, :only => [:auto_complete_for_product_title]
 
   # GET /products
   # GET /products.xml
@@ -111,23 +112,27 @@ class ProductsController < ApplicationController
 		@keys = params.to_hash
 		
 		@search = Product.search params[:search]
+		@size = @search.size
 		@products = @search.all.paginate :page => params[:page], :per_page => 5
 		
 		@cart = current_cart
 		@is_user = (check_role_type=='User')
 	end
 	
+	def auto_complete_for_title
+	  @products=Product.find(:all,:conditions=>["title like ?","%" +params[:search][:title_contains]+"%"])
+    render :layout=>false
+	end
+	
 	def rating
 	  @product = Product.find(params[:product_id])
 	  user = User.find_by_id(session[:user_id])
 	  @product.rate_it( params[:rating],user)
-	 # @comment = Comment.new
-    # @comments = @product.comments.recent.limit(10).all
-    # @users = Comment.get_users(@comments) if @comments
-    # @comment_length = @product.comments.length
 
     respond_to do |format|
       format.html { redirect_to( :controller => "products", :action => "show", :id => params[:product_id], :notice => 'Product was successfully rated.')}
     end
 	end
+	
+	
 end

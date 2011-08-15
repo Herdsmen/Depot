@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  
   before_filter :set_i18n_locale_from_params
   #before_filter :set_locale
   #before_filter :authorize
@@ -51,6 +52,12 @@ class ApplicationController < ActionController::Base
           session[:original_uri]=request.request_uri
         redirect_to login_url, :notice=>"Please log in"
         end
+      end
+    end
+    
+    def authorize_customer_and_vistor
+      if check_role_type=='User'
+          redirect_to orders_path, :notice=>"You are not Customer or Vistor"
       end
     end
 
