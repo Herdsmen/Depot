@@ -2,32 +2,32 @@
 	<span class="title_icon">
 		<img src="images/bullet1.gif" alt="" title="" />
 	</span>
-	My Account
+	<%= t('.myaccount')%>
 </div>
         
 <div class="feat_prod_box_details">
 	<p class="details">
-		If you want to get more details include books, orders, collections and your cart, please log in with you account.Otherwise, you have to register a new one.
+		<%= t('.details')%>
 	</p>        
 	<div class="contact_form">
-		<div class="form_subtitle">login into your account</div>
+		<div class="form_subtitle"><%= t('.login')%></div>
 		<%= form_tag do %>   
 			<div class="form_row">
 				<label class="contact" for = "name">
-					<strong>Username:</strong>
+					<strong><%= t('.name')%></strong>
 				</label>
 				<%= text_field_tag :name, params[:name], :class => "contact_input" %>
 			</div>  
 
 			<div class="form_row">
 				<label class="contact" for = "password">
-					<strong>Password:</strong>
+					<strong><%= t('.password')%></strong>
 				</label>
 				<%= password_field_tag :password, params[:password], :class => "contact_input" %>
 			</div>                     
 		
 			<div class="form_row">
-				<input type="submit" class="register" value="login" />
+				<input type="submit" class="register" value="<%= t('.login')%>" />
 			</div>   	   
 		<% end %>
 	</div>  

@@ -8,7 +8,7 @@
 	<span class="title_icon">
 		<%= image_tag("bullet1.gif") %>
 	</span>
-	Listing Collection
+	<%= t('.list_collection')%>
 </div>
 
 <div>
@@ -19,10 +19,10 @@
 			<%= link_to image_tag(product.image_url, :width => 98), product, :id => product.id %>
 			<br />
 			<div class="price">
-				<strong>Price:</strong>
+				<strong><%= t('.price')%></strong>
 				<span class="red"><%= number_to_currency product.price %></span>
 				<br />
-				<strong>Heat:</strong>
+				<strong><%= t('.heat')%></strong>
 				<span class="red"><%= product.heat%></span>
 			</div>
 			
@@ -39,7 +39,7 @@
 			<p class="details">
 				<%= truncate(strip_tags(product.description), :length => 300) %>
 			</p>
-				<%= link_to "- more details -", product, :class => "more" %>
+				<%= link_to t('.more_details'), product, :class => "more" %>
 			<div class="clear"></div>
 			</div>
 			
@@ -51,8 +51,8 @@
  <!-- <tr>
        <%= link_to image_tag(product.image_url),:controller => "products", :action => "show", :id => product.id %>
 				<h3><%= link_to product.title, :controller => "products", :action => "show", :id => product.id %></h3>
-       <%= button_to 'add to cart', line_items_path(:product_id => product),:remote=>true%>
-       <%= button_to 'remove', :controller=>'customers',:action=>'remove_collection',:product_id => product%>
+       <%= button_to t('.add to cart'), line_items_path(:product_id => product),:remote=>true%>
+       <%= button_to t('.remove'), :controller=>'customers',:action=>'remove_collection',:product_id => product%>
   </tr>
   <br/>
   -->

@@ -1,5 +1,5 @@
 Depot::Application.routes.draw do
-  resources :categories
+  #resources :categories
 
   get 'admin'=>'admin#index'
 controller :sessions do
@@ -7,6 +7,7 @@ controller :sessions do
   post 'login'=>:create
   delete 'logout'=>:destroy
 end
+
   #get "sessions/new"
   #get "sessions/create"
   #get "sessions/destroy"
@@ -28,6 +29,7 @@ scope '(:locale)' do
   resources :orders
   resources :line_items
   resources :carts
+  resources :categories
 	resources :products do
 		get :who_bought, :on => :member
 		collection do

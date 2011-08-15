@@ -2,7 +2,7 @@
 	<span class="title_icon">
 		<%= image_tag("bullet1.gif") %>
 	</span>
-	Listing Orders
+	<%= t('.list_order')%>
 </div>
 <div class="clear"></div>
 <%= render(:partial => 'order', :collection => @customer.orders) %>

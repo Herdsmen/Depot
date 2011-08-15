@@ -11,12 +11,13 @@
 	<% end %>
 
 	<div class="feat_prod_box_details">
+	<!--
 		<p class="details">
 		 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
 		</p>
-		
+	-->	
 		<div class="contact_form">
-			<div class="form_subtitle">Input Your Information</div>
+			<div class="form_subtitle"><%= t('.input_info')%></div>
 				<form name="register" action="#">  
 				<table>		
 					<tr>
@@ -41,7 +42,7 @@
 				</table>
 				
 				<div class="form_row">
-					<input type="submit" class="register" value="Submit" />
+					<input type="submit" class="register" value=<%= t('.submit') %> />
 				</div>   
 			  </form>     
 		</div>  

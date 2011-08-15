@@ -1,5 +1,5 @@
 <div id="comments">
-	<div class="title">Comments(<%= @comments.length %>):</div>
+	<div class="title"><%= t('.comments')%>(<%= @comments.length %>):</div>
 	<div class="clear"></div>
 	<ul class="comments">
 	<% @comments.each do |comment| %>
@@ -7,11 +7,11 @@
 				<dl>
 					<dt class="">
 						<span class="comment_title"><%= comment.title %></span>
-						<span class="comment_author"> By <%= @customer.name %></span>
+						<span class="comment_author"> <%= t('.by')%> <%= @customer.name %></span>
 					</dt>
 					<dd class="comment_content"><%= comment.comment %></dd>
 					<dd>
-					<%= button_to "delete", 
+					<%= button_to t('.delete'), 
 						{ :controller=> "comments", :action=> "destroy", :id => comment.id, :product_id => comment.commentable_id },
 						{ :class => "comment_delete_button image_submit" }	%>
 					</dd>
@@ -23,11 +23,11 @@
 </div>
 <!--
 <div id="comments">
-	<b>Comments:</b>
+	<b><%= t('.comments')%></b>
 	<span>Total:<%= @comments.length %></span>
 	<% @comments.each do |comment| %>
 	<div class="comment">
-		<span class="titleline">Title:<%= comment.title %>  By:<%= @customer.name %></span>		
+		<span class="titleline">Title:<%= comment.title %> <%= t('.by')%> <%= @customer.name %></span>		
 		<p>Comment:<%= comment.comment %></p>
 	</div>
 	

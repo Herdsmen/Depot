@@ -15,24 +15,24 @@
 	<span class="title_icon">
 		<%= image_tag("bullet1.gif") %>
 	</span>
-	Reset Username
+	<%= t('.reset_name')%>
 </div>
         
 <div class="feat_prod_box_details">
 	<p class="details"></p>
             
 	<div class="contact_form">
-		<div class="form_subtitle">reset username</div>
+		<div class="form_subtitle"><%= t('.reset_name')%></div>
 		<form name="register" action="#">          
 			<div class="form_row">
 				<label class="contact" for="customer_name">
-					<strong>Username:</strong>
+					<strong><%= t('.username')%></strong>
 				</label>
 				<%= f.text_field :name, :size => 40, :class => "contact_input" %>
 			</div>
 
 			<div class="form_row">
-				<input type="submit" class="register" value="reset" />
+				<input type="submit" class="register" value=<%= t('.reset') %> />
 			</div>   
 		</form>     
 	</div>  
@@ -41,6 +41,6 @@
 <div class="clear"></div>
 <% end %>
 
-<% link_to 'Show', :controller=> 'customers',:action=> 'show' %>
-<%= link_to "Back", 
+<% link_to t('show'), :controller=> 'customers',:action=> 'show' %>
+<%= link_to t('.back'), 
 			{ :controller => "customers", :action => "show", :id => @customer.id } %>

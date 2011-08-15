@@ -8,14 +8,14 @@
 	<span class="title_icon">
 		<%= image_tag("bullet1.gif") %>
 	</span>
-	My Information
+	<%= t('.my_info')%>
 </div>
 <div class="feat_prod_box_details">
 	<table>
 		<tr>
-			<th>Name:</th>
+			<th><%= t('.name')%></th>
 			<td><%= @customer.name %></td>
-			<td><%= link_to "Reset", { :controller => "customers", :action => "edit", :id => @customer.id } %></td>
+			<td><%= link_to t('.reset'), { :controller => "customers", :action => "edit", :id => @customer.id } %></td>
 		</tr>
 	</table>
 </div>	
@@ -26,11 +26,11 @@
 	<span class="title_icon">
 		<%= image_tag("bullet1.gif") %>
 	</span>
-	My Book Store
+	<%= t('.my_store')%>
 </div>
 
 <ul class="list">
-	<li><%= link_to "Orders", :controller=> "customers",:action=> "show_orders" %></li>
-	<li><%= link_to "Collection", customers_path %></li>
-	<li><%= link_to "Comments", :controller=> "customers", :action=> "show_comments"%></li>
+	<li><%= link_to t('.orders'), :controller=> "customers",:action=> "show_orders" %></li>
+	<li><%= link_to t('.collection'), customers_path %></li>
+	<li><%= link_to t('.comments'), :controller=> "customers", :action=> "show_comments"%></li>
 </ul>

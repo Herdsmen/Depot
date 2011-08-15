@@ -2,10 +2,10 @@
 	<span class="title_icon">
 		<%= image_tag "bullet1.gif" %>
 	</span>
-	New Admin
+	<%= t('.new_admin')%>
 </div>
 
 <%= render 'form' %>
 
 <br />
-<%= link_to 'Back', users_path %>
+<%= link_to t('.back'), users_path %>

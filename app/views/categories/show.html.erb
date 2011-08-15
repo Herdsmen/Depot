@@ -6,19 +6,19 @@
 
 <table>
 	<tr>
-		<th>Name:</th>
+		<th><%= t('.name')%></th>
 		<td><%= @category.name %></td>
 	</tr>
 	<tr>
-		<th>Parent:</th>
+		<th><%= t('.parent')%></th>
 		<td><%= @category.parent %></td>
 	</tr>
 	<tr>
-		<th>Layer:</th>
+		<th><%= t('.layer')%></th>
 		<td><%= @category.layer %></td>
 	</tr>
 </table>
 
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to t('.edit'), edit_category_path(@category) %> |
+<%= link_to t('.back'), categories_path %>

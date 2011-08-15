@@ -7,11 +7,11 @@
 	
 	<table>
 	  <tr>
-		<th>Id</th>
+		<th><%= t('.id')%></th>
 		<td></td>
-		<th>Create Time</th>
+		<th><%= t('.create_time')%></th>
 		<td></td>
-		<th>Status</th>
+		<th><%= t('.status')%></th>
 	  </tr>
 
 	<% @orders.each do |order| %>
@@ -22,8 +22,8 @@
 		<td></td>
 		<td><%= order.show_status %></td>
 		<td></td>
-		<td><%= link_to "Show", order %></td>
-		<td><%= link_to "Destroy", order, :confirm => "Are you sure?", :method => :delete %></td>
+		<td><%= link_to t('.show'), order %></td>
+		<td><%= link_to t('.destroy'), order, :confirm =>t('.areyousure'), :method => :delete %></td>
 	  </tr>
 	<% end %>
 	</table>
@@ -34,7 +34,7 @@
 <div class="clear"></div>
 <br />
 
-<%= button_to "Unshipped List", 
+<%= button_to t('.unshippedlist'), 
 		admin_url,
 		{ :method => :get, :class => "image_submit" } %>
 

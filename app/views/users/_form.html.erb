@@ -2,7 +2,7 @@
 <%= form_for @user do |f|%>
   	<%if @user.errors.any? %>
   		<div id="error_explanation">
-  			<h2><%= pluralize(@user.errors.count,"error")%> prohibited this user from being saved:</h2>
+  			<h2><%= pluralize(@user.errors.count,"error")%><%= t('.prohibit')%></h2>
   			<ul>
   			  <% @user.errors.full_messages.each do |msg|%>
   				<li><%= msg%></li>
@@ -15,10 +15,10 @@
 		<p class="details">
 		</p>        
 		<div class="contact_form">
-			<div class="form_subtitle">Enter Admin Detail</div>
+			<div class="form_subtitle"><%= t('.enteradmindetail')%></div>
 			<%= form_tag do %>   
 				<div class="form_row">
-					<%= f.label :name, "Name:", :class => "contact" %>
+					<%= f.label :name, t('.name'), :class => "contact" %>
 					<%= f.text_field :name, :size => 40, :class => "contact_input" %>
 					<!--
 					<label class="contact" for = "name">
@@ -29,17 +29,17 @@
 				</div>  
 				
 				<div class="form_row">
-					<%= f.label :password, "Password:", :class => "contact" %>
+					<%= f.label :password,t('.password'), :class => "contact" %>
 					<%= f.password_field :password, :size => 40, :class => "contact_input" %>
 				</div>                     
 				
 				<div class="form_row">
-					<%= f.label :password_confirmation, "Confirm:", :class => "contact" %>
+					<%= f.label :password_confirmation,t('.confirm'), :class => "contact" %>
 					<%= f.password_field :password_confirmation, :size => 40, :class => "contact_input" %>
 				</div> 
 			
 				<div class="form_row">
-					<input type="submit" class="register" value="Create" />
+					<input type="submit" class="register" value="<%= t('.create') %>" />
 				</div>   	   
 			<% end %>
 		</div>  
