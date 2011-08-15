@@ -6,10 +6,12 @@ controller :sessions do
   get 'login'=> :new
   post 'login'=>:create
   delete 'logout'=>:destroy
+  get 'logout'=>:destroy
 end
   #get "sessions/new"
   #get "sessions/create"
   #get "sessions/destroy"
+match 'products/auto_complete_for_title'
 match 'store/get_heat'
 match 'customers/collect'
 match 'customers/show'

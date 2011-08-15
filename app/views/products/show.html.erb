@@ -55,9 +55,9 @@
 				<%= form_tag({:controller=> "line_items", :action=> "create", :product_id => @product.id},
 								 {:remote => true, :multipart => true,  :method => :post }) do %>
 
-					<%= number_field_tag :quantity, 1, :class => "quantity", :in => 1...99, :class => "product_number_field_tag", :onchange => "if(!integer.test(this.value)){alert('Quantity can only be a integer£¡');this.value='1';}"%>
+					<%= number_field_tag :quantity, 1, :class => "quantity", :in => 1...99, :class => "product_number_field_tag", :onchange => "if(!integer.test(this.value)){alert('Quantity can only be a integerï¿½ï¿½');this.value='1';}"%>
 
-  					<%= submit_tag "Add to Cart", :disabled => @is_user ,:class => "image_submit" %>
+  					<%unless session[:type]=='User'%><%= submit_tag "Add to Cart", :disabled => @is_user ,:class => "image_submit" %><%end%>
 				<% end %>
 				<% addButtonTo @product, :addToCartButton %>
 				<%= addButtonTo @product, :collectButton %>

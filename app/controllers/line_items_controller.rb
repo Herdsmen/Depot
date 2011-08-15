@@ -2,6 +2,7 @@ class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
   before_filter :authorize_user ,:except=>:create
+  before_filter :authorize_customer_and_vistor ,:only=>:create
 
   
   def index
