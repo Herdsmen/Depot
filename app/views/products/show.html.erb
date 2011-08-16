@@ -1,7 +1,7 @@
 <%= javascript_include_tag "java.js" %>
 
 <div class="crumb_nav">
-	<%= link_to "home", store_path %> 
+	<%= link_to t('.home'), store_path %> 
 	 &gt;&gt; 
 	<%= @product.title %>
 </div>
@@ -22,30 +22,30 @@
 	<div class="prod_det_box">
 		<div class="box_top"></div>
 		<div class="box_center">
-			<div class="prod_title">Details</div>
+			<div class="prod_title"><%= t('.details')%></div>
 			<p class="details">
 				<%= truncate(strip_tags(@product.description), :length => 300) %>
 			</p>
 			
 			<div class="price">
-				<strong>Price:</strong>
+				<strong><%= t('.price')%></strong>
 				<span class="red"><%= number_to_currency @product.price %></span>
 			</div>
 			
 			<div class="price">
-				<strong>Categories:</strong>
+				<strong><%= t('.categories')%></strong>
 				<span class="red"><%= categoriesToString @product %></span>
 			</div>	
 
 			<div class="price">
-				<strong>Heat:</strong>
+				<strong><%= t('.heat')%></strong>
 				<span class="red">
 					<%= @product.heat %>
 				</span>
 			</div>	
 
 			<div class="price">
-				<strong>Rating:</strong>
+				<strong><%= t('.rating')%></strong>
 				<span class="red">
 					<%= @product.average_rating %>
 				</span>
@@ -57,7 +57,9 @@
 
 					<%= number_field_tag :quantity, 1, :class => "quantity", :in => 1...99, :class => "product_number_field_tag", :onchange => "if(!integer.test(this.value)){alert('Quantity can only be a integer��');this.value='1';}"%>
 
-  					<%unless session[:type]=='User'%><%= submit_tag "Add to Cart", :disabled => @is_user ,:class => "image_submit" %><%end%>
+
+  					<%unless session[:type]=='User'%><%= submit_tag t('.addtocart'), :disabled => @is_user ,:class => "image_submit" %><%end%>
+
 				<% end %>
 				<% addButtonTo @product, :addToCartButton %>
 				<%= addButtonTo @product, :collectButton %>
@@ -74,9 +76,9 @@
               
 <div id="demo" class="demolayout">
 	<ul id="demo-nav" class="demolayout">
-		<li><a class="" href="#tab3">Rating</a></li>
-		<li><a class="active" href="#tab1">More details</a></li>
-		<li><a class="" href="#tab2">Related books</a></li>
+		<li><a class="" href="#tab3"><%= t('.rating')%></a></li>
+		<li><a class="active" href="#tab1"><%= t('.more_details')%></a></li>
+		<li><a class="" href="#tab2"><%= t('.relatebook')%></a></li>
     </ul>
     
     <div class="tabs-container">
@@ -88,7 +90,7 @@
 						<%= radio_button_tag :rating, value, true %> <%= value %>
 					<% end %>
 
-					<%= submit_tag "Rate", :class => "image_submit" %>
+					<%= submit_tag t('.rate'), :class => "image_submit" %>
 				<% end %>
 			</p>                           
 		</div>
@@ -102,7 +104,7 @@
                     
 		<div style="display: none;" class="tab" id="tab2">
 			<div class="new_prod_box">
-				<a href="details.html">product name</a>
+				<a href="details.html"><%= t('.product_name')%></a>
 				<div class="new_prod_bg">
 					<a href="details.html">
 						<img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" />
@@ -111,35 +113,35 @@
 			</div>
                     
                     <div class="new_prod_box">
-                        <a href="details.html">product name</a>
+                        <a href="details.html"><%= t('.product_name')%></a>
                         <div class="new_prod_bg">
                         <a href="details.html"><img src="images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>                    
                     
                     <div class="new_prod_box">
-                        <a href="details.html">product name</a>
+                        <a href="details.html"><%= t('.product_name')%></a>
                         <div class="new_prod_bg">
                         <a href="details.html"><img src="images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>    
 
                     <div class="new_prod_box">
-                        <a href="details.html">product name</a>
+                        <a href="details.html"><%= t('.product_name')%></a>
                         <div class="new_prod_bg">
                         <a href="details.html"><img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>
                     
                     <div class="new_prod_box">
-                        <a href="details.html">product name</a>
+                        <a href="details.html"><%= t('.product_name')%></a>
                         <div class="new_prod_bg">
                         <a href="details.html"><img src="images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
                     </div>                    
                     
                     <div class="new_prod_box">
-                        <a href="details.html">product name</a>
+                        <a href="details.html"><%= t('.product_name')%></a>
                         <div class="new_prod_bg">
                         <a href="details.html"><img src="images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
@@ -162,7 +164,7 @@ id: 'demo'
 </script>
 
 <div id="comments">
-	<div class="title">Comments(<%= @comment_length %>):</div>
+	<div class="title"><%= t('.comment')%>(<%= @comment_length %>):</div>
 	<div class="clear"></div>
 	<ul class="comments">
 	<% @comments.each do |comment| %>
@@ -170,11 +172,11 @@ id: 'demo'
 				<dl>
 					<dt class="">
 						<span class="comment_title"><%= comment.title %></span>
-						<span class="comment_author"> By <%= @users[comment.user_id]%></span>
+						<span class="comment_author"><%= t('.by')%><%= @users[comment.user_id]%></span>
 					</dt>
 					<dd class="comment_content"><%= comment.comment %></dd>
 					<% if (comment.user_id == session[:user_id]) %>
-						<dd><%= button_to "delete", 
+						<dd><%= button_to t('.delete'), 
 								{:controller => "comments",:action=> "destroy",:id => comment.id, :product_id => @product.id },
 								{ :class => "comment_delete_button image_submit" } %>
 						</dd>
@@ -188,18 +190,18 @@ id: 'demo'
 
 <% form_for(@comment) do |f|%>
 	<%= f.hidden_field :product_id, :value => @product.id %>
-	<%= f.label :title %><br />
+	<%= f.label :title,t('.title') %><br />
 	<%= f.text_field :title %><br />
-	<%= f.label :comment %><br />
+	<%= f.label :comment, t('.comment') %><br />
 	<%= f.text_area (:comment, :rows => 3) %><br />
 	
-	<%= f.submit "Submit", :class => "image_submit" %>
+	<%= f.submit t('.submit'), :class => "image_submit" %>
 <% end %>	
 
 <% if session[:type] == "User" %>
-	<% link_to "Edit", edit_product_path(@product) %> 
-	<% link_to "Back", products_path %>
+	<% link_to t('.edit'), edit_product_path(@product) %> 
+	<% link_to t('.back'), products_path %>
 <% else %>
-	<% link_to "Back", store_path %>
+	<% link_to t('.back'), store_path %>
 <% end %>
 

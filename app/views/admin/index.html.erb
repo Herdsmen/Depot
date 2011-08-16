@@ -7,12 +7,12 @@
 	<span class="title_icon">
 		<img src="images/bullet1.gif" alt="" title="" />
 	</span>
-	Listing Unshipped Orders
+	<%= t('.list_unshipped_order') %>
 </div>
 
 <div class="feat_prod_box_details">
 	<p class="details">
-		We have <%= pluralize(@total_unshipped_orders, "unshipped order")%>.
+		<%= t('.we_have') %><%= pluralize(@total_unshipped_orders, "unshipped order")%>.
 	</p>
 </div>
 <div class="clear"></div>
@@ -22,11 +22,11 @@
 	
 	<table>
 		<tr>
-			<th>Id</th>
+			<th><%= t('.id')%></th>
 			<td></td>
-			<th>Create Time</th>
+			<th><%= t('.create_time')%></th>
 			<td></td>
-			<th>Total Price</th>
+			<th><%= t('.total_price')%></th>
 		</tr>
 
 		<% @unshipped_orders.each do |order| %>
@@ -38,9 +38,9 @@
 			<td><%= number_to_currency order.total_price %></td>
 			<td></td>
 			<td>
-				<%= button_to "Show", order, :method => :get %>
+				<%= button_to t('.show'), order, :method => :get %>
 			</td>
-			<td><%= button_to "Ship", :action=>"ship", :id => order.id %></td>
+			<td><%= button_to t('.ship'), :action=>"ship", :id => order.id %></td>
 		</tr>
 		<% end %>
 	</table>
@@ -51,12 +51,12 @@
 	<span class="title_icon">
 		<img src="images/bullet1.gif" alt="" title="" />
 	</span>
-	Admin
+	<%= t('.admin') %>
 </div>
 <ul class="list">
-	<li><%= link_to "Orders", orders_path %></li>
-	<li><%= link_to "Products", products_path %></li>
-	<li><%= link_to "Users", users_path %></li>
-	<li><%= link_to "Categories", categories_path %></li>
+	<li><%= link_to t('.orders'), orders_path %></li>
+	<li><%= link_to t('.products'), products_path %></li>
+	<li><%= link_to t('.users'), users_path %></li>
+	<li><%= link_to t('.categories'), categories_path %></li>
 </ul>
 <div class="clear"></div>

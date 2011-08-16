@@ -2,10 +2,10 @@
 	<span class="title_icon">
 		<%= image_tag("bullet1.gif") %>
 	</span>
-	New category
+	<%= t('.new_category')%>
 </div>
 
 <%= render 'form' %>
 <div class="clear"></div>
 <br />
-<%= link_to 'Back', categories_path %>
+<%= link_to t('.back'), categories_path %>

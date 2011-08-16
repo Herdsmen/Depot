@@ -2,13 +2,17 @@
 	<span class="title_icon">
 		<%= image_tag("bullet1.gif") %>
 	</span>
-	Search Result(<%= @size %>)
+
+	<%= t('.search_result')%>(<%= @size %>)
+
 </div>
 <div class="feat_prod_box_details">
 	<p class="details search_sort_link">
 		<span class="search_sort_link_title">Sort By:</span>
-		<%= sort_link @search, :title %> | 
-		<%= sort_link @search, :price %>
+
+		<%= sort_link @search, :title, t('.title_s')%> | 
+		<%= sort_link @search, :price, t('.price_s')%>	
+
 	</p>  
 
 	<% if @size == 0 %>
@@ -25,10 +29,10 @@
 					<br />
 					
 					<div class="price">
-						<strong>Price:</strong>
+						<strong><%= t('.price')%></strong>
 						<span class="red"><%= number_to_currency product.price %></span>
 						<br />
-						<strong>Heat:</strong>
+						<strong><%= t('.heat')%></strong>
 						<span class="red"><%= product.heat%></span>
 					</div>
 					<% addButtonTo product, :addToCartButton %>
@@ -44,7 +48,7 @@
 					<p class="details">
 						<%= truncate(strip_tags(product.description), :length => 300) %>
 					</p>
-						<%= link_to "- more details -", product, :class => "more" %>
+						<%= link_to t('.more_details'), product, :class => "more" %>
 					<div class="clear"></div>
 					</div>
 					

@@ -2,7 +2,7 @@
 	<span class="title_icon">
 		<%= image_tag("bullet1.gif") %>
 	</span>
-	Listing products
+	<%= t('.list_products')%>
 </div>
 
 <div class="feat_prod_box_details">
@@ -23,10 +23,10 @@
       </td>
 
       <td class="list_actions">
-        <%= link_to "Show", product %><br/>
-        <%= link_to "Edit", edit_product_path(product) %><br/>
-        <%= link_to "Destroy", product, 
-                    :confirm => "Are you sure?",
+        <%= link_to t('.show'), product %><br/>
+        <%= link_to t('.edit'), edit_product_path(product) %><br/>
+        <%= link_to t('.destroy'), product, 
+                    :confirm => t('.areyousure'),
                     :method => :delete %>
       </td>
     </tr>
@@ -37,5 +37,5 @@
 
 <br />
 
-<%= button_to 'New product', new_product_path,
+<%= button_to t('.new_product'), new_product_path,
 	{ :class => "image_submit", :method => :get } %>

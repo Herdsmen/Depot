@@ -21,7 +21,7 @@
 	<span class="title_icon">
 		<%= image_tag("bullet2.gif") %>
 	</span>
-	New books
+	<%= t('.newbook') %>
 </div> 
 
 <div class="clear"></div>
@@ -40,11 +40,11 @@
 	<span class="title_icon">
 		<%= image_tag("bullet1.gif") %>
 	</span>
-	Your Pragmatic Catalog
+	<%= t('.title_html') %>
 </div>
 <div class="feat_prod_box_details">
 	<p class="details">
-		If you want to get more details include books, orders, collections and your cart, please log in with you account.Otherwise, you have to register a new one.
+		<%= t('.details') %>
 	</p>  
 		<% @products.each do |product| %>
 			<div class="feat_prod_box">
@@ -52,10 +52,10 @@
 					<%= link_to image_tag(product.image_url, :width => 98), product, :id => product.id %>
 					<br />
 					<div class="price">
-						<strong>Price:</strong>
+						<strong><%= t('.price')%></strong>
 						<span class="red"><%= number_to_currency product.price %></span>
 						<br />
-						<strong>Heat:</strong>
+						<strong><%= t('.heat') %></strong>
 						<span class="red">
 							<%= product.heat%>
 							<%= periodically_call_remote(:update => { :success => product.id }, 
@@ -76,7 +76,7 @@
 					<p class="details">
 						<%= truncate(strip_tags(product.description), :length => 300) %>
 					</p>
-						<%= link_to "- more details -", product, :class => "more" %>
+						<%= link_to t('.more_details'), product, :class => "more" %>
 					<div class="clear"></div>
 					</div>
 					

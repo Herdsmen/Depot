@@ -3,7 +3,7 @@
 <% end %>
 
 <p>
-  <b>Name:</b>
+  <b><%= t('.name')%></b>
   <%= @user.name %>
 </p>
 <!--
@@ -20,5 +20,5 @@
 
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to t('.edit'), edit_user_path(@user) %> |
+<%= link_to t('.back'), users_path %>

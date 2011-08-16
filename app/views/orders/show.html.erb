@@ -3,22 +3,22 @@
 <% end %>
 
 <div class="contact_form">
-	<div class="form_subtitle">ID: <%= @order.id %></div>
+	<div class="form_subtitle"><%= t('.id')%><%= @order.id %></div>
 	<table class="orders_show_table">
 		<tr class="form_row">
-			<th class="contact">Name:</th>
+			<th class="contact"><%= t('.name')%></th>
 			<td><%= @order.name %></td>
 		</tr>
 		<tr class="form_row">
-			<th class="contact">Address:</th>
+			<th class="contact"><%= t('.address')%></th>
 			<td><%= @order.address %></td>
 		</tr>
 		<tr class="form_row">
-			<th class="contact">Email:</th>
+			<th class="contact"><%= t('.email')%></th>
 			<td><%= @order.email %></td>
 		</tr>
 		<tr class="form_row">
-			<th class="contact">Pay type:</th>
+			<th class="contact"><%= t('.pay_type')%></th>
 			<td><%= @order.pay_type %></td>
 		</tr>
 	</table>
@@ -34,7 +34,7 @@
 				<tr>
 			<%end%>
 			<tr>
-				<td>Total Price:</td>
+				<td><%= t('.total_price')%></td>
 				<td></td>
 				<td><%= number_to_currency @order.total_price %></td>
 			</tr>
@@ -44,9 +44,9 @@
 <div class="clear"></div>
 
 <br />
-<%= button_to "Ship", 
+<%= button_to t('.ship'), 
 		{ :controller => "admin", :action => "ship", :id => @order.id },
 		{ :class => "image_submit"} %>
 
 <br />
-<%= link_to 'Back', orders_path %>
+<%= link_to t('.back'), orders_path %>

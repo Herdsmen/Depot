@@ -1,0 +1,341 @@
+cn: 
+    thanks: "您的订单提交成功！"
+    collect: "收藏"
+    layouts: 
+        application: 
+            title: "书名"
+            home: "主页"
+            books: "商品"
+            about_us: "关于我们"
+            contact_us: "联系我们"
+            help: "帮助"
+            register: "注册"
+            logout: "退出"
+            search: "搜索"
+            my_cart: "我的购物车"
+            view_cart: "进入购物车"
+            about_our_store: "我们的书店"
+            ranking_list: "排行榜"
+            categories: "类别"
+            partners: "管理员"	
+            addtocart: "放入购物车"
+            remove: "移除"
+            price: "价格"
+            heat: "人气"
+            more: "- 详细介绍 -"
+            close: "关闭"
+            move: "移动"
+            login: "登录"
+    admin:
+        index:
+            list_unshipped_order: "未发货的订单"
+            we_have: "我们有"
+            id: "编号"
+            create_time: "提交时间"
+            total_price: "总价"
+            show: "显示"
+            ship: "发货"
+            admin: "管理员"
+            orders: "订单列表"
+            products: "商品列表"
+            users: "用户列表"
+            categories: "分类列表"				
+    store: 
+        index: 
+            title_html: "网上书店"
+            add: "加入购物车"
+            newbook: "新书推荐"
+            price: "价格:"
+            details: "如果你想查看关于商品，订单，购物车和收藏的详细情况，请先登录。如果是新用户，请先注册。"
+            heat: "人气:"
+            more_details: "- 详细介绍 -"
+            price: "价格:"
+        books:
+            home: "主页"
+            category_books: "商品分类"
+    carts: 
+        cart: 
+            empty: "清空购物车"
+            checkout: "结账"
+            areyousure: "你确定删除吗?"
+            total: "总共"
+        index:
+            show: "显示"
+            edit: "修改"
+            destroy: "删除"
+            new_cart: "新购物车"
+    categories:
+        show:
+            name: "分类名称:"
+            parent: "上一目录:"	
+            layer: "目录层:"	
+            edit: "修改"
+            back: "返回"
+        new:
+            new_category: "新建目录"
+            back: "返回"
+        index:
+            list_categories: "分类列表"
+            new_category: "新建分类"
+        edit:
+            name: "分类名称:"
+            reset: "重命名"
+            show: "显示"
+            back: "返回"
+        form:
+            creat_caretory: "新建分类"
+            name: "分类名称:"
+            parent: "上一目录:"	
+            select:  "选择上一目录" 
+            new: "新建"
+    customers:
+        show_orders:
+            list_order: "订单列表"
+        show_comments:
+            comments: "评价"
+            by: "来自 "
+            delete: "删除"
+        show:
+            my_info: "个人信息"
+            name: "姓名:"
+            reset: "重命名"
+            my_store: "我的书店"
+            orders: "订单"
+            collection: "收藏"
+            comments: "评价"
+        index:
+            list_collection: "收藏列表"
+            price: "价格:"
+            heat: "人气:"
+            more_details: "- 详细介绍 -"
+            add_cart: "加入购物车"
+            remove: "移除"
+        edit:
+            reset_name: "修改用户名"
+            username: "用户名:"	
+            show: "显示"
+            back: "返回"
+            reset: "更新"			
+        order:
+            id: "ID: "
+            status: "订单状态:"
+            name: "姓名:"
+            address: "地址:"
+            email: "邮箱:"
+            pay_type: "付款方式:"	
+            total_price: "总价:"		
+        form:
+            prohibit: "该用户无法注册"	
+            register: "注册"		
+            create_account: "新建用户"
+            name: "用户名:"
+            password: "密码:"
+            confirm: "确认密码:"
+    number: 
+        currency: 
+            format: 
+                unit: "$"
+                precision: 2
+                separator: "."
+                delimiter: ","
+                format: "%u%n"
+    orders: 
+        new: 
+            legend: "请确认你的详细资料"
+        form: 
+            address: "地址"
+            email: "邮箱"
+            pay_type: "付款方式"
+            name: "姓名"
+            pay_prompt: "选择交款方式"
+            submit: "提交订单"
+        show:
+            id: "ID: "
+            status: "订单状态:"
+            name: "姓名:"
+            address: "地址:"
+            email: "邮箱:"
+            pay_type: "付款方式:"	
+            total_price: "总价:"	
+            ship: "发货"
+            back: "返回"
+        index:
+            id: "Id"
+            create_time: "提交订单时间"
+            status: "订单状态"
+            show: "显示"
+            destroy: "删除"
+            areyousure: "你确定删除吗?"
+            unshippedlist: "未发货订单列表"
+        form:
+            input_info: "请输入你的信息"
+            submit: "提交订单"
+            name: "姓名:"
+            address: "地址:"
+            email: "邮箱:"
+            pay_type: "付款方式:"
+            pay_prompt: "选择交款方式"
+    products:
+        show:
+            home: "主页"
+            price: "价格:"
+            categories: "分类"
+            heat: "人气:"
+            rating: "评分"
+            addtocart: "加入购物车"
+            product_name: "商品名称"
+            comment: "评价"
+            by: "来自"
+            delete: "删除"
+            edit: "修改"
+            back: "返回"
+            rate: "评分"
+            more_details: "详细介绍"
+            details: "详细介绍"
+            relatebook: "相关商品"
+            title: "标题"
+            submit: "提交"
+        search:
+            search_result: "搜索结果"
+            title_s: "标题"
+            price_s: "价格"
+            price: "价格:"
+            heat: "人气:"
+            more_details: "- 详细介绍 -"
+        new:
+            new_product: "新建商品"
+            back: "返回"
+        index:
+            list_products: "商品列表"
+            show: "显示"
+            edit: "修改"
+            destroy: "删除"
+            new_product: "最新商品"
+            areyousure: "你确定删除吗？"
+        form:
+            prohibit: "该商品不能被保存"
+            title: "题目:"
+            description: "介绍:"
+            image: "图片:"
+            price: "价格:"
+            categories: "分类:"		
+    users:
+        show:
+            name: "姓名:"
+            edit: "修改"
+            back: "返回"
+        index:
+            adminlist: "管理员列表"
+            name: "姓名"
+            type: "类型"
+            show: "显示"
+            destroy: "删除"
+            areyousure: "你确定删除吗?"
+            new_admin: "新建管理员"
+        new:
+            new_admin: "新建管理员"
+            back: "返回"
+        form:
+            prohibit: "该用户无法注册"	
+            enteradmindetail: "输入管理员资料"
+            name: "姓名: "
+            password: "密码: "
+            confirm: "确认密码: "
+            create: "新建管理员"
+    aid:
+        index:
+            user_guide: "用户手册"
+            admin_guide: "管理员手册"
+            finding: "搜索"
+            finding_contentone: "通过输入商品名称，作者，出版社进行商品搜索。在商品搜索处，您可以选择商品的类别，然后在内容栏输入商品名称，作者，出版社，此时搜索栏下拉菜单中将显示与之相关的商品内容，并提示约有多少条查询结果，您选择后点击“搜索”按钮，即可搜索出所有符合条件的商品。 "
+            finding_contenttwo: "可以通过首页下方的热卖商品直接挑选商品。"
+            finding_contentthree: "若搜索的商品没有出售或当时没有库存，页面会出现 您的搜索 XX 不符合任何商品。的提示。"
+            cart: "购物车"
+            cart_contentone: "挑选商品后，在商品详细页面点击购买按钮，将商品放入购物车中。"
+            cart_contenttwo: "商品放入购物车后，页面自动进入购物车，或者您也可以点击页面右侧的购物车，查看所购买的商品。"
+            cart_contentthree: "在页面右侧，点击购物车后，可对购物车中的商品进行一下操作, 如果您要修改商品的数量，可在购物车的数量处输入数量后，点击 上下 按钮; 如果您要删除商品，在购物车中，点击商品左侧的 删除 按钮; 如果您暂时不想订购此商品，可在购物车中，点击商品左侧的 收藏 按钮。"
+            cart_contentfour: "当您确认选购的商品无误后，可点击“进入结算中心”按钮，进行结算。当您进入结算中心后，在订单确认页面，订单总金额将显示价格。"
+            favourites: "收藏"
+            favourites_contevtone: "在商品页面中可以点击收藏，以便你以后的购买。"
+            favourites_contevttwo: "当你进入收藏夹时，你可以选择购买商品，将商品放入购物车，也可以选择移除商品。"
+            account: "用户管理"
+            account_content: "如果您是老用户，请直接输入用户名和密码登录;如果您是新用户，请输入姓名，密码等个人信息，点击提交。" 
+            order: "订单"
+            order_content1: "在订单确认页面，您可以确认配送详情，包括送货地址，送货方式，时间要求，商品信息，订单价格，支付方式，确认无误后点击提交按钮。 "
+            order_content2: "如果你想查看订单历史，可在登录账户后，进行查看。"
+            feedback: "反馈"
+            feedback_contentone: "当你注册成功后，你可以评价任意商品。我们看到评价后会尽快对商品进行调整。"
+            feedback_contenttwo: "你也可以给商品评分。"
+            ad_login: "管理员登录"
+            ad_login_content: "管理员输入用户名和密码登录管理员界面。"
+            management_books: "商品资料管理"
+            management_books_content: "点击页面左侧的商品信息管理键，将出现下拉菜单。菜单中包括添加类别、添加商品。通过这个管理模块，管理员可以添加、删除商品、商品类型，并且可以修改商品售价、商品简介、商品说明等信息。 "
+            management_orders: "商品交易管理"
+            management_orders_content: "点击订单，可以对订单进行处理并对发货记录进行查阅或删除。"
+            management_categories: "分类管理"
+            management_categories_content: "管理员可以对分类进行修改。"
+        contact:
+            contact_us: "联系我们"
+            details: "如果你有任何问题，请尽快与我们联系。我们将在最快的时间里解决你的问题。你可以通过电话或邮件的方式来联系我们。 "
+            phone: "电话:"
+            email: "邮箱:"
+        about:
+            about_us: "关于我们"
+            detailsone: "我们的网上书店，针对于不同用户而开发。我们不断地寻找创新的方法，力争适用于每一位用户。"
+            detailstwo: "我们的网上书店，是由一群用于实践和和创新的人才设计的。"
+            detailsthree: "在互联网发展如此迅速的的今天，网上购物已经成为广大群众购物的一个重要的方式，所以我们的团队不断的更新我们的网店，为了让更多的用户使用便捷。"
+    activerecord: 
+        models: 
+            order: "订单"
+            product: "商品"
+            comment: "评价"
+            category: "分类"
+            cart: "购物车"
+            customer: "用户"
+            user: "管理员"
+        attributes: 
+            order: 
+                address: "地址"
+                name: "姓名"
+                email: "邮箱"
+                pay_type: "付款方式"
+                status: "订单状态"
+            category:
+                name: "分类名称"
+                parent: "上一目录"
+                layer: "目录层"
+            comment:
+                title: "标题"
+                comment: "评价内容"
+            product:
+                title: "题目"
+                description: "详细介绍"
+                image_url: "图片位置"
+                price: "价格"
+                heat: "人气"
+            users:
+                name: "姓名"
+                type: "用户类型"	
+        attributes: 
+            order: 
+                address: "地址"
+                name: "姓名"
+                email: "邮箱"
+                pay_type: "付款方式"
+        errors: 
+            messages: 
+                inclusion: "必须从列表中选择1个"
+                blank: "不能为空"
+    sessions:
+        new:
+            myaccount: "我的账户"
+            details: "如果你想查看关于商品，订单，购物车和收藏的详细情况，请先登录。如果是新用户，请先注册。"
+            login: "登录"
+            name: "用户名:"
+            password: "密码:"
+    errors: 
+        template: 
+            body: "以下地方有错误:"
+            header:
+                one: "提交表单时有1个错误"
+                other: "提交表单时有 %{count}个错误"

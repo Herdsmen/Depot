@@ -39,39 +39,37 @@
         <div id="menu">
             <ul>                                                                       
 				<li class="selected">
-					<%= link_to "home", store_index_url %>
+					<%= link_to t('.home'), store_index_url %>
 				</li>
-				<li><%= link_to "books", books_path %></li>
+				<li><%= link_to t('.books'), books_path %></li>
 				<li>
-					<%= link_to "about us", about_us_path %>
+					<%= link_to t('.about_us'), about_us_path %>
 				</li>
 				<li>
-					<%= link_to "contact us", contact_us_path %>
+					<%= link_to t('.contact_us'), contact_us_path %>
 				</li>
-				<li><%= link_to "help", aid_path %></a></li>
+				<li><%= link_to t('.help'), aid_path %></a></li>
 				<% if !session[:user_id]%>
-					<li><%= link_to "my amount", login_url %></li>
-					<li><%= link_to "register", new_customer_path%></li>
+					<li><%= link_to t('.login'), login_url %></li>
+					<li><%= link_to t('.register'), new_customer_path%></li>
 				<% elsif session[:type] == "Customer" %>
 					<li><%=link_to User.find_by_id(session[:user_id]).name, 
-							{ :controller => "customers", :action => "show", :id => session[:user_id] } %></li>
-					<li><%= link_to "logout", logout_path, :method => :delete %></li>
+							{ :controller => "customers", :action =>"show", :id => session[:user_id] } %></li>
+					<li><%= link_to t('.logout'), logout_path, :method => :delete %></li>
 				<% else %>
 					<li><%= link_to User.find_by_id(session[:user_id]).name, admin_url %></li>
-					<li><%= link_to "logout", logout_path, :method => :delete %></li>
+					<li><%= link_to t('.logout'), logout_path, :method => :delete %></li>
 				<% end %>
 				
-				<li>
-
-				</li>
             </ul>
 
         </div>     
 		<%= form_for :search, :url => search_products_path, :html => { :method => :get, :class => "search_form" } do |f| %>
-			<%= f.label :title_contains, "Title: " %>
 
+			<%= f.label :title_contains, t('.title') %>
 			<%= f.search_field :title_contains %>
-			
+
+
 			<div class="auto_complete" id="search_title_contains_auto_complete"></div>
             <%= auto_complete_field :search_title_contains,:url=>{:controller=>'products',:action=>'auto_complete_for_title'}%>
 	
@@ -80,7 +78,8 @@
 			<%= f.label :price_lte, "to" %>
 			<%= f.text_field :price_lte, :size => 8, :class => "price_search" %>
 
-			<%= f.submit "Search" %>
+			<%= f.submit t('.search') %>
+
 		<% end %>
             
 	</div> 
@@ -92,30 +91,43 @@
         </div><!--end of left content-->
         
         <div class="right_content">
-        	<div class="languages_box">
+
+		<div>
+			<span class="red">Languages:</span>
+			<%= form_tag store_path, :class=>'locale' do %>
+				<%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s),:onchange => 'this.form.submit()' %>
+				<!--<%= submit_tag 'submit'%>-->
+				<%= javascript_tag "$$('.locale input').each(Element.hide)"%>			
+			<% end %>
+		</div>
+		
+		<!--
+			<div class="languages_box">
 				<span class="red">Languages:</span>
 				<%= link_to image_tag("gb.gif"), "#" %>
 				<%= link_to image_tag("cn.gif"), "#" %>
-			<!--
+			
 			<a href="http://www.csscss.org" class="selected"><img src="images/gb.gif" alt="" title="" border="0" /></a>
             <a href="http://www.csscss.org"><img src="images/fr.gif" alt="" title="" border="0" /></a>
             <a href="http://www.csscss.org"><img src="images/de.gif" alt="" title="" border="0" /></a>
-			-->
+			
             </div>
-           <!--
+			
 			<div class="currency">
                 <span class="red">Currency: </span>
                 <a href="#">GBP</a>
                 <a href="#">EUR</a>
                 <a href="#" class="selected">USD</a>
             </div>
+
                 -->
+
                 
 			<div class="cart">
 				<div class="title">
 					<span class="title_icon">
 						<%= image_tag("cart.gif") %>
-					</span>My cart
+					</span><%= t('.my_cart') %>
 				</div>
 				<div class="clear"></div>
 				<div class="home_cart_content">
@@ -125,18 +137,14 @@
 					<%end%>
 				<% end %>
 				</div>
-                  
-				<a href="cart.html" class="view_cart">view cart</a>
 			</div>
                        
-            	
-        
-        
+      
 			<div class="title">
 				<span class="title_icon">
 					<%= image_tag("bullet3.gif") %>
 				</span>
-				About Our Store
+				<%= t('.about_our_store') %>
 			</div> 
 				
 			<div class="about">
@@ -152,7 +160,7 @@
 					<span class="title_icon">
 						<%= image_tag("bullet4.gif") %>
 					</span>
-					Ranking List
+					<%= t('.ranking_list') %>
 				</div> 
 				
 				<% rank = 1 %>
@@ -172,10 +180,10 @@
 						<div class="highslide-header">
 							<ul>
 								<li class="highslide-move">
-									<a href="#" onclick="return false">Move</a>
+									<a href="#" onclick="return false"><%= t('.move') %></a>
 								</li>
 								<li class="highslide-close">
-									<a href="#" onclick="return hs.close(this)">Close</a>
+									<a href="#" onclick="return hs.close(this)"><%= t('.close') %></a>
 								</li>
 							</ul>
 						</div>
@@ -185,10 +193,10 @@
 									<%= link_to image_tag(product.image_url, :width => 98), product, :id => product.id %>
 									<br />
 									<div class="price">
-										<strong>Price:</strong>
+										<strong><%= t('.price')%></strong>
 										<span class="red"><%= number_to_currency product.price %></span>
 										<br />
-										<strong>Heat:</strong>
+										<strong><%= t('.heat') %></strong>
 										<span class="red">
 											<%= product.heat%>
 											<%= periodically_call_remote(:update => { :success => product.id }, 
@@ -209,7 +217,7 @@
 									<p class="details">
 										<%= truncate(strip_tags(product.description), :length => 300) %>
 									</p>
-										<%= link_to "- more details -", product, :class => "more" %>
+										<%= link_to t('.more'), product, :class => "more" %>
 									<div class="clear"></div>
 									</div>
 									
@@ -236,7 +244,7 @@
 					<span class="title_icon">
 						<%= image_tag("bullet5.gif") %>
 					</span>
-					Categories
+					<%= t('.categories') %>
 				</div> 
                 <%= sideCategoriesDisplay Category.tree %>
 				<!-- 
@@ -259,7 +267,7 @@
 					<span class="title_icon">
 						<%= image_tag("bullet6.gif") %>
 					</span>
-					Partners
+					<%= t('.partners') %>
 				</div> 
                 
 			

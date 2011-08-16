@@ -1,92 +1,78 @@
 ﻿<div class="contact_form">
-	<div class="form_subtitle">用户帮助</div>
+	<div class="form_subtitle"><%= t('.user_guide') %></div>
 		<ol>
-			<li><h3>搜索书籍</h3>
+			<li><h3><%= t('.finding')%></h3>
 				<ol>
-					<li>通过输入书籍名称，作者，出版社进行书籍搜索。在书籍搜索处，您可以选择商品的类别，然后在内容栏输入商品名称，作者，出版社，此时搜索栏下拉菜单中将显示与之相关的商品内容，并提示约有多少条查询结果，您选择后点击“搜索”按钮，即可搜索出所有符合条件的书籍。</li> 
-					<li>可以通过首页下方的热卖书籍直接挑选书籍。说明：若搜索的书籍没有出售或当时没有库存，页面会出现“您的搜索"XX"不符合任何书籍。”的提示。 </li>
+					<li><%= t('.finding_contentone')%></li> 
+					<li><%= t('.finding_contenttwo')%></li>
+					<li><%= t('.finding_contentthree')%></li>
+					<li><%= t('.finding_contentfour')%></li>
 				</ol>
 			</li>
 
-			<li><h3>查看书籍详细信息</h3>
+			<li><h3><%= t('.cart')%></h3>
 				<ol>
-					<li>登录网站，选择书籍</li>
-					<li>在书籍详细页面可看到评论</li>
-					<li>可点击收藏或者购买。</li>
+					<li><%= t('.cart_contentone')%></li>
+					<li><%= t('.cart_contenttwo')%></li>
+					<li><%= t('.cart_contentthree')%></li>
+					<li><%= t('.cart_contentfour')%></li>
 				</ol>
 			</li>
 
-			<li><h3>购物车</h3>
+			<li><h3><%= t('.favourites')%></h3>
 				<ol>
-					<li>
-						<h4>放入购物车</h4>
-						<p>挑选书籍后，在书籍详细页面点击“购买”按钮，将书籍放入购物车中。</p>
-					</li>
-					<li>
-						<h4>查看购物车</h4>
-						<p>书籍放入购物车后，页面自动进入购物车，或者您也可以点击页面右侧的“购物车”，查看所购买的书籍。</p>
-					</li>
-					<li>
-						<h4>使用购物车</h4>
-						<p>在页面右侧，点击“购物车”后，可对购物车中的书籍进行一下操作：</p>
-						<ul>
-							<li>
-								<h5>修改书籍数量</h5>
-								<p>如果您要修改书籍的数量，可在购物车的数量处输入数量后，点击“更新”按钮。</p>
-							</li>
-							<li>
-								<h5>删除书籍</h5>
-								<p>如果您要删除书籍，在购物车中，点击书籍左侧的“删除”按钮。 </p>
-							</li>
-							<li>
-								<h5>将书籍移入收藏夹</h5>
-								<p>如果您暂时不想订购此书籍，可在购物车中，点击书籍左侧的“移入收藏夹”按钮。</p>
-							</li>
-							<li>
-								<h5>进入结算中心</h5>
-								<p>当您确认选购的书籍无误后，可点击“进入结算中心”按钮，进行结算。当您进入结算中心后，在订单确认页面，订单总金额将显示价格。</p>
-							</li>
-						</ul>				
-					</li>
+					<li><%= t('.favourites_contevtone')%></li>
+					<li><%= t('.favourites_contevttwo')%></li>
 				</ol>
 			</li>
+			
 			<li>
-				<h3>注册登录</h3>
+				<h3><%= t('.account')%></h3>
 				<ol>
-					<li>如果您是老用户，请直接输入用户名和密码登录。</li>
-					<li>如果您是新用户，请输入姓名，密码等个人信息，点击“完成”。</li>
-					<li>新用户注册成功。</li>
+					<li><%= t('.account_content')%></li>
 				</ol>
 			</li>
+			
 			<li>
-				<h3>开具发票</h3>
-				<p>在订单确认页面可以选择开具发票，您可以填写发票抬头，并从下拉菜单中选择发票内容。</p>
+				<h3><%= t('.order')%></h3>
+				<ol>
+					<li><%= t('.order_contentone')%></li>	
+					<li><%= t('.order_contenttwo')%></li>
+				</ol>
 			</li>
+			
 			<li>
-				<h3>订单确认与提交</h3>
-				<p>在订单确认页面，您可以确认配送详情（包括送货地址、送货方式、时间要求、书籍信息）、订单价格（包括书籍价格、配送费和是否满足促销优惠）、支付方式和发票开具，确认无误后点击“订单确认”按钮。</p>	
+				<h3><%= t('.feedback')%></h3>
+				<ol>
+					<li><%= t('.feedback_contentone')%></li>	
+					<li><%= t('.feedback_contenttwo')%></li>
+				</ol>
 			</li>
 		</ol>	
+		
 </div>
 
+
 <div class="contact_form">
-	<div class="form_subtitle">用户帮助</div>
+	<div class="form_subtitle"><%= t('.admin_guide')%></div>
 	<ol>
 		<li>
-			<h3>管理员登录</h3>
-			<p>管理员输入用户名和密码登录管理员界面</p>
+			<h3><%= t('.ad_login')%></h3>
+			<p><%= t('.ad_login_content')%></p>
 		</li>
 		<li>
-			<h3>书籍资料管理</h3>
-			<p>点击页面左侧的书籍信息管理键，将出现下拉菜单。菜单中包括添加类别、添加书籍。通过这个管理模块，管理员可以添加、删除书籍、书籍类型，并且可以修改书籍售价、书籍简介、书籍说明等信息。</p>
+			<h3><%= t('.management_books')%></h3>
+			<p><%= t('.management_books_content')%></p>
 		</li>
 		<li>
-			<h3>书籍交易管理</h3>
-			<p>点击订单，可以对订单进行处理并对发货记录进行查阅或删除。</p>
+			<h3><%= t('.management_orders')%></h3>
+			<p><%= t('.management_orders_content')%></p>
 		</li>
 		<li>
-			<h3>退出管理</h3>
-			<p>点击管理员退出，管理员对书店的所有修改将被保存入数据库，并返回到修改成功后的前台首页。</p>
+			<h3><%= t('.management_categories')%></h3>
+			<p><%= t('.management_categories_content')%></p>
 		</li>
 	</ol>
+	
 </div>
+

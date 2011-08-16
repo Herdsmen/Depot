@@ -2,11 +2,11 @@
 	<span class="title_icon">
 		<%= image_tag("bullet1.gif") %>
 	</span>
-	New product
+	<%= t('.new_product')%>
 </div>
 <div class="clear"></div>
 
 <%= render "form" %>
 
 <br />
-<%= link_to 'Back', products_path %>
+<%= link_to t('.back'), products_path %>

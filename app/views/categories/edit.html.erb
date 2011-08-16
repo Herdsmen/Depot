@@ -20,12 +20,12 @@
 	
 	<table>
 		<tr>
-			<th><%= f.label :name, "Name:" %></th>
+			<th><%= f.label :name, t('.name') %></th>
 			<td><%= f.text_field :name %></td>
-			<td><%= f.submit "Reset", { :class => "image_submit" } %></td>
+			<td><%= f.submit t('.reset'), { :class => "image_submit" } %></td>
 		</tr>
 	</table>
 <% end %>
 
-<% link_to "Show", @category %>
-<%= link_to "Back", categories_path %>
+<% link_to t('.show'), @category %>
+<%= link_to t('back'), categories_path %>

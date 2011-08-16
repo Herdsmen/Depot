@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   
   before_filter :set_i18n_locale_from_params
-
+  #before_filter :set_locale
   #before_filter :authorize
   protect_from_forgery
   
@@ -61,22 +61,40 @@ class ApplicationController < ActionController::Base
       end
     end
 
-  def set_i18n_locale_from_params
-    if params[:locale]
-      if I18n.available_locales.include?(params[:locale].to_sym)
-        I18n.locale = params[:locale]
-      else
-        flash.now[:notice] = 
-        "#{params [:locale]} translation not available"
-        logger.error flash.now[:notice]
-      end 
-    end
-  end
+
+    def set_i18n_locale_from_params
+		if params[:locale]
+			if I18n.available_locales.include?(params[:locale].to_sym)
+			I18n.locale = params[:locale]
+			else
+				flash.now[:notice] = 
+				"#{params [:locale]} translation not available"
+				logger.error flash.now[:notice]
+			end 
+		end
+	end
     
-  def default_url_options
-    { :locale => I18n.locale}
-  end
-  
+	def default_url_options
+		{ :locale => I18n.locale}
+	end
+
+=begin
+	def set_locale
+		session[:locale] = params[:locale] if params[:locale]
+		I18n.locale = session[:locale] || I18n.default_locale
+		locale_path = "#{LOCALES_DIRECTORY}#{I18n.locale}.yml"
+		unless I18n.load_path.include? locale_path
+		  I18n.load_path << locale_path
+		  I18n.backend.send(:init_translations)
+		end
+		
+	rescue Exception => err
+		logger.error err
+		flash.now[:notice] = "#{I18n.locale} translation not available"
+		I18n.load_path -= [locale_path]
+		I18n.locale = session[:locale] = I18n.default_locale
+	end
+=end
     def check_role_type
     if defined? session
          if session[:type]=="Customer"

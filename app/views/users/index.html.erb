@@ -6,14 +6,14 @@
 	<span class="title_icon">
 		<%= image_tag "bullet1.gif" %>
 	</span>
-	Admin List
+	<%= t('.adminlist')%>
 </div>
 
 <div class="contact_form list_orders">
 <table>
   <tr>
-    <th>Name</th>
-    <th>Type</th>
+    <th><%= t('.name')%></th>
+    <th><%= t('.type')%></th>
     <th></th>
     <th></th>
   </tr>
@@ -22,8 +22,8 @@
   <tr>
     <td><%= user.name %></td>
     <td><%= user.type %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('.show'), user %></td>
+    <td><%= link_to t('.destroy'), user, :confirm =>t('.areyousure'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -32,4 +32,4 @@
 <div class="clear"></div>
 <br />
 
-<%= button_to 'New Admin', new_user_path, { :method => :get, :class => "image_submit right"} %>
+<%= button_to t('.new_admin'), new_user_path, { :method => :get, :class => "image_submit right"} %>

@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
-  before_filter :authorize_user ,:except=>:create
+  before_filter :authorize_user ,:except=>[:create, :remove]
   before_filter :authorize_customer_and_vistor ,:only=>:create
 
   
@@ -85,4 +85,16 @@ class LineItemsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+	def remove
+		@cart = current_cart
+		@line_item = LineItem.find params[:id]
+		@line_item.remove_self
+		
+		respond_to do | format |
+			if @line_item.save then 
+				format.js { @current_item = @line_item }
+			end
+		end
+	end
 end

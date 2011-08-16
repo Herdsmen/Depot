@@ -36,19 +36,19 @@ module ApplicationHelper
 	end
 	
 	def addToCartButton(product)
-		button_to "Add to Cart", 
+		button_to t('.addtocart'), 
 			line_items_path(:product_id => product), 
 			{ :remote => true, :disabled => @is_user, :class => "image_submit" }
 	end
 	
 	def collectButton(product)
-		button_to "Collect",
+		button_to I18n.t('.collect'),
 			{ :controller => "customers", :action=> "collect", :product_id => product.id}, 
 			{ :disabled => @is_user, :class => "image_submit" }
 	end
 	
 	def removeCollectButton(product)
-		button_to "Remove", 
+		button_to t('.remove'), 
 			{ :controller => "customers", :action => "remove_collection", :product_id => product },
 			{ :class => "image_submit" }
 	end

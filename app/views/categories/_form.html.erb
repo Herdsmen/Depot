@@ -12,25 +12,25 @@
 	<% end %>
 	
 	<div class="contact_form">
-		<div class="form_subtitle">Create New Category</div>
+		<div class="form_subtitle"><%= t('.creat_caretory')%></div>
 		<form name="register" action="#">          
 			<div class="form_row">
-				<%= f.label :name, "Name:", :class => "contact" %>
+				<%= f.label :name, t('.name'), :class => "contact" %>
 				<%= f.text_field :name %>
 			</div>  
 
 			<div class="form_row">
-				<%= f.label :parent, "Parent:", :class => "contact" %>
+				<%= f.label :parent, t('.parent'), :class => "contact" %>
 				<%= 
 					f.select :parent, Category::getNames,
-						:prompt => "Select parent node" 
+						:prompt =>t('.select')
 				%>
 			</div> 
 			
 
 
 			<div class="form_row">
-				<%= f.submit :class => "register", :value => "New" %>
+				<%= f.submit :class => "register", :value => "new" %>
 			</div>   
 		</form>     
 	</div>  

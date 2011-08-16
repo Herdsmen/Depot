@@ -8,12 +8,12 @@
 	<span class="title_icon">
 		<%= image_tag("bullet1.gif") %>
 	</span>
-	Listing categories
+	<%= t('.list_categories')%>
 </div>
 
 <div id="category">
 <%= treeDisplay(@categoriesHashTree) %>
 </div>
 <br />
-<%= button_to "New Category", new_category_path, 
+<%= button_to t('.new_category'), new_category_path, 
 	{:method => :get, :class => "image_submit" } %>
