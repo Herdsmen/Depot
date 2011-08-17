@@ -14,19 +14,7 @@
 		hs.graphicsDir = '/images/highslide/graphics/';
 		hs.outlineType = 'rounded-white';
 	</script>
-<!--
-	<script type="text/javascript">
-		// close on mouse out
-		hs.Expander.prototype.onMouseOut = function (sender) {
-			sender.close();
-		};
-		
-		// close if mouse is not over on expand (using the internal mouseIsOver property)
-		hs.Expander.prototype.onAfterExpand = function (sender) {
-			if (!sender.mouseIsOver) sender.close();
-		};
-	</script>
--->
+
 </head>
 
 <body id="store">
@@ -100,28 +88,6 @@
 				<%= javascript_tag "$$('.locale input').each(Element.hide)"%>			
 			<% end %>
 		</div>
-		
-		<!--
-			<div class="languages_box">
-				<span class="red">Languages:</span>
-				<%= link_to image_tag("gb.gif"), "#" %>
-				<%= link_to image_tag("cn.gif"), "#" %>
-			
-			<a href="http://www.csscss.org" class="selected"><img src="images/gb.gif" alt="" title="" border="0" /></a>
-            <a href="http://www.csscss.org"><img src="images/fr.gif" alt="" title="" border="0" /></a>
-            <a href="http://www.csscss.org"><img src="images/de.gif" alt="" title="" border="0" /></a>
-			
-            </div>
-			
-			<div class="currency">
-                <span class="red">Currency: </span>
-                <a href="#">GBP</a>
-                <a href="#">EUR</a>
-                <a href="#" class="selected">USD</a>
-            </div>
-
-                -->
-
                 
 			<div class="cart">
 				<div class="title">
@@ -165,9 +131,6 @@
 				
 				<% rank = 1 %>
 				<% Product.get_top_five.each do |product| %>
-				<!--
-					<a href="#" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html-<%= "#{rank}" %>', width: 470 } )"
-						class="highslide"   onmouseover="return this.onclick()" >-->
 					<a href="#" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html-<%= "#{rank}" %>', width: 470 } )" class="highslide" >
 						<div class="new_prod_box rank_box">
 							<span class="rank_size"><%= "#{ rank }." %></span><%= truncate product.title, :length => 20 %>
@@ -247,21 +210,7 @@
 					<%= t('.categories') %>
 				</div> 
                 <%= sideCategoriesDisplay Category.tree %>
-				<!-- 
-                <ul class="list">
-                <li><a href="http://www.csscss.org">accesories</a></li>
-                <li><a href="http://www.csscss.org">books gifts</a></li>
-                <li><a href="http://www.csscss.org">specials</a></li>
-                <li><a href="http://www.csscss.org">hollidays gifts</a></li>
-                <li><a href="http://www.csscss.org">accesories</a></li>
-                <li><a href="http://www.csscss.org">books gifts</a></li>
-                <li><a href="http://www.csscss.org">specials</a></li>
-                <li><a href="http://www.csscss.org">hollidays gifts</a></li>
-                <li><a href="http://www.csscss.org">accesories</a></li>
-                <li><a href="http://www.csscss.org">books gifts</a></li>
-                <li><a href="http://www.csscss.org">specials</a></li>                                              
-                </ul>
-                -->
+				
 				
              	<div class="title">
 					<span class="title_icon">
@@ -272,17 +221,7 @@
                 
 			
                 <ul class="list">
-				<!--
-                <li><a href="http://www.csscss.org">accesories</a></li>
-                <li><a href="http://www.csscss.org">books gifts</a></li>
-                <li><a href="http://www.csscss.org">specials</a></li>
-                <li><a href="http://www.csscss.org">hollidays gifts</a></li>
-                <li><a href="http://www.csscss.org">accesories</a></li>
-                <li><a href="http://www.csscss.org">books gifts</a></li>
-                <li><a href="http://www.csscss.org">specials</a></li>
-                <li><a href="http://www.csscss.org">hollidays gifts</a></li>
-                <li><a href="http://www.csscss.org">accesories</a></li>  
-				-->
+				
                 </ul>      
              </div>         
              
