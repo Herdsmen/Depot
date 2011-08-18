@@ -84,7 +84,7 @@
     <div class="tabs-container">
 		<div style="display: block;" class="tab" id="tab3">
 			<p class="more_details">
-				<% form_tag ({:controller => "products", :product_id => @product.id, :action => "rating"},
+				<% form_tag({:controller => "products", :product_id => @product.id, :action => "rating"},
 							 {:class => "product_rating_form"}) do %>
 					<% (1..5).each do |value| %>
 						<%= radio_button_tag :rating, value, true %> <%= value %>
@@ -193,7 +193,7 @@ id: 'demo'
 	<%= f.label :title,t('.title') %><br />
 	<%= f.text_field :title %><br />
 	<%= f.label :comment, t('.comment') %><br />
-	<%= f.text_area (:comment, :rows => 3) %><br />
+	<%= f.text_area(:comment, :rows => 3) %><br />
 	
 	<%= f.submit t('.submit'), :class => "image_submit" %>
 <% end %>	
