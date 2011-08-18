@@ -1,7 +1,9 @@
 # encoding: utf-8
 
 Category.delete_all
-
+Category.create :name => "ROOT_NODE",
+						:parent => -1,
+						:layer => 0
 # create root 
 Category.create(:name => 'ROOT_NODE', :layer => 0, 
 	:parent => -1)

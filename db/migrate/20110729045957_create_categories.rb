@@ -7,10 +7,6 @@ class CreateCategories < ActiveRecord::Migration
 
 			t.timestamps
 		end
-
-		Category.create :name => "ROOT_NODE",
-						:parent => -1,
-						:layer => 0
 	end
 
 	def self.down
